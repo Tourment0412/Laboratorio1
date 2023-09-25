@@ -1,4 +1,4 @@
-package co.uniquindio.programacionIII.alquilafacil.aplication;
+package co.edu.uniquindio.programacionIII.alquilafacil.aplication;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
