@@ -19,7 +19,7 @@ public class VehiculoDao {
 		this.em = em;
 	}
 
-	public static VehiculoDao getVehiculoManager() {
+	public static VehiculoDao getManager() {
 		return new VehiculoDao();
 	}
 

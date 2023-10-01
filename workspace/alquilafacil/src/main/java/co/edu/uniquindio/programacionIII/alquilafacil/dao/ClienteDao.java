@@ -19,7 +19,7 @@ public class ClienteDao {
 		this.em = em;
 	}
 
-	public static ClienteDao getClienteManager() {
+	public static ClienteDao getManager() {
 		return new ClienteDao();
 	}
 

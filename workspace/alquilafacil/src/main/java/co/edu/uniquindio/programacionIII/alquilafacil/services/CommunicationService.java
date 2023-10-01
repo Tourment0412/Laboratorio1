@@ -94,7 +94,7 @@ public class CommunicationService {
 
 	public void agregarCliente(Cliente cliente) throws ObjetoYaExisteException, PersiscenciaDesconocidaException {
 		try {
-			ClienteDao.getClienteManager().agregarCliente(cliente);
+			ClienteDao.getManager().agregarCliente(cliente);
 		} catch (Exception e) {
 			lanzarDefaultCreacionObjetoException(
 					"El cliente con identificacion \"" + cliente.getCedula() + "\" ya se encuentra registrado", e);
@@ -103,7 +103,7 @@ public class CommunicationService {
 
 	public void agregarVehiculo(Vehiculo vehiculo) throws ObjetoYaExisteException, PersiscenciaDesconocidaException {
 		try {
-			VehiculoDao.getVehiculoManager().agregarVehiculo(vehiculo);
+			VehiculoDao.getManager().agregarVehiculo(vehiculo);
 		} catch (Exception e) {
 			lanzarDefaultCreacionObjetoException(
 					"El vehiculo de placa \"" + vehiculo.getPlaca() + "\" ya se encuentra registrado", e);
@@ -116,7 +116,7 @@ public class CommunicationService {
 			if (!estaDisponible(alquiler.getVehiculo()))
 				throw new VehiculoNoDisponibleException(
 						"El vehiculo con placa: '" + alquiler.getVehiculo().getPlaca() + "' no está disponible");
-			AlquilerDao.getAlquilerManager().agregarAlquiler(alquiler);
+			AlquilerDao.getManager().agregarAlquiler(alquiler);
 		} catch (Exception e) {
 			if (e instanceof VehiculoNoDisponibleException)
 				throw (VehiculoNoDisponibleException) e;
@@ -126,11 +126,11 @@ public class CommunicationService {
 	}
 
 	public List<Cliente> listarClientes() {
-		return ClienteDao.getClienteManager().getClientes();
+		return ClienteDao.getManager().getClientes();
 	}
 
 	public List<Vehiculo> listarVehiculos() {
-		VehiculoDao vehiculoManager = VehiculoDao.getVehiculoManager();
+		VehiculoDao vehiculoManager = VehiculoDao.getManager();
 		List<Vehiculo> vehiculos = vehiculoManager.getVehiculos();
 		vehiculoManager.close();
 		return vehiculos;
@@ -141,11 +141,61 @@ public class CommunicationService {
 	}
 
 	public List<Alquiler> listarAlquileres() {
-		return AlquilerDao.getAlquilerManager().getAlquileres();
+		return AlquilerDao.getManager().getAlquileres();
 	}
 
 	private List<Alquiler> listarAlquileres(EntityManager em) {
 		return AlquilerDao.getAlquilerManager(em).getAlquileres();
+	}
+
+	public void agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
+			LocalDate fechaRegreso)
+			throws VehiculoNoDisponibleException, ObjetoYaExisteException, PersiscenciaDesconocidaException {
+		EntityManager em = UtilsJPA.getEntityManager();
+
+		Cliente cliente = obtenerCliente(cedulaCliente, em);
+		Vehiculo vehiculo = obtenerVehiculo(placaVehiculo, em);
+
+		Alquiler alquiler = Alquiler.builder().cliente(cliente).vehiculo(vehiculo).fechaAlquiler(fechaAlquiler)
+				.fechaRegreso(fechaRegreso).build();
+
+		cliente.agregarAlquiler(alquiler);
+		vehiculo.agregarAlquiler(alquiler);
+
+		VehiculoDao.getVehiculoManager(em).actualizarVehiculo(vehiculo);
+		ClienteDao.getClienteManager(em).actualizarCliente(cliente);
+
+		em.close();
+		agregarAlquiler(alquiler);
+	}
+
+	public Vehiculo obtenerVehiculo(String placa) {
+		VehiculoDao vehiculoManager = VehiculoDao.getManager();
+		Vehiculo vehiculo = vehiculoManager.obtenerVehiculo(placa);
+		vehiculoManager.close();
+		return vehiculo;
+	}
+
+	public Alquiler obtenerAlquiler(long id) {
+		AlquilerDao alquilerManager = AlquilerDao.getManager();
+		Alquiler alquiler = alquilerManager.obtenerAlquiler(id);
+		alquilerManager.close();
+		return alquiler;
+	}
+
+	public Cliente obtenerCliente(String cedula) {
+		ClienteDao clienteManager = ClienteDao.getManager();
+		Cliente cliente = clienteManager.obtenerCliente(cedula);
+		clienteManager.close();
+		return cliente;
+	}
+
+	private Vehiculo obtenerVehiculo(String placa, EntityManager em) {
+		return VehiculoDao.getVehiculoManager(em).obtenerVehiculo(placa);
+	}
+
+	private Cliente obtenerCliente(String cedula, EntityManager em) {
+		return ClienteDao.getClienteManager(em).obtenerCliente(cedula);
 	}
 
 	private void lanzarDefaultCreacionObjetoException(String message, Exception e)
@@ -158,22 +208,6 @@ public class CommunicationService {
 			cause = cause.getCause();
 		}
 		throw new PersiscenciaDesconocidaException("Ha pasado un error inesperado con la persistencia", e);
-	}
-
-	public void agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
-			LocalDate fechaRegreso)
-			throws VehiculoNoDisponibleException, ObjetoYaExisteException, PersiscenciaDesconocidaException {
-		EntityManager em = UtilsJPA.getEntityManager();
-		Cliente cliente = ClienteDao.getClienteManager(em).obtenerCliente(cedulaCliente);
-		Vehiculo vehiculo = VehiculoDao.getVehiculoManager(em).obtenerVehiculo(cedulaCliente);
-		
-		Alquiler alquiler = Alquiler.builder().cliente(cliente).vehiculo(vehiculo).fechaAlquiler(fechaAlquiler)
-				.fechaRegreso(fechaRegreso).build();
-		cliente.agregarAlquiler(alquiler);
-		vehiculo.agregarAlquiler(alquiler);
-		em.close();
-		agregarAlquiler(alquiler);
-
 	}
 
 }

@@ -19,7 +19,7 @@ public class AlquilerDao {
 		this.em = em;
 	}
 
-	public static AlquilerDao getAlquilerManager() {
+	public static AlquilerDao getManager() {
 		return new AlquilerDao();
 	}
 
