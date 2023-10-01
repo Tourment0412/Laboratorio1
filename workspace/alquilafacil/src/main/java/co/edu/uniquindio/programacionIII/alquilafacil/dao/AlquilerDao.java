@@ -15,8 +15,16 @@ public class AlquilerDao {
 		em = UtilsJPA.getEntityManager();
 	}
 
-	public static AlquilerDao createAlquilerManager() {
+	private AlquilerDao(EntityManager em) {
+		this.em = em;
+	}
+
+	public static AlquilerDao getAlquilerManager() {
 		return new AlquilerDao();
+	}
+
+	public static AlquilerDao getAlquilerManager(EntityManager em) {
+		return new AlquilerDao(em);
 	}
 
 	public void agregarAlquiler(Alquiler alquiler) {
@@ -29,7 +37,7 @@ public class AlquilerDao {
 		return em.find(Alquiler.class, id);
 	}
 
-	public List<Alquiler> getRegistros() {
+	public List<Alquiler> getAlquileres() {
 		return em.createQuery("SELECT a FROM Alquiler a", Alquiler.class).getResultList();
 	}
 

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -53,7 +54,7 @@ public class Cliente implements Serializable {
 
 	@OneToMany()
 	@Getter
-	private List<Alquiler> listaRegistros;
+	private List<Alquiler> listaAlquileres;
 
 	@Builder
 	private Cliente(@NonNull String cedula, @NonNull String nombre, @NonNull String numeroTel, @NonNull String email,
@@ -65,7 +66,13 @@ public class Cliente implements Serializable {
 		this.email = email;
 		this.ciudad = ciudad;
 		this.direccion = direccion;
-		this.listaRegistros = new ArrayList<>();
+		this.listaAlquileres = new ArrayList<>();
+	}
+
+	public void agregarAlquiler(Alquiler alquiler) throws ObjetoYaExisteException {
+		if (listaAlquileres.contains(alquiler))
+			throw new ObjetoYaExisteException("El alquiler ya existe en el vehiculo");
+		listaAlquileres.add(alquiler);
 	}
 
 }

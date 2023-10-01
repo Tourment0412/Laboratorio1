@@ -15,8 +15,16 @@ public class ClienteDao {
 		em = UtilsJPA.getEntityManager();
 	}
 
-	public static ClienteDao createClienteManager() {
+	private ClienteDao(EntityManager em) {
+		this.em = em;
+	}
+
+	public static ClienteDao getClienteManager() {
 		return new ClienteDao();
+	}
+
+	public static ClienteDao getClienteManager(EntityManager em) {
+		return new ClienteDao(em);
 	}
 
 	public void agregarCliente(Cliente cliente) {
@@ -39,7 +47,7 @@ public class ClienteDao {
 		em.getTransaction().commit();
 	}
 
-	public void eliminarCliente(long id) {
+	public void eliminarCliente(String id) {
 		Cliente cliente = em.find(Cliente.class, id);
 		if (cliente != null) {
 			em.getTransaction().begin();

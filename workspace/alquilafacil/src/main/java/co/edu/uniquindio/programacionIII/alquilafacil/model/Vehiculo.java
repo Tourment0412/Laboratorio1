@@ -4,6 +4,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 import javax.imageio.ImageIO;
 import javax.persistence.Entity;
@@ -11,8 +15,10 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import lombok.Builder;
@@ -48,6 +54,7 @@ public class Vehiculo implements Serializable {
 	@Getter
 	@Setter
 	private Integer modelo;
+
 	@Lob
 	private byte[] imageBytes;
 	@NonNull
@@ -68,6 +75,13 @@ public class Vehiculo implements Serializable {
 	@Setter
 	private Integer numSillas;
 
+	@Getter
+	private LocalDate fechaCreacion;
+
+	@OneToMany
+	@Getter
+	private List<Alquiler> listaAlquileres;
+
 	@Builder
 	public Vehiculo(@NonNull String placa, @NonNull String nombre, @NonNull String marca, @NonNull Integer modelo,
 			Image image, @NonNull Transmision transmision, @NonNull Integer kilometraje,
@@ -81,6 +95,8 @@ public class Vehiculo implements Serializable {
 		this.kilometraje = kilometraje;
 		this.precioAlquilerDia = precioAlquilerDia;
 		this.numSillas = numSillas;
+		this.fechaCreacion = LocalDate.now();
+		this.listaAlquileres = new ArrayList<>();
 	}
 
 	public Image getImage() {
@@ -93,4 +109,16 @@ public class Vehiculo implements Serializable {
 		ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", baos);
 		imageBytes = baos.toByteArray();
 	}
+
+	public boolean fueCreadoAntesDe(LocalDate fecha) {
+		Objects.requireNonNull(fecha, "La fecha final no puede ser null");
+		return fechaCreacion.isEqual(fecha) || fechaCreacion.isBefore(fecha);
+	}
+
+	public void agregarAlquiler(Alquiler alquiler) throws ObjetoYaExisteException {
+		if (listaAlquileres.contains(alquiler))
+			throw new ObjetoYaExisteException("El alquiler ya existe en el vehiculo");
+		listaAlquileres.add(alquiler);
+	}
+
 }
