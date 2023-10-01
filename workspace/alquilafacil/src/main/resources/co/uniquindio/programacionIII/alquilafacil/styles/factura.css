@@ -1,0 +1,10 @@
+.dato {
+	-fx-font-weight: bold;
+}
+.name{
+	-fx-text-fill:  #060E40;
+}
+
+.datossec{
+	-fx-text-fill: white;
+}

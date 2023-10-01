@@ -1,0 +1,45 @@
+* {
+	col-despliegue: #00ABEB;  
+}
+.imagen-perfil {
+	-fx-fill: col-despliegue;
+}
+.despliegue-perfil .label {
+	-fx-font-size: 20;
+}
+.despliegue-perfil {
+	-fx-background-color: col-despliegue;
+}
+.despliegue-perfil:hover, .despliegue-perfil:hover  .imagen-perfil {
+	col-despliegue: #008ec4;
+}
+.menu-izq {
+	-fx-background-color: rgba(0.0,171.0,235.0,0.2);
+	-fx-background-radius: 0 15 15 0;
+}
+.menu-button {
+    -fx-background-color: rgba(0.0,171.0,235.0,0);
+    -fx-background-radius: 100.0;    
+}
+.menu-button:hover .button-fill {
+	-fx-opacity: 1.0;
+	-fx-stroke: #cceefb;
+}
+.menu-button:hover .button-unfill {
+	-fx-opacity: 0.0;
+}
+.scroll-pane {
+    -fx-background: transparent;
+    -fx-background-insets: 0.0;
+    -fx-border-color: transparent;
+    -fx-border-width: 0.0;
+}
+.label {
+	-fx-text-fill: black;
+	-fx-font-size: 15.0;
+	-fx-font-weight: bold;
+}
+.btn-overlay .label {
+	-fx-text-fill: white;
+	
+}
