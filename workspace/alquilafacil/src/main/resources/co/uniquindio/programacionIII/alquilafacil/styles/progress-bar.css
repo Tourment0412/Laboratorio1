@@ -1,0 +1,11 @@
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-background-insets: 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+.label {
+	-fx-font-family: "NewsGoth Cn BT";
+	-fx-font-size: 60;
+}

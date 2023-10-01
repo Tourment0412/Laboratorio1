@@ -1,0 +1,22 @@
+.boton {
+	-fx-border-width: 2;
+	-fx-border-color: #13144b;
+	-fx-border-radius: 50;
+	-fx-background-radius: 50;
+	-fx-text-fill: #13144b;
+}
+.boton:hover {
+	-fx-background-color: #13144b;
+}
+.boton:hover .label {
+	-fx-text-fill: white;
+}
+.boton:hover .hour {
+	-fx-stroke: white;
+}
+.boton:hover .calendar {
+	-fx-stroke: white;
+}
+.boton:hover .clock {
+	-fx-fill: white;
+}

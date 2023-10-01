@@ -1,0 +1,12 @@
+
+#titulo{
+	-fx-font-size: 2em;
+}
+
+.texto{
+	-fx-font-family: 'Rubik', sans-serif;
+	-fx-font-size: 1.5em;
+	-fx-font-weight: bold;
+	-fx-text-fill: #14133b;
+	
+}

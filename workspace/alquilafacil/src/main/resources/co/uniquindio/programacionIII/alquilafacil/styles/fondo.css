@@ -1,0 +1,5 @@
+#root{
+	-fx-background-image: url('../sources/background.png');
+	-fx-background-repeat:  stretch;
+	-fx-background-size:  cover;
+}

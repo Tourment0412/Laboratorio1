@@ -1,0 +1,7 @@
+.imagen {
+    -fx-border-color: #14133b;
+}
+
+.imagen:hover{
+    -fx-border-color: #6fc1c4;
+}
