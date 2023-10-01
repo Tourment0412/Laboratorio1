@@ -7,9 +7,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.programacionIII.alquilafacil.controllers.CrearClienteController">
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.programacionIII.alquilafacil.controllers.CrearClienteController">
    <children>
-      <Label fx:id="lblTitle" text="Label" />
+      <Label fx:id="lblTitle" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Label" />
       <TextField fx:id="txtCedula">
          <padding>
             <Insets top="20.0" />
@@ -37,7 +37,7 @@
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin></TextField>
-      <Button fx:id="btnRegistrar" mnemonicParsing="false" onAction="#registrarEvent" styleClass="boton" text="Button">
+      <Button fx:id="btnRegistrar" mnemonicParsing="false" onAction="#registrarEvent" prefHeight="29.0" prefWidth="327.0" styleClass="boton" text="Button">
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin></Button>
