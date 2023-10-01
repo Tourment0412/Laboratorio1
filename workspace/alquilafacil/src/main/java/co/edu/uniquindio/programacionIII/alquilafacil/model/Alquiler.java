@@ -2,7 +2,7 @@ package co.edu.uniquindio.programacionIII.alquilafacil.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.temporal.ChronoUnit;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -43,9 +41,8 @@ public class Alquiler implements Serializable {
 	@OneToOne
 	private Vehiculo vehiculo;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Getter
-	private Date fechaRegistro;
+	private LocalDate fechaRegistro;
 
 	@NonNull
 	@Getter
@@ -55,17 +52,33 @@ public class Alquiler implements Serializable {
 	@Getter
 	private LocalDate fechaRegreso;
 
-	@NonNull
-	@Getter
-	private Double costoTotal;
-
 	@Builder
-	private Alquiler(Cliente cliente, Vehiculo vehiculo, LocalDate fechaAlquiler, LocalDate fechaRegreso,
-			Double costoTotal) {
+	private Alquiler(@NonNull Cliente cliente, @NonNull Vehiculo vehiculo, @NonNull LocalDate fechaAlquiler,
+			@NonNull LocalDate fechaRegreso) {
 		this.cliente = cliente;
 		this.vehiculo = vehiculo;
 		this.fechaAlquiler = fechaAlquiler;
 		this.fechaRegreso = fechaRegreso;
-		this.costoTotal = costoTotal;
+		this.fechaRegistro = LocalDate.now();
+	}
+
+	public boolean tieneVehiculoAlquiladoAhora() {
+		LocalDate now = LocalDate.now();
+		if ((now.isAfter(fechaAlquiler) && now.isBefore(fechaRegistro)) || now.isEqual(fechaAlquiler)
+				|| now.isEqual(fechaRegreso))
+			return true;
+		return false;
+	}
+
+	public boolean tieneVehiculoAlquiladoAhora(Vehiculo vehiculo) {
+		return tieneVehiculoAlquiladoAhora() && getVehiculo().equals(vehiculo);
+	}
+
+	public long contarDiasAlquiler() {
+		return fechaAlquiler.until(fechaRegreso, ChronoUnit.DAYS);
+	}
+
+	public Double obtenerCostoTotal() {
+		return contarDiasAlquiler() * vehiculo.getPrecioAlquilerDia();
 	}
 }

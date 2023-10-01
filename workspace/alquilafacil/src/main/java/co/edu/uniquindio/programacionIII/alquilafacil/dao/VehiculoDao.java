@@ -15,8 +15,16 @@ public class VehiculoDao {
 		em = UtilsJPA.getEntityManager();
 	}
 
-	public static VehiculoDao createVehiculoManager() {
+	private VehiculoDao(EntityManager em) {
+		this.em = em;
+	}
+
+	public static VehiculoDao getVehiculoManager() {
 		return new VehiculoDao();
+	}
+
+	public static VehiculoDao getVehiculoManager(EntityManager em) {
+		return new VehiculoDao(em);
 	}
 
 	public void agregarVehiculo(Vehiculo vehiculo) {
@@ -29,7 +37,7 @@ public class VehiculoDao {
 		return em.find(Vehiculo.class, id);
 	}
 
-	public List<Vehiculo> getVehiculo() {
+	public List<Vehiculo> getVehiculos() {
 		return em.createQuery("SELECT v FROM Vehiculo v", Vehiculo.class).getResultList();
 	}
 
