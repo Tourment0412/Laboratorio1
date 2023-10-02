@@ -53,7 +53,6 @@ public class CommunicationService {
 			LOGGER.info("El total ganado por alquileres fue obtenido satisfactoriamente");
 			return total;
 		} catch (PersiscenciaDesconocidaException e) {
-			LOGGER.severe(e.getMessage());
 			throw e;
 		}
 	}
