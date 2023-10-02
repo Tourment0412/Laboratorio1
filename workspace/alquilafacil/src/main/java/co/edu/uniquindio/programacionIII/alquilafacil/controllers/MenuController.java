@@ -3,6 +3,7 @@ package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.programacionIII.alquilafacil.services.MenuService;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.ViewServices;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.Vista;
 import javafx.event.ActionEvent;
@@ -18,9 +19,11 @@ public class MenuController {
 	private static MenuController instance;
 
 	public static MenuController getInstance() {
-		if (instance == null)
-			instance = new MenuController();
 		return instance;
+	}
+
+	public MenuController() {
+		instance = this;
 	}
 
 	@FXML
@@ -34,6 +37,9 @@ public class MenuController {
 
 	@FXML
 	private Label addVehicleLbl;
+
+	@FXML
+	private SVGPath menuSVG;
 
 	@FXML
 	private SVGPath config;
@@ -51,19 +57,29 @@ public class MenuController {
 	private BorderPane secondLayer;
 
 	@FXML
+	private BorderPane panelCentral;
+
+	@FXML
 	private Label showStatsLbl;
 
 	@FXML
-	BorderPane centralPane;
+	public void showMenuEvent(ActionEvent event) {
+		showMenuAction();
+	}
 
 	@FXML
 	void addUserEvent(MouseEvent event) {
-		ViewServices.getInstance().cambiarVista(Vista.ADD_CLIENT);
+		addUserAction();
+	}
+
+	@FXML
+	void showMenu2Event(MouseEvent event) {
+		showMenuAction();
 	}
 
 	@FXML
 	void addVehicleEvent(MouseEvent event) {
-		ViewServices.getInstance().cambiarVista(Vista.ADD_VEHICLE);
+		addVehicleAction();
 	}
 
 	@FXML
@@ -87,10 +103,26 @@ public class MenuController {
 
 	@FXML
 	void initialize() {
+		MenuService.getInstance().crearAnimacionExtension(menuIzq.prefWidthProperty(), secondLayer.opacityProperty(),
+				menuSVG.rotateProperty());
+	}
+
+	private void showMenuAction() {
+		MenuService.getInstance().ejecutarAnimacionMenu((bool) -> {
+			secondLayer.setDisable(bool);
+		});
+	}
+
+	private void addVehicleAction() {
+		ViewServices.getInstance().cambiarVista(Vista.ADD_VEHICLE);
+	}
+
+	private void addUserAction() {
+		ViewServices.getInstance().cambiarVista(Vista.ADD_CLIENT);
 	}
 
 	public void cambiarCentro(Node node) {
-		centralPane.setCenter(node);
+		panelCentral.setCenter(node);
 	}
 
 }
