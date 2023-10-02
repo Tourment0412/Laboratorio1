@@ -1,9 +1,9 @@
 * {
-	-fx-primary-color: #94e0a8;
-	-fx-secondary-color: #76d78f;
-	-fx-third-color: #66d383;
+	-fx-primary-color: #000000;
+	-fx-secondary-color: #303030;
+	-fx-third-color: #404040;
     
-	-fx-focus-color: #94e0a8;
+	-fx-focus-color: #303030;
 }
 
 .spinner .increment-arrow-button,

@@ -2,19 +2,19 @@
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
 	-fx-font-size: 1em;
-	-fx-border-color: #94e0a8;
+	-fx-border-color: #000000;
 	-fx-border-width: 0.2em;
 	-fx-border-radius: 0.5em;
 	-fx-background-radius: 0.5em;
-	-fx-background-color: #94e0a8;
+	-fx-background-color: #000000;
 }
 
 .boton:hover{
-	-fx-background-color:#76d78f;
+	-fx-background-color:#303030;
 	
 }
 
 .boton:pressed {
     -fx-text-fill: white;
-	-fx-background-color: #66d383;
+	-fx-background-color: #404040;
 }

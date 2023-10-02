@@ -16,7 +16,7 @@
    <children>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
          <top>
-            <BorderPane style="-fx-background-color: #94e0a8;" BorderPane.alignment="CENTER">
+            <BorderPane style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
                <padding>
                   <Insets left="20.0" right="20.0" />
                </padding>
