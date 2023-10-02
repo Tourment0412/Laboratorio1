@@ -109,7 +109,7 @@ public class MenuController implements Initializable {
 
 	@FXML
 	void rentVehicleEvent(MouseEvent event) {
-
+		rentVehicleAction();
 	}
 
 	@FXML
@@ -129,6 +129,10 @@ public class MenuController implements Initializable {
 
 	private void addUserAction() {
 		ViewServices.getInstance().cambiarVista(Vista.ADD_CLIENT);
+	}
+	
+	private void rentVehicleAction() {
+		ViewServices.getInstance().cambiarVista(Vista.RENT_INI);
 	}
 
 	public void cambiarCentro(Node node) {
