@@ -69,7 +69,7 @@ public class TestModel extends Application {
 		VehiculoDao clienteManager = VehiculoDao.getManager();
 		Vehiculo vehiculo = Vehiculo.builder()
 				.image(new Image(getClass()
-						.getResource("/co/edu/uniquindio/programacionIII/alquilafacil/resources/defaultimg.png")
+						.getResource("/co/edu/uniquindio/programacionIII/alquilafacil/sources/defaultimg.png")
 						.toExternalForm()))
 				.kilometraje(100).marca("Chevrolet").nombre("Onix").numSillas(5).placa("JFX020").modelo(2023)
 				.precioAlquilerDia(500000d).transmision(Transmision.MANUAL).build();

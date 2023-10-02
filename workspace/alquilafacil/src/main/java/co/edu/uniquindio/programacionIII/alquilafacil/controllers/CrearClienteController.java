@@ -1,4 +1,4 @@
-package co.uniquindio.programacionIII.alquilafacil.controllers;
+package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

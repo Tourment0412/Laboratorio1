@@ -4,9 +4,10 @@ open module co.uniquindio.programacionIII.alquilafacil {
 	requires transitive javafx.graphics;
 	requires javafx.controls;
 
-	requires java.persistence;
+	requires transitive java.persistence;
 	requires lombok;
 	requires java.sql;
 
 	exports co.edu.uniquindio.programacionIII.alquilafacil.aplication;
+	exports co.edu.uniquindio.programacionIII.alquilafacil.services;
 }
