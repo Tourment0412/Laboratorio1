@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="lblTitle" styleClass="titulo" text="Label" />
@@ -32,7 +31,7 @@
             <TextField fx:id="txtCedula" GridPane.columnIndex="1" />
          </children>
       </GridPane>
-      <TableView stylesheets="@../styles/tableStyle.css">
+      <TableView fx:id="tblClientes" stylesheets="@../styles/tableStyle.css">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="75.0" text="C1" />
           <TableColumn fx:id="colCedula" prefWidth="75.0" text="C2" />
