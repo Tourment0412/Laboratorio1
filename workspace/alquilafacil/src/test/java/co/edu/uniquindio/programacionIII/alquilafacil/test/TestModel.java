@@ -7,12 +7,14 @@ import org.junit.Test;
 import co.edu.uniquindio.programacionIII.alquilafacil.controllers.ModelFactoryController;
 import co.edu.uniquindio.programacionIII.alquilafacil.dao.ClienteDao;
 import co.edu.uniquindio.programacionIII.alquilafacil.dao.VehiculoDao;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
+import co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -34,6 +36,12 @@ public class TestModel extends Application {
 	}
 
 	@Test
+	public void obtenerCliente()
+			throws NullPointerException, ObjetoNoEncontradoException, PersiscenciaDesconocidaException {
+		CommunicationService.getInstance().obtenerCliente("golahoasda");
+	}
+
+	@Test
 	public void actualizarCliente() throws Exception {
 		ClienteDao clienteManager = ClienteDao.getManager();
 		Cliente cliente = clienteManager.obtenerCliente("1059386396");
@@ -43,9 +51,8 @@ public class TestModel extends Application {
 	}
 
 	@Test
-	public void crearAlquiler()
-			throws ObjetoYaExisteException, PersiscenciaDesconocidaException, VehiculoNoDisponibleException {
-
+	public void crearAlquiler() throws ObjetoYaExisteException, PersiscenciaDesconocidaException,
+			VehiculoNoDisponibleException, NullPointerException, ObjetoNoEncontradoException {
 		ModelFactoryController.getInstance().agregarAlquiler("1059386396", "JFX020", LocalDate.now().plusDays(20),
 				LocalDate.now().plusMonths(2));
 
@@ -68,12 +75,11 @@ public class TestModel extends Application {
 
 		VehiculoDao clienteManager = VehiculoDao.getManager();
 		Vehiculo vehiculo = Vehiculo.builder()
-				.image(new Image(getClass()
-						.getResource("/co/edu/uniquindio/programacionIII/alquilafacil/sources/defaultimg.png")
-						.toExternalForm()))
+				.image(new Image(
+						getClass().getResource("/co/edu/uniquindio/programacionIII/alquilafacil/sources/defaultimg.png")
+								.toExternalForm()))
 				.kilometraje(100).marca("Chevrolet").nombre("Onix").numSillas(5).placa("JFX020").modelo(2023)
 				.precioAlquilerDia(500000d).transmision(Transmision.MANUAL).build();
-		System.out.println(vehiculo);
 		clienteManager.actualizarVehiculo(vehiculo);
 		clienteManager.close();
 	}

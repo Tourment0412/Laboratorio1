@@ -19,9 +19,9 @@
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://sql.freedb.tech:3306/freedb_alquilafacil" />
 			<property name="javax.persistence.jdbc.user"
-				value="freedb_pepepe" />
+				value="freedb_pepegrillo" />
 			<property name="javax.persistence.jdbc.password"
-				value="7rF#J4a3D3yZDGK" />
+				value="Q!%KvMhHF7a55n7" />
 
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />

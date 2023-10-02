@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Builder;
@@ -34,11 +34,11 @@ public class Alquiler implements Serializable {
 	private Long id;
 
 	@Getter
-	@OneToOne
+	@ManyToOne
 	private Cliente cliente;
 
 	@Getter
-	@OneToOne
+	@ManyToOne
 	private Vehiculo vehiculo;
 
 	@Getter
@@ -80,5 +80,9 @@ public class Alquiler implements Serializable {
 
 	public Double obtenerCostoTotal() {
 		return contarDiasAlquiler() * vehiculo.getPrecioAlquilerDia();
+	}
+
+	public boolean estaEnRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
+		return !fechaFinal.isBefore(this.fechaAlquiler) && !this.fechaRegreso.isBefore(fechaInicial);
 	}
 }

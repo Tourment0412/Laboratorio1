@@ -78,8 +78,8 @@ public class Vehiculo implements Serializable {
 	@Getter
 	private LocalDate fechaCreacion;
 
-	@OneToMany
 	@Getter
+	@OneToMany
 	private List<Alquiler> listaAlquileres;
 
 	@Builder
