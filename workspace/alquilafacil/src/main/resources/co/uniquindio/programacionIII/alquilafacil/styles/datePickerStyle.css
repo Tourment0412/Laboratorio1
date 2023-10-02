@@ -1,8 +1,8 @@
-.date-picker .arrow-button {
+.date-picker .arrow-button, .date-picker  .button {
 	-fx-background-color: -fx-primary-color;
-	-fx-background-radius: 0;
+	-fx-background-radius: 0.0;
 }
-.date-picker .arrow-button:hover {
+.date-picker .arrow-button:hover, .date-picker  .button:hover {
 	-fx-background-color: #d83a00;
 }
 .date-picker .arrow-button .arrow {
