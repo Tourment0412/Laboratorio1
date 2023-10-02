@@ -5,20 +5,20 @@
 .label {
 	-fx-text-fill: black;
 	-fx-background-color: white;
-	-fx-border-color: #ff4500;
+	-fx-border-color: #94e0a8;
 	-fx-border-width: 0 0 0.2em 0;
 	-fx-font-weight: bold;
 }
 
 .table-view {
 	-fx-background-color: transparent;
-	-fx-border-color: #ff4500;
+	-fx-border-color: #94e0a8;
 	-fx-border-width: 0.2em 0;
 }
 
 .table-row-cell:selected .cell {
 	-fx-background-color: white;
-	-fx-text-fill: #ff4500;
+	-fx-text-fill:#94e0a8;
 }
 
 .columna-tabla {
@@ -32,7 +32,7 @@
 }
 
 .table-view .cell {
-	-fx-text-fill: #ff4500;
+	-fx-text-fill: #94e0a8;
 }
 
 .table-view:focused {
@@ -44,15 +44,15 @@
 }
 
 #btn-tabla {
-	-fx-background-color:  #ff4500;
+	-fx-background-color: #94e0a8;
 }
 
 #btn-tabla:hover {
-	-fx-background-color: #d83a00;
+	-fx-background-color: #76d78f;
 }
 
 #btn-tabla:pressed {
-	-fx-background-color: #b13000;
+	-fx-background-color: #66d383;
 }
 
 .cell {
@@ -64,7 +64,7 @@
 }
 
 .table-row-cell:selected .cell {
-	-fx-background-color: #b13000;
+	-fx-background-color: #66d383;
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
 }

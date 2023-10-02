@@ -9,7 +9,7 @@
 
 <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacionIII.alquilafacil.controllers.CrearClienteController">
    <children>
-      <Label fx:id="lblTitle" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Label" />
+      <Label fx:id="lblTitle" styleClass="titulo" text="Label" />
       <TextField fx:id="txtCedula">
          <padding>
             <Insets top="20.0" />
@@ -45,5 +45,6 @@
    <stylesheets>
       <URL value="@../styles/txtFieldStyle.css" />
       <URL value="@../styles/buttonStyle.css" />
+      <URL value="@../styles/textTitleStyle.css" />
    </stylesheets>
 </VBox>
