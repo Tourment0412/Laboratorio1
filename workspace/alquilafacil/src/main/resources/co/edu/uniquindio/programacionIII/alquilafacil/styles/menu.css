@@ -1,11 +1,11 @@
 .superior-button {
-	-fx-background-color: #ff703b;
+	-fx-background-color: #94e0a8;
 }
 .superior-button:hover {
-	-fx-background-color: #ff6227;
+	-fx-background-color: #76d78f;
 }
 .superior-button:pressed {
-	-fx-background-color: #ff4500;
+	-fx-background-color: #66d383;
 }
 .izq-menu {
 	-fx-background-color: white;
