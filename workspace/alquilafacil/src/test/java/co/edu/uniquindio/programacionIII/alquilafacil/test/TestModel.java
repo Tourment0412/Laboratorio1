@@ -7,6 +7,7 @@ import org.junit.Test;
 import co.edu.uniquindio.programacionIII.alquilafacil.controllers.ModelFactoryController;
 import co.edu.uniquindio.programacionIII.alquilafacil.dao.ClienteDao;
 import co.edu.uniquindio.programacionIII.alquilafacil.dao.VehiculoDao;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
@@ -21,17 +22,11 @@ import javafx.stage.Stage;
 
 public class TestModel extends Application {
 	@Test
-	public void crearCliente() {
-		Cliente c = Cliente.builder().cedula("1059386396").ciudad("Armenia").direccion("Luigi´s mansion")
-				.email("santaigo@gmail.com").nombre("Santaigo").numeroTel("396286039743").build();
+	public void crearCliente()
+			throws ObjetoYaExisteException, PersiscenciaDesconocidaException, CampoInvalidoException {
 
-		try {
-			ModelFactoryController.getInstance().agregarCliente(c);
-		} catch (ObjetoYaExisteException | PersiscenciaDesconocidaException e) {
-			System.out.println("---------------------------");
-			System.out.println(e.toString());
-			System.out.println("---------------------------");
-		}
+		ModelFactoryController.getInstance().agregarCliente("1059386396", "Santiago", "396286039743",
+				"santaigo@gmail.com", "Armenia", "Calle 13");
 
 	}
 
@@ -52,10 +47,9 @@ public class TestModel extends Application {
 
 	@Test
 	public void crearAlquiler() throws ObjetoYaExisteException, PersiscenciaDesconocidaException,
-			VehiculoNoDisponibleException, NullPointerException, ObjetoNoEncontradoException {
+			VehiculoNoDisponibleException, NullPointerException, ObjetoNoEncontradoException, CampoInvalidoException {
 		ModelFactoryController.getInstance().agregarAlquiler("1059386396", "JFX020", LocalDate.now().plusDays(20),
 				LocalDate.now().plusMonths(2));
-
 	}
 
 	@Test
@@ -72,7 +66,6 @@ public class TestModel extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
 		VehiculoDao clienteManager = VehiculoDao.getManager();
 		Vehiculo vehiculo = Vehiculo.builder()
 				.image(new Image(

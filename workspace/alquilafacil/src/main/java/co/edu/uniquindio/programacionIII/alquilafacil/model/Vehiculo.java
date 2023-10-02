@@ -18,6 +18,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ImagenNoObtenidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
@@ -85,7 +86,7 @@ public class Vehiculo implements Serializable {
 	@Builder
 	public Vehiculo(@NonNull String placa, @NonNull String nombre, @NonNull String marca, @NonNull Integer modelo,
 			Image image, @NonNull Transmision transmision, @NonNull Integer kilometraje,
-			@NonNull Double precioAlquilerDia, @NonNull Integer numSillas) throws IOException {
+			@NonNull Double precioAlquilerDia, @NonNull Integer numSillas) throws ImagenNoObtenidaException {
 		this.placa = placa;
 		this.nombre = nombre;
 		this.marca = marca;
@@ -104,10 +105,14 @@ public class Vehiculo implements Serializable {
 		return new Image(bais);
 	}
 
-	public void setImage(Image image) throws IOException {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", baos);
-		imageBytes = baos.toByteArray();
+	public void setImage(Image image) throws ImagenNoObtenidaException {
+		try {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", baos);
+			imageBytes = baos.toByteArray();
+		} catch (IOException e) {
+			throw new ImagenNoObtenidaException("La imagen no pudo ser obtenida", e);
+		}
 	}
 
 	public boolean fueCreadoAntesDe(LocalDate fecha) {

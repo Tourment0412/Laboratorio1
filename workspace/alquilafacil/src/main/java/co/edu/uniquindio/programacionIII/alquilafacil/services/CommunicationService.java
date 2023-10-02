@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -92,24 +91,21 @@ public class CommunicationService {
 	}
 
 	public List<Vehiculo> listarVehiculosRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal)
-			throws PersiscenciaDesconocidaException, NullPointerException {
+			throws PersiscenciaDesconocidaException {
 		try {
 
 			LOGGER.info("Listando vehiculos en rango de fechas");
 			List<Vehiculo> vehiculosRangoFechas = listarVehiculosRangoFechasThrow(fechaInicial, fechaFinal);
 			LOGGER.info("Se ha podido obtener la lista de vehículos");
 			return vehiculosRangoFechas;
-		} catch (NullPointerException | PersiscenciaDesconocidaException e) {
+		} catch (PersiscenciaDesconocidaException e) {
 			throw e;
 		}
 
 	}
 
 	private List<Vehiculo> listarVehiculosRangoFechasThrow(LocalDate fechaInicial, LocalDate fechaFinal)
-			throws NullPointerException, PersiscenciaDesconocidaException {
-
-		Objects.requireNonNull(fechaInicial, "La fecha inicial no puede ser null");
-		Objects.requireNonNull(fechaFinal, "La fecha final no puede ser null");
+			throws PersiscenciaDesconocidaException {
 
 		LOGGER.info("Intentando listar vehículos entre: " + fechaFinal + " y " + fechaFinal);
 		EntityManager em = UtilsJPA.getEntityManager();
@@ -260,7 +256,7 @@ public class CommunicationService {
 
 	public void agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
 			LocalDate fechaRegreso) throws VehiculoNoDisponibleException, ObjetoYaExisteException,
-			PersiscenciaDesconocidaException, NullPointerException, ObjetoNoEncontradoException {
+			PersiscenciaDesconocidaException, ObjetoNoEncontradoException {
 		try {
 			LOGGER.info("Intentando agregar alquiler");
 			EntityManager em = UtilsJPA.getEntityManager();
@@ -340,14 +336,12 @@ public class CommunicationService {
 		return alquiler;
 	}
 
-	public Vehiculo obtenerVehiculo(String placa)
-			throws NullPointerException, ObjetoNoEncontradoException, PersiscenciaDesconocidaException {
+	public Vehiculo obtenerVehiculo(String placa) throws ObjetoNoEncontradoException, PersiscenciaDesconocidaException {
 		return obtenerVehiculo(placa, null);
 	}
 
 	private Vehiculo obtenerVehiculo(String placa, EntityManager em)
-			throws ObjetoNoEncontradoException, NullPointerException, PersiscenciaDesconocidaException {
-		Objects.requireNonNull(placa, "La placa no puede ser null");
+			throws ObjetoNoEncontradoException, PersiscenciaDesconocidaException {
 		try {
 			Vehiculo vehiculo = obtenerVehiculoThrow(placa, em);
 			if (vehiculo == null) {
@@ -372,14 +366,12 @@ public class CommunicationService {
 		return vehiculo;
 	}
 
-	public Cliente obtenerCliente(String cedula)
-			throws ObjetoNoEncontradoException, NullPointerException, PersiscenciaDesconocidaException {
+	public Cliente obtenerCliente(String cedula) throws ObjetoNoEncontradoException, PersiscenciaDesconocidaException {
 		return obtenerCliente(cedula, null);
 	}
 
 	private Cliente obtenerCliente(String cedula, EntityManager em)
-			throws ObjetoNoEncontradoException, NullPointerException, PersiscenciaDesconocidaException {
-		Objects.requireNonNull(cedula, "La cedula no puede ser null");
+			throws ObjetoNoEncontradoException, PersiscenciaDesconocidaException {
 		try {
 			LOGGER.info("Intentando buscar el cliente");
 			Cliente cliente = obtenerClienteThrow(cedula, em);
