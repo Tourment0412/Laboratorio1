@@ -29,7 +29,7 @@ public class MenuService {
 		timelineMenu.getKeyFrames().add(new KeyFrame(Duration.millis(0), new KeyValue(widthProperty, 0d),
 				new KeyValue(doubleProperty, 0d), new KeyValue(rotacionSVG, 0d)));
 		timelineMenu.getKeyFrames().add(new KeyFrame(Duration.millis(100), new KeyValue(doubleProperty, 1d),
-				new KeyValue(widthProperty, 212d), new KeyValue(rotacionSVG, 180d)));
+				new KeyValue(widthProperty, 212d), new KeyValue(rotacionSVG, 90d)));
 	}
 
 	public void ejecutarAnimacionMenu(Consumer<Boolean> consumer) {
