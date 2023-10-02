@@ -23,7 +23,7 @@ public class ViewServices {
 		try {
 			MenuController.getInstance().cambiarCentro(loadFXML(vista.getFxml()));
 		} catch (IOException e) {
-			// TODO logger
+			e.printStackTrace();
 		}
 	}
 
