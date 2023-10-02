@@ -1,0 +1,196 @@
+oct 02, 2023 12:53:04 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 12:53:21 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: El cliente fue agregado satisfactoriamente
+oct 02, 2023 12:54:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 12:54:13 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService lanzarDefaultCreacionObjetoException
+WARNING: El cliente con identificacion "1059386396" ya se encuentra registrado
+oct 02, 2023 12:56:13 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 12:56:25 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService lanzarDefaultCreacionObjetoException
+WARNING: El cliente con identificacion "1059386396" ya se encuentra registrado
+oct 02, 2023 12:57:04 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 12:57:15 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService lanzarDefaultCreacionObjetoException
+WARNING: El cliente con identificacion "1059386396" ya se encuentra registrado
+oct 02, 2023 12:57:48 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 12:57:59 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService lanzarDefaultCreacionObjetoException
+WARNING: El cliente con identificacion "1059386396" ya se encuentra registrado
+oct 02, 2023 10:41:27 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 02, 2023 10:41:37 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 02, 2023 10:41:37 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 02, 2023 10:41:38 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 02, 2023 10:41:38 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 02, 2023 10:41:38 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 02, 2023 10:41:38 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService estaDisponible
+INFO: Intentando determinar si un vehículo está disponible
+oct 02, 2023 10:41:38 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Intentando listar alquileres
+oct 02, 2023 10:41:38 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerException
+SEVERE: Ha pasado un error inesperado con la persistencia - Caused by: [java.lang.NullPointerException: Cannot invoke "javax.persistence.EntityManager.createQuery(String, java.lang.Class)" because "this.em" is null]
+oct 02, 2023 10:41:38 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+SEVERE: Ha pasado un error inesperado con la persistencia - Caused by: [java.lang.NullPointerException: Cannot invoke "javax.persistence.EntityManager.createQuery(String, java.lang.Class)" because "this.em" is null]
+oct 02, 2023 10:45:51 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 02, 2023 10:45:59 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 02, 2023 10:46:00 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService estaDisponible
+INFO: Intentando determinar si un vehículo está disponible
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Intentando listar alquileres
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Lis alquileres han sido listados con exito
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService estaDisponible
+INFO: Se pudo determinar si esta disponible o no
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Agregando alquiler con id: 'null'...
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerException
+SEVERE: Ha pasado un error inesperado con la persistencia - Caused by: [java.lang.IllegalStateException: Cannot begin Transaction on closed Session/EntityManager]
+oct 02, 2023 10:46:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+SEVERE: Ha pasado un error inesperado con la persistencia - Caused by: [java.lang.IllegalStateException: Cannot begin Transaction on closed Session/EntityManager]
+oct 02, 2023 10:47:23 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 02, 2023 10:47:32 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 02, 2023 10:47:33 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 02, 2023 10:47:33 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 02, 2023 10:47:33 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 02, 2023 10:47:33 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 02, 2023 10:47:33 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService estaDisponible
+INFO: Intentando determinar si un vehículo está disponible
+oct 02, 2023 10:47:33 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Intentando listar alquileres
+oct 02, 2023 10:47:34 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Lis alquileres han sido listados con exito
+oct 02, 2023 10:47:34 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService estaDisponible
+INFO: Se pudo determinar si esta disponible o no
+oct 02, 2023 10:47:34 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Agregando alquiler con id: 'null'...
+oct 02, 2023 10:47:39 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: El alquiler Fue agregado satisfactoriamente
+oct 02, 2023 10:54:23 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 10:54:34 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService lanzarDefaultCreacionObjetoException
+WARNING: El cliente con identificacion "1059386396" ya se encuentra registrado
+oct 02, 2023 10:56:17 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 02, 2023 10:56:26 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 02, 2023 10:56:27 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 02, 2023 10:56:27 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 02, 2023 10:56:27 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 02, 2023 10:56:27 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 02, 2023 10:56:27 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService estaDisponible
+INFO: Intentando determinar si un vehículo está disponible
+oct 02, 2023 10:56:27 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Intentando listar alquileres
+oct 02, 2023 10:56:28 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Lis alquileres han sido listados con exito
+oct 02, 2023 10:56:28 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService estaDisponible
+INFO: Se pudo determinar si esta disponible o no
+oct 02, 2023 10:56:28 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Agregando alquiler con id: 'null'...
+oct 02, 2023 10:56:32 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: El alquiler Fue agregado satisfactoriamente
+oct 02, 2023 11:28:50 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 02, 2023 11:28:59 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 02, 2023 11:29:00 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 02, 2023 11:29:00 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 02, 2023 11:29:00 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 02, 2023 11:29:00 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 02, 2023 11:29:00 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Intentando listar alquileres
+oct 02, 2023 11:29:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 02, 2023 11:29:01 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+WARNING: El vehiculo con placa: 'JFX020' no está disponible para ese momento
+oct 02, 2023 11:45:21 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 11:45:33 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: El cliente fue agregado satisfactoriamente
+oct 02, 2023 11:47:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 02, 2023 11:47:17 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 02, 2023 11:47:18 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 02, 2023 11:47:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 02, 2023 11:47:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 02, 2023 11:47:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 02, 2023 11:47:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Intentando listar alquileres
+oct 02, 2023 11:47:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 02, 2023 11:47:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Agregando Alquiler a cliente...
+oct 02, 2023 11:47:20 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Agregando Alquiler a vehiculo...
+oct 02, 2023 11:47:20 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Agregando alquiler...
+oct 02, 2023 11:47:24 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: El alquiler Fue agregado satisfactoriamente
+oct 02, 2023 11:50:20 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 11:51:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 11:52:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1059386396'...
+oct 02, 2023 11:52:22 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarCliente
+INFO: El cliente fue agregado satisfactoriamente
+oct 02, 2023 11:52:57 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 02, 2023 11:53:06 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 02, 2023 11:53:07 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 02, 2023 11:53:07 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 02, 2023 11:53:07 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 02, 2023 11:53:07 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 02, 2023 11:53:07 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Intentando listar alquileres
+oct 02, 2023 11:53:08 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 02, 2023 11:53:08 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Agregando Alquiler a cliente...
+oct 02, 2023 11:53:08 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Agregando Alquiler a vehiculo...
+oct 02, 2023 11:53:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: Agregando alquiler...
+oct 02, 2023 11:53:13 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
+INFO: El alquiler Fue agregado satisfactoriamente
