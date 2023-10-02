@@ -3,22 +3,22 @@
 }
 
 .label {
-	-fx-text-fill: #14133b;
+	-fx-text-fill: black;
 	-fx-background-color: white;
-	-fx-border-color: #14133b;
+	-fx-border-color: #ff4500;
 	-fx-border-width: 0 0 0.2em 0;
 	-fx-font-weight: bold;
 }
 
 .table-view {
 	-fx-background-color: transparent;
-	-fx-border-color: #14133b;
+	-fx-border-color: #ff4500;
 	-fx-border-width: 0.2em 0;
 }
 
 .table-row-cell:selected .cell {
 	-fx-background-color: white;
-	-fx-text-fill: #14133b;
+	-fx-text-fill: #ff4500;
 }
 
 .columna-tabla {
@@ -32,7 +32,7 @@
 }
 
 .table-view .cell {
-	-fx-text-fill: #14133b;
+	-fx-text-fill: #ff4500;
 }
 
 .table-view:focused {
@@ -44,15 +44,15 @@
 }
 
 #btn-tabla {
-	-fx-background-color: #5d14ff;
+	-fx-background-color:  #ff4500;
 }
 
 #btn-tabla:hover {
-	-fx-background-color: #783bff;
+	-fx-background-color: #d83a00;
 }
 
 #btn-tabla:pressed {
-	-fx-background-color: #4300d8;
+	-fx-background-color: #b13000;
 }
 
 .cell {
@@ -64,7 +64,7 @@
 }
 
 .table-row-cell:selected .cell {
-	-fx-background-color: #4F8AFF;
+	-fx-background-color: #b13000;
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
 }
