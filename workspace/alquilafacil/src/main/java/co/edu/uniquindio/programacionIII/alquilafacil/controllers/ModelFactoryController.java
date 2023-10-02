@@ -3,6 +3,7 @@ package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 import java.time.LocalDate;
 import java.util.List;
 
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
@@ -21,24 +22,24 @@ public class ModelFactoryController {
 		return instance;
 	}
 
-	public Double getTotalGanadoAlquileres() {
+	public Double getTotalGanadoAlquileres() throws PersiscenciaDesconocidaException {
 		return CommunicationService.getInstance().getTotalGanadoAlquileres();
 	}
 
-	public String getMarcaMasAlquilada() {
+	public String getMarcaMasAlquilada() throws PersiscenciaDesconocidaException {
 		return CommunicationService.getInstance().getMarcaMasAlquilada();
 	}
 
 	public List<Vehiculo> listarVehiculosRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal)
-			throws NullPointerException {
+			throws NullPointerException, PersiscenciaDesconocidaException {
 		return CommunicationService.getInstance().listarVehiculosRangoFechas(fechaInicial, fechaFinal);
 	}
 
-	public List<Vehiculo> listarVehiculosAlquilados() {
+	public List<Vehiculo> listarVehiculosAlquilados() throws PersiscenciaDesconocidaException {
 		return CommunicationService.getInstance().listarVehiculosAlquilados();
 	}
 
-	public boolean estaDisponible(Vehiculo vehiculo) {
+	public boolean estaDisponible(Vehiculo vehiculo) throws PersiscenciaDesconocidaException {
 		return CommunicationService.getInstance().estaDisponible(vehiculo);
 	}
 
@@ -50,26 +51,21 @@ public class ModelFactoryController {
 		CommunicationService.getInstance().agregarVehiculo(vehiculo);
 	}
 
-	public void agregarAlquiler(Alquiler alquiler)
-			throws ObjetoYaExisteException, PersiscenciaDesconocidaException, VehiculoNoDisponibleException {
-		CommunicationService.getInstance().agregarAlquiler(alquiler);
-	}
-
-	public List<Alquiler> listarAlquileres() {
+	public List<Alquiler> listarAlquileres() throws PersiscenciaDesconocidaException {
 		return CommunicationService.getInstance().listarAlquileres();
 	}
 
-	public List<Vehiculo> listarVehiculos() {
+	public List<Vehiculo> listarVehiculos() throws PersiscenciaDesconocidaException {
 		return CommunicationService.getInstance().listarVehiculos();
 	}
 
-	public List<Cliente> listarClientes() {
+	public List<Cliente> listarClientes() throws PersiscenciaDesconocidaException {
 		return CommunicationService.getInstance().listarClientes();
 	}
 
 	public void agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
-			LocalDate fechaRegreso)
-			throws VehiculoNoDisponibleException, ObjetoYaExisteException, PersiscenciaDesconocidaException {
+			LocalDate fechaRegreso) throws VehiculoNoDisponibleException, ObjetoYaExisteException,
+			PersiscenciaDesconocidaException, NullPointerException, ObjetoNoEncontradoException {
 		CommunicationService.getInstance().agregarAlquiler(cedulaCliente, placaVehiculo, fechaAlquiler, fechaRegreso);
 	}
 

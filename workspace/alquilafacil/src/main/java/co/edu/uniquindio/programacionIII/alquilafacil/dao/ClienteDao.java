@@ -23,7 +23,7 @@ public class ClienteDao {
 		return new ClienteDao();
 	}
 
-	public static ClienteDao getClienteManager(EntityManager em) {
+	public static ClienteDao getManager(EntityManager em) {
 		return new ClienteDao(em);
 	}
 

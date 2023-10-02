@@ -23,7 +23,7 @@ public class VehiculoDao {
 		return new VehiculoDao();
 	}
 
-	public static VehiculoDao getVehiculoManager(EntityManager em) {
+	public static VehiculoDao getManager(EntityManager em) {
 		return new VehiculoDao(em);
 	}
 

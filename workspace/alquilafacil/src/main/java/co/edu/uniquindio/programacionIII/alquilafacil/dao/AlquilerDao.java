@@ -23,7 +23,7 @@ public class AlquilerDao {
 		return new AlquilerDao();
 	}
 
-	public static AlquilerDao getAlquilerManager(EntityManager em) {
+	public static AlquilerDao getManager(EntityManager em) {
 		return new AlquilerDao(em);
 	}
 
