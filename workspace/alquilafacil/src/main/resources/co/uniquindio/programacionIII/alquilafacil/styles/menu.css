@@ -1,45 +1,36 @@
-* {
-	col-despliegue: #00ABEB;  
+.superior-button {
+	-fx-background-color: #ff703b;
 }
-.imagen-perfil {
-	-fx-fill: col-despliegue;
+.superior-button:hover {
+	-fx-background-color: #ff6227;
 }
-.despliegue-perfil .label {
-	-fx-font-size: 20;
+.superior-button:pressed {
+	-fx-background-color: #ff4500;
 }
-.despliegue-perfil {
-	-fx-background-color: col-despliegue;
+.izq-menu {
+	-fx-background-color: white;
 }
-.despliegue-perfil:hover, .despliegue-perfil:hover  .imagen-perfil {
-	col-despliegue: #008ec4;
+.izq-menu .label {
+	-fx-font-weight: bold;
+	-fx-font-size: 15.0;
+	-fx-text-overrun: CLIP;
+	-fx-min-width: 0.0;	
+	-fx-min-height: 50.0;
+	-fx-max-width: 1000000.0;
 }
-.menu-izq {
-	-fx-background-color: rgba(0.0,171.0,235.0,0.2);
-	-fx-background-radius: 0 15 15 0;
-}
-.menu-button {
-    -fx-background-color: rgba(0.0,171.0,235.0,0);
-    -fx-background-radius: 100.0;    
-}
-.menu-button:hover .button-fill {
-	-fx-opacity: 1.0;
-	-fx-stroke: #cceefb;
-}
-.menu-button:hover .button-unfill {
-	-fx-opacity: 0.0;
-}
-.scroll-pane {
-    -fx-background: transparent;
+.izq-menu .scroll-pane {
+    -fx-background: white;
     -fx-background-insets: 0.0;
     -fx-border-color: transparent;
+   	-fx-min-width: 0.0;	
     -fx-border-width: 0.0;
 }
-.label {
-	-fx-text-fill: black;
-	-fx-font-size: 15.0;
-	-fx-font-weight: bold;
+.izq-menu .boton {
+	-fx-background-color: #00000000;
 }
-.btn-overlay .label {
-	-fx-text-fill: white;
-	
+.izq-menu .boton:hover {
+	-fx-background-color: #00000020;
+}
+.izq-menu .boton:pressed {
+	-fx-background-color: #00000040;
 }

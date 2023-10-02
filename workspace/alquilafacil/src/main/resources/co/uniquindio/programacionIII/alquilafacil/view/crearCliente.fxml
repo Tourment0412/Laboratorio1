@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.programacionIII.alquilafacil.controllers.CrearClienteController">
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacionIII.alquilafacil.controllers.CrearClienteController">
    <children>
       <Label fx:id="lblTitle" styleClass="texto" stylesheets="@../styles/textStyle.css" text="Label" />
       <TextField fx:id="txtCedula">
