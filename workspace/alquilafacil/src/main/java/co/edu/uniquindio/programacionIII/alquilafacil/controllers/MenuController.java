@@ -4,10 +4,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.services.MenuService;
+import co.edu.uniquindio.programacionIII.alquilafacil.services.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.ViewServices;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.Vista;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -15,7 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 
-public class MenuController {
+public class MenuController implements Initializable {
 	private static MenuController instance;
 
 	public static MenuController getInstance() {
@@ -62,6 +64,20 @@ public class MenuController {
 	@FXML
 	private Label showStatsLbl;
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Propiedades.getInstance().addListener((bundle) -> {
+			mainLbl.setText(bundle.getString("MenuController.mainLbl"));
+			addUserLbl.setText(bundle.getString("MenuController.addUserLbl"));
+			addVehicleLbl.setText(bundle.getString("MenuController.addVehicleLbl"));
+			rentVehicleLbl.setText(bundle.getString("MenuController.rentVehicleLbl"));
+			showStatsLbl.setText(bundle.getString("MenuController.showStatsLbl"));
+		});
+
+		MenuService.getInstance().crearAnimacionExtension(menuIzq.prefWidthProperty(), secondLayer.opacityProperty(),
+				menuSVG.rotateProperty());
+	}
+
 	@FXML
 	public void showMenuEvent(ActionEvent event) {
 		showMenuAction();
@@ -99,12 +115,6 @@ public class MenuController {
 	@FXML
 	void showStatsEvent(MouseEvent event) {
 
-	}
-
-	@FXML
-	void initialize() {
-		MenuService.getInstance().crearAnimacionExtension(menuIzq.prefWidthProperty(), secondLayer.opacityProperty(),
-				menuSVG.rotateProperty());
 	}
 
 	private void showMenuAction() {
