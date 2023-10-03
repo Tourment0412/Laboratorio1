@@ -12,6 +12,9 @@ public class App extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		stage.setScene(new Scene(MainViewController.getInstance().loadMainMenu(), 640, 480));
+		stage.setMinHeight(600);
+		stage.setMinWidth(1000);
+		
 		stage.show();
 	}
 
