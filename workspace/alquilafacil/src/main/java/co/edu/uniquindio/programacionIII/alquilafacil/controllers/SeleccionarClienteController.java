@@ -1,6 +1,8 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
+import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -40,7 +42,12 @@ public class SeleccionarClienteController {
 
     @FXML
     void siguienteEvent(ActionEvent event) {
-
+    	siguienteAction();
+    }
+    
+    
+    private void siguienteAction() {
+    	MainViewController.getInstance().cambiarVista(Vista.RENT_SEC);
     }
 
 }

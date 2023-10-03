@@ -1,7 +1,0 @@
-.scroll-pane {
-	-fx-vbar-policy: never;
-	-fx-hbar-policy: never;
-	-fx-fit-to-width: true;
-	-fx-fit-to-height: true;
-	-fx-background: white;
-}
