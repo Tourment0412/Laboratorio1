@@ -3,11 +3,12 @@ package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
-import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.ViewMenuController;
 import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
+import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.ViewMenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +19,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
 
-public class MenuController implements Initializable {
+public class MenuController implements Initializable, Consumer<ResourceBundle> {
 	private static MenuController instance;
 
 	public static MenuController getInstance() {
@@ -65,18 +66,25 @@ public class MenuController implements Initializable {
 	@FXML
 	private Label showStatsLbl;
 
+	@FXML
+	private VBox menuDer;
+
+	@FXML
+	private Label lblSpanish;
+
+	@FXML
+	private Label lblEnglish;
+
+	@FXML
+	private BorderPane languageLayer;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Propiedades.getInstance().addListener((bundle) -> {
-			mainLbl.setText(bundle.getString("MenuController.mainLbl"));
-			addUserLbl.setText(bundle.getString("MenuController.addUserLbl"));
-			addVehicleLbl.setText(bundle.getString("MenuController.addVehicleLbl"));
-			rentVehicleLbl.setText(bundle.getString("MenuController.rentVehicleLbl"));
-			showStatsLbl.setText(bundle.getString("MenuController.showStatsLbl"));
-		});
-
+		Propiedades.getInstance().addListener(this);
 		ViewMenuController.getInstance().crearAnimacionExtension(menuIzq.prefWidthProperty(),
-				secondLayer.opacityProperty(), menuSVG.rotateProperty());
+				secondLayer.opacityProperty(), menuSVG.rotateProperty(), bool -> secondLayer.setDisable(bool));
+		ViewMenuController.getInstance().crearAnimacionExtensionLanguage(menuDer.prefWidthProperty(),
+				languageLayer.opacityProperty(), config.rotateProperty(), bool -> languageLayer.setDisable(bool));
 	}
 
 	@FXML
@@ -101,6 +109,7 @@ public class MenuController implements Initializable {
 
 	@FXML
 	void configEvent(ActionEvent event) {
+		showLanguageAction();
 	}
 
 	@FXML
@@ -118,10 +127,23 @@ public class MenuController implements Initializable {
 
 	}
 
+	@FXML
+	public void showLanguage2Event(MouseEvent event) {
+		showLanguageAction();
+	}
+
+	@FXML
+	public void changeLanguageSpanishEvent(MouseEvent event) {
+		changeLanguageSpanishAction();
+	}
+
+	@FXML
+	public void changeLanguageEnglishEvent(MouseEvent event) {
+		changeLanguageEnglishEvent();
+	}
+
 	private void showMenuAction() {
-		ViewMenuController.getInstance().ejecutarAnimacionMenu((bool) -> {
-			secondLayer.setDisable(bool);
-		});
+		ViewMenuController.getInstance().ejecutarAnimacionMenu();
 	}
 
 	private void addVehicleAction() {
@@ -136,8 +158,29 @@ public class MenuController implements Initializable {
 		MainViewController.getInstance().cambiarVista(Vista.RENT_INI);
 	}
 
+	private void changeLanguageSpanishAction() {
+		Propiedades.getInstance().setLanguage("es");
+	}
+
+	private void changeLanguageEnglishEvent() {
+		Propiedades.getInstance().setLanguage(Locale.US);
+	}
+
+	private void showLanguageAction() {
+		ViewMenuController.getInstance().ejecutarAnimacionLanguage();
+	}
+
 	public void cambiarCentro(Node node) {
 		panelCentral.setCenter(node);
+	}
+
+	@Override
+	public void accept(ResourceBundle t) {
+		mainLbl.setText(t.getString("MenuController.mainLbl"));
+		addUserLbl.setText(t.getString("MenuController.addUserLbl"));
+		addVehicleLbl.setText(t.getString("MenuController.addVehicleLbl"));
+		rentVehicleLbl.setText(t.getString("MenuController.rentVehicleLbl"));
+		showStatsLbl.setText(t.getString("MenuController.showStatsLbl"));
 	}
 
 }

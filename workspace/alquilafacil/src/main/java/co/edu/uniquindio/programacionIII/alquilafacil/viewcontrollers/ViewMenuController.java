@@ -20,21 +20,38 @@ public class ViewMenuController {
 		return instance;
 	}
 
-	private boolean isExtended = false;
+	private boolean isMenuExtended = false;
+	private boolean isLanguageMenuExtended = false;
 	private Timeline timelineMenu;
+	private Timeline timelineLanguage;
+	private Consumer<Boolean> consumerMenu;
+	private Consumer<Boolean> consumerLanguage;
 
-	public void crearAnimacionExtension(DoubleProperty widthProperty, DoubleProperty doubleProperty,
-			DoubleProperty rotacionSVG) {
+	public void crearAnimacionExtension(DoubleProperty widthProperty, DoubleProperty opacityProperty,
+			DoubleProperty rotacionSVG, Consumer<Boolean> consumerMenu) {
 		timelineMenu = new Timeline();
 		timelineMenu.getKeyFrames().add(new KeyFrame(Duration.millis(0), new KeyValue(widthProperty, 0d),
-				new KeyValue(doubleProperty, 0d), new KeyValue(rotacionSVG, 0d)));
-		timelineMenu.getKeyFrames().add(new KeyFrame(Duration.millis(100), new KeyValue(doubleProperty, 1d),
+				new KeyValue(opacityProperty, 0d), new KeyValue(rotacionSVG, 0d)));
+		timelineMenu.getKeyFrames().add(new KeyFrame(Duration.millis(100), new KeyValue(opacityProperty, 1d),
 				new KeyValue(widthProperty, 212d), new KeyValue(rotacionSVG, 90d)));
+		this.consumerMenu = consumerMenu;
 	}
 
-	public void ejecutarAnimacionMenu(Consumer<Boolean> consumer) {
-		consumer.accept(isExtended);
-		if (isExtended) {
+	public void crearAnimacionExtensionLanguage(DoubleProperty widthProperty, DoubleProperty opacityProperty,
+			DoubleProperty rotacionSVG, Consumer<Boolean> consumerLanguage) {
+		timelineLanguage = new Timeline();
+		timelineLanguage.getKeyFrames().add(new KeyFrame(Duration.millis(0), new KeyValue(widthProperty, 0d),
+				new KeyValue(opacityProperty, 0d), new KeyValue(rotacionSVG, 0d)));
+		timelineLanguage.getKeyFrames().add(new KeyFrame(Duration.millis(100), new KeyValue(opacityProperty, 1d),
+				new KeyValue(widthProperty, 160d), new KeyValue(rotacionSVG, 90d)));
+		this.consumerLanguage = consumerLanguage;
+	}
+
+	public void ejecutarAnimacionMenu() {
+		if (isLanguageMenuExtended)
+			ejecutarAnimacionLanguage();
+		consumerMenu.accept(isMenuExtended);
+		if (isMenuExtended) {
 			timelineMenu.stop();
 			timelineMenu.setRate(-1);
 			timelineMenu.jumpTo(Duration.millis(100));
@@ -42,6 +59,21 @@ public class ViewMenuController {
 		} else {
 			timelineMenu.playFromStart();
 		}
-		isExtended = !isExtended;
+		isMenuExtended = !isMenuExtended;
+	}
+
+	public void ejecutarAnimacionLanguage() {
+		if (isMenuExtended)
+			ejecutarAnimacionMenu();
+		consumerLanguage.accept(isLanguageMenuExtended);
+		if (isLanguageMenuExtended) {
+			timelineLanguage.stop();
+			timelineLanguage.setRate(-1);
+			timelineLanguage.jumpTo(Duration.millis(100));
+			timelineLanguage.play();
+		} else {
+			timelineLanguage.playFromStart();
+		}
+		isLanguageMenuExtended = !isLanguageMenuExtended;
 	}
 }
