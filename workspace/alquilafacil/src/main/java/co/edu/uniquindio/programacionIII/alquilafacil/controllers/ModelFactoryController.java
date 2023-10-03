@@ -13,7 +13,7 @@ import co.edu.uniquindio.programacionIII.alquilafacil.model.Alquiler;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
-import co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService;
+import co.edu.uniquindio.programacionIII.alquilafacil.services.DataService;
 import javafx.scene.image.Image;
 
 public class ModelFactoryController {
@@ -27,24 +27,24 @@ public class ModelFactoryController {
 	}
 
 	public Double getTotalGanadoAlquileres() throws PersiscenciaDesconocidaException {
-		return CommunicationService.getInstance().getTotalGanadoAlquileres();
+		return DataService.getInstance().getTotalGanadoAlquileres();
 	}
 
 	public String getMarcaMasAlquilada() throws PersiscenciaDesconocidaException {
-		return CommunicationService.getInstance().getMarcaMasAlquilada();
+		return DataService.getInstance().getMarcaMasAlquilada();
 	}
 
 	public List<Vehiculo> listarVehiculosRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal)
 			throws PersiscenciaDesconocidaException {
-		return CommunicationService.getInstance().listarVehiculosRangoFechas(fechaInicial, fechaFinal);
+		return DataService.getInstance().listarVehiculosRangoFechas(fechaInicial, fechaFinal);
 	}
 
 	public List<Vehiculo> listarVehiculosAlquilados() throws PersiscenciaDesconocidaException {
-		return CommunicationService.getInstance().listarVehiculosAlquilados();
+		return DataService.getInstance().listarVehiculosAlquilados();
 	}
 
 	public boolean estaDisponible(Vehiculo vehiculo) throws PersiscenciaDesconocidaException {
-		return CommunicationService.getInstance().estaDisponible(vehiculo);
+		return DataService.getInstance().estaDisponible(vehiculo);
 	}
 
 	public void agregarCliente(String cedula, String nombre, String numeroTel, String email, String ciudad,
@@ -61,7 +61,7 @@ public class ModelFactoryController {
 
 		Cliente cliente = Cliente.builder().cedula(cedula).nombre(nombre).numeroTel(numeroTel).email(email)
 				.ciudad(ciudad).direccion(direccion).build();
-		CommunicationService.getInstance().agregarCliente(cliente);
+		DataService.getInstance().agregarCliente(cliente);
 	}
 
 	public void agregarVehiculo(String placa, String nombre, String marca, Integer modelo, Image image,
@@ -101,19 +101,19 @@ public class ModelFactoryController {
 		Vehiculo vehiculo = Vehiculo.builder().placa(placa).nombre(nombre).marca(marca).modelo(modelo).image(image)
 				.transmision(transmision).kilometraje(kilometraje).precioAlquilerDia(precioAlquilerDia)
 				.numSillas(numSillas).build();
-		CommunicationService.getInstance().agregarVehiculo(vehiculo);
+		DataService.getInstance().agregarVehiculo(vehiculo);
 	}
 
 	public List<Alquiler> listarAlquileres() throws PersiscenciaDesconocidaException {
-		return CommunicationService.getInstance().listarAlquileres();
+		return DataService.getInstance().listarAlquileres();
 	}
 
 	public List<Vehiculo> listarVehiculos() throws PersiscenciaDesconocidaException {
-		return CommunicationService.getInstance().listarVehiculos();
+		return DataService.getInstance().listarVehiculos();
 	}
 
 	public List<Cliente> listarClientes() throws PersiscenciaDesconocidaException {
-		return CommunicationService.getInstance().listarClientes();
+		return DataService.getInstance().listarClientes();
 	}
 
 	public void agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
@@ -135,7 +135,7 @@ public class ModelFactoryController {
 			sb.append('\n');
 		}
 		lanzarCampoInvalido(sb);
-		CommunicationService.getInstance().agregarAlquiler(cedulaCliente, placaVehiculo, fechaAlquiler, fechaRegreso);
+		DataService.getInstance().agregarAlquiler(cedulaCliente, placaVehiculo, fechaAlquiler, fechaRegreso);
 	}
 
 	private void lanzarCampoInvalido(StringBuilder sb) throws CampoInvalidoException {

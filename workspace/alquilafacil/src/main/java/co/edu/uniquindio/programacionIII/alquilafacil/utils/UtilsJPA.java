@@ -1,4 +1,4 @@
-package co.edu.uniquindio.programacionIII.alquilafacil.services;
+package co.edu.uniquindio.programacionIII.alquilafacil.utils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

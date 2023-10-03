@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Alquiler;
-import co.edu.uniquindio.programacionIII.alquilafacil.services.UtilsJPA;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.UtilsJPA;
 
 public class AlquilerDao {
 

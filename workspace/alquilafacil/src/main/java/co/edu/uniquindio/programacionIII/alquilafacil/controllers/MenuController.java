@@ -4,10 +4,10 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.programacionIII.alquilafacil.services.Propiedades;
-import co.edu.uniquindio.programacionIII.alquilafacil.services.ViewServices;
-import co.edu.uniquindio.programacionIII.alquilafacil.services.Vista;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
 import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.ViewMenuController;
+import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -125,15 +125,15 @@ public class MenuController implements Initializable {
 	}
 
 	private void addVehicleAction() {
-		ViewServices.getInstance().cambiarVista(Vista.ADD_VEHICLE);
+		MainViewController.getInstance().cambiarVista(Vista.ADD_VEHICLE);
 	}
 
 	private void addUserAction() {
-		ViewServices.getInstance().cambiarVista(Vista.ADD_CLIENT);
+		MainViewController.getInstance().cambiarVista(Vista.ADD_CLIENT);
 	}
 
 	private void rentVehicleAction() {
-		ViewServices.getInstance().cambiarVista(Vista.RENT_INI);
+		MainViewController.getInstance().cambiarVista(Vista.RENT_INI);
 	}
 
 	public void cambiarCentro(Node node) {

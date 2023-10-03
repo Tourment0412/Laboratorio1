@@ -15,7 +15,7 @@ import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDispo
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
-import co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService;
+import co.edu.uniquindio.programacionIII.alquilafacil.services.DataService;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -33,7 +33,7 @@ public class TestModel extends Application {
 	@Test
 	public void obtenerCliente()
 			throws NullPointerException, ObjetoNoEncontradoException, PersiscenciaDesconocidaException {
-		CommunicationService.getInstance().obtenerCliente("golahoasda");
+		DataService.getInstance().obtenerCliente("golahoasda");
 	}
 
 	@Test

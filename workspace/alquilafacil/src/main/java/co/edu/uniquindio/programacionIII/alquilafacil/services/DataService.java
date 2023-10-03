@@ -23,12 +23,13 @@ import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDispo
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Alquiler;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.UtilsJPA;
 
-public class CommunicationService {
-	private static CommunicationService instance;
-	private static final Logger LOGGER = Logger.getLogger(CommunicationService.class.getName());
+public class DataService {
+	private static DataService instance;
+	private static final Logger LOGGER = Logger.getLogger(DataService.class.getName());
 
-	private CommunicationService() {
+	private DataService() {
 		FileHandler fh;
 		try {
 			fh = new FileHandler("logs.log", true);
@@ -39,9 +40,9 @@ public class CommunicationService {
 		}
 	}
 
-	public static CommunicationService getInstance() {
+	public static DataService getInstance() {
 		if (instance == null)
-			instance = new CommunicationService();
+			instance = new DataService();
 		return instance;
 	}
 

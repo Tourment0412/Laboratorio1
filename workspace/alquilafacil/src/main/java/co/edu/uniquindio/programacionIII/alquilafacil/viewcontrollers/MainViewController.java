@@ -1,21 +1,22 @@
-package co.edu.uniquindio.programacionIII.alquilafacil.services;
+package co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers;
 
 import java.io.IOException;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.aplication.App;
 import co.edu.uniquindio.programacionIII.alquilafacil.controllers.MenuController;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-public class ViewServices {
-	private static ViewServices instance;
+public class MainViewController {
+	private static MainViewController instance;
 
-	private ViewServices() {
+	private MainViewController() {
 	}
 
-	public static ViewServices getInstance() {
+	public static MainViewController getInstance() {
 		if (instance == null)
-			instance = new ViewServices();
+			instance = new MainViewController();
 		return instance;
 	}
 

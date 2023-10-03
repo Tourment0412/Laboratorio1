@@ -1,4 +1,4 @@
-package co.edu.uniquindio.programacionIII.alquilafacil.services;
+package co.edu.uniquindio.programacionIII.alquilafacil.utils;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

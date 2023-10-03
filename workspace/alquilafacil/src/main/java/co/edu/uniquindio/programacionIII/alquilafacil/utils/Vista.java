@@ -1,4 +1,4 @@
-package co.edu.uniquindio.programacionIII.alquilafacil.services;
+package co.edu.uniquindio.programacionIII.alquilafacil.utils;
 
 public enum Vista {
 	MAIN(""), ADD_CLIENT("crearCliente"), ADD_VEHICLE("crearVehiculo"), RENT_INI("seleccionarCliente");
