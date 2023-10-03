@@ -18,7 +18,12 @@ public class Propiedades {
 	}
 
 	public void setLanguage(Locale locale) {
-		bundleProperty.setValue(ResourceBundle.getBundle(RUTA, locale));
+		if (!locale.equals(bundleProperty.getValue().getLocale()))
+			bundleProperty.setValue(ResourceBundle.getBundle(RUTA, locale));
+	}
+
+	public void setLanguage(String localeString) {
+		setLanguage(new Locale.Builder().setLanguage(localeString).build());
 	}
 
 	public void addListener(Consumer<ResourceBundle> listener) {
