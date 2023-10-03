@@ -1,12 +1,13 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.programacionIII.alquilafacil.services.MenuService;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.ViewServices;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.Vista;
+import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.ViewMenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -74,8 +75,8 @@ public class MenuController implements Initializable {
 			showStatsLbl.setText(bundle.getString("MenuController.showStatsLbl"));
 		});
 
-		MenuService.getInstance().crearAnimacionExtension(menuIzq.prefWidthProperty(), secondLayer.opacityProperty(),
-				menuSVG.rotateProperty());
+		ViewMenuController.getInstance().crearAnimacionExtension(menuIzq.prefWidthProperty(),
+				secondLayer.opacityProperty(), menuSVG.rotateProperty());
 	}
 
 	@FXML
@@ -118,7 +119,7 @@ public class MenuController implements Initializable {
 	}
 
 	private void showMenuAction() {
-		MenuService.getInstance().ejecutarAnimacionMenu((bool) -> {
+		ViewMenuController.getInstance().ejecutarAnimacionMenu((bool) -> {
 			secondLayer.setDisable(bool);
 		});
 	}
@@ -130,7 +131,7 @@ public class MenuController implements Initializable {
 	private void addUserAction() {
 		ViewServices.getInstance().cambiarVista(Vista.ADD_CLIENT);
 	}
-	
+
 	private void rentVehicleAction() {
 		ViewServices.getInstance().cambiarVista(Vista.RENT_INI);
 	}

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.programacionIII.alquilafacil.services;
+package co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers;
 
 import java.util.function.Consumer;
 
@@ -8,15 +8,15 @@ import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.util.Duration;
 
-public class MenuService {
-	private static MenuService instance;
+public class ViewMenuController {
+	private static ViewMenuController instance;
 
-	private MenuService() {
+	private ViewMenuController() {
 	}
 
-	public static MenuService getInstance() {
+	public static ViewMenuController getInstance() {
 		if (instance == null)
-			instance = new MenuService();
+			instance = new ViewMenuController();
 		return instance;
 	}
 
