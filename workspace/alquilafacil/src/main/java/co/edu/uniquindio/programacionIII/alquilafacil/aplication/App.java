@@ -7,17 +7,11 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
-
-	private static Scene scene;
 
 	@Override
 	public void start(Stage stage) throws IOException {
-		scene = new Scene(ViewServices.getInstance().loadMainMenu(), 640, 480);
-		stage.setScene(scene);
+		stage.setScene(new Scene(ViewServices.getInstance().loadMainMenu(), 640, 480));
 		stage.show();
 	}
 
