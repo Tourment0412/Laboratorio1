@@ -181,6 +181,8 @@ public class MenuController implements Initializable, Consumer<ResourceBundle> {
 		addVehicleLbl.setText(t.getString("MenuController.addVehicleLbl"));
 		rentVehicleLbl.setText(t.getString("MenuController.rentVehicleLbl"));
 		showStatsLbl.setText(t.getString("MenuController.showStatsLbl"));
+		lblEnglish.setText(t.getString("English"));
+		lblSpanish.setText(t.getString("Spanish"));
 	}
 
 }
