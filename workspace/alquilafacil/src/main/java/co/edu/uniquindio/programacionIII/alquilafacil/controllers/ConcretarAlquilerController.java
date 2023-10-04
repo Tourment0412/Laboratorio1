@@ -1,14 +1,19 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
 import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
-public class ConcretarAlquilerController {
+public class ConcretarAlquilerController implements Initializable {
 
     @FXML
     private Button btnConcretar;
@@ -77,5 +82,23 @@ public class ConcretarAlquilerController {
     private void volverAction() {
     	MainViewController.getInstance().cambiarVista(Vista.RENT_SEC);
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Propiedades.getInstance().addListener(bundle->{
+			lblTitle.setText(bundle.getString("concretarAlquiler.lblTitle"));
+			lblCedula.setText(bundle.getString("concretarAlquiler.lblCedula"));
+			lblNombreC.setText(bundle.getString("concretarAlquiler.lblNombreC"));
+			lblMarca.setText(bundle.getString("concretarAlquiler.lblMarca"));
+			lblNombreV.setText(bundle.getString("concretarAlquiler.lblNombreV"));
+			lblModelo.setText(bundle.getString("concretarAlquiler.lblModelo"));
+			lblPlaca.setText(bundle.getString("concretarAlquiler.lblPlaca"));
+			lblFechaIni.setText(bundle.getString("concretarAlquiler.lblFechaIni"));
+			lblFechaFin.setText(bundle.getString("concretarAlquiler.lblFechaFin"));
+			btnConcretar.setText(bundle.getString("concretarAlquiler.btnConcretar"));
+			btnVolver.setText(bundle.getString("concretarAlquiler.btnVolver"));
+		});
+		
+	}
 
 }
