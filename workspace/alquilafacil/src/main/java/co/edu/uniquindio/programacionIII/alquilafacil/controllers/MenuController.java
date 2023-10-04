@@ -124,7 +124,7 @@ public class MenuController implements Initializable, Consumer<ResourceBundle> {
 
 	@FXML
 	void showStatsEvent(MouseEvent event) {
-
+		showStatsAcion();
 	}
 
 	@FXML
@@ -168,6 +168,9 @@ public class MenuController implements Initializable, Consumer<ResourceBundle> {
 
 	private void showLanguageAction() {
 		ViewMenuController.getInstance().ejecutarAnimacionLanguage();
+	}
+	private void showStatsAcion() {
+		MainViewController.getInstance().cambiarVista(Vista.FUNCTEXT);;
 	}
 
 	public void cambiarCentro(Node node) {
