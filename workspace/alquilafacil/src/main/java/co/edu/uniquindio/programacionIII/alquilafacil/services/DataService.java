@@ -4,6 +4,7 @@ package co.edu.uniquindio.programacionIII.alquilafacil.services;
 import java.io.IOException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,6 +115,7 @@ public class DataService {
 		List<Vehiculo> result = listarVehiculos(em).stream().filter(v -> v.fueCreadoAntesDe(fechaFinal)
 				&& vehiculoEstaDisplonibleRangoFechas(alquileres, v, fechaInicial, fechaFinal)).toList();
 		em.close();
+		result.sort((o1, o2) -> o1.getPrecioAlquilerDia().compareTo(o2.getPrecioAlquilerDia()));
 		return result;
 	}
 
