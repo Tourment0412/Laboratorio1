@@ -2,6 +2,7 @@ package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoException;
@@ -12,7 +13,7 @@ import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDispo
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Alquiler;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
-import co.edu.uniquindio.programacionIII.alquilafacil.utils.AlertUtils;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Utils;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
 import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
@@ -103,7 +104,7 @@ public class ConcretarAlquilerController implements Initializable {
 		lblNombreCliente.setText(cliente.getNombre());
 		lblMarcaVehiculo.setText(vehiculo.getMarca());
 		lblNombreVehiculo.setText(vehiculo.getNombre());
-		lblModeloVehiculo.setText(vehiculo.getModelo().toString());
+		lblModeloVehiculo.setText(new DecimalFormat("#").format(vehiculo.getModelo()));
 		lblPlacaVehiculo.setText(vehiculo.getPlaca());
 		imgVehiculo.setImage(vehiculo.getImage());
 
@@ -142,14 +143,14 @@ public class ConcretarAlquilerController implements Initializable {
 		try {
 			Alquiler alquiler = ModelFactoryController.getInstance().agregarAlquiler(clienteCedu, vehiculoPlaca,
 					fechaInicial.getValue(), fechaFinal.getValue());
-			AlertUtils.mostrarAlerta("Informacion", "El alquiler ha sido creado con exito");
+			Utils.mostrarAlerta("Informacion", "El alquiler ha sido creado con exito");
 			MainViewController.getInstance().generarFactura(alquiler);
 		} catch (VehiculoNoDisponibleException | ObjetoYaExisteException | PersiscenciaDesconocidaException
 				| ObjetoNoEncontradoException | CampoInvalidoException e) {
-			AlertUtils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
+			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
 		} catch (IOException e) {
 			e.printStackTrace();
-			AlertUtils.mostrarAlerta("Advertencia", "No se pudo generar la factura como pdf", AlertType.WARNING);
+			Utils.mostrarAlerta("Advertencia", "No se pudo generar la factura como pdf", AlertType.WARNING);
 		}
 	}
 

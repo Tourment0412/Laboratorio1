@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
-import co.edu.uniquindio.programacionIII.alquilafacil.utils.AlertUtils;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Utils;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
 import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
@@ -68,7 +68,7 @@ public class SeleccionarClienteController implements Initializable {
 			tblClientes
 					.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance().listarClientes()));
 		} catch (PersiscenciaDesconocidaException e) {
-			AlertUtils.mostrarAlerta("Advertencia", e.getMessage());
+			Utils.mostrarAlerta("Advertencia", e.getMessage());
 		}
 		Propiedades.getInstance().addListener(bundle -> {
 			lblTitle.setText(bundle.getString("SeleccionarCliente.lblTitle"));
@@ -88,7 +88,7 @@ public class SeleccionarClienteController implements Initializable {
 
 	private void siguienteAction() {
 		if (tblClientes.getSelectionModel().getSelectedItem() == null) {
-			AlertUtils.mostrarAlerta("Advertencia", "Recuerda seleccionar un cliente", AlertType.WARNING);
+			Utils.mostrarAlerta("Advertencia", "Recuerda seleccionar un cliente", AlertType.WARNING);
 			return;
 		}
 		MainViewController.getInstance().cambiarVista(Vista.RENT_SEC);

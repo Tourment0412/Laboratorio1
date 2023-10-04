@@ -1,11 +1,12 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
-import co.edu.uniquindio.programacionIII.alquilafacil.utils.AlertUtils;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Utils;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
 import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
@@ -77,15 +78,16 @@ public class SeleccionarVehiculoController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		colKilometraje
-				.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getKilometraje().toString()));
+		DecimalFormat format = new DecimalFormat("#");
+		colKilometraje.setCellValueFactory(
+				cell -> new ReadOnlyStringWrapper(format.format(cell.getValue().getKilometraje())));
 		colMarca.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getMarca()));
-		colModelo.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getModelo().toString()));
+		colModelo.setCellValueFactory(cell -> new ReadOnlyStringWrapper(format.format(cell.getValue().getModelo())));
 		colNombre.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getNombre()));
 		colPlaca.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getPlaca()));
 		colPrecioDia.setCellValueFactory(
-				cell -> new ReadOnlyStringWrapper(cell.getValue().getPrecioAlquilerDia().toString()));
-		colSillas.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getNumSillas().toString()));
+				cell -> new ReadOnlyStringWrapper(format.format(cell.getValue().getPrecioAlquilerDia())));
+		colSillas.setCellValueFactory(cell -> new ReadOnlyStringWrapper(format.format(cell.getValue().getNumSillas())));
 		colTransmision
 				.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getTransmision().getText()));
 
@@ -93,7 +95,7 @@ public class SeleccionarVehiculoController implements Initializable {
 			tblVehiculos.setItems(
 					FXCollections.observableArrayList(ModelFactoryController.getInstance().listarVehiculos()));
 		} catch (PersiscenciaDesconocidaException e) {
-			AlertUtils.mostrarAlerta("Advertencia", e.getMessage());
+			Utils.mostrarAlerta("Advertencia", e.getMessage());
 		}
 		Propiedades.getInstance().addListener(bundle -> {
 			lblTitle.setText(bundle.getString("SeleccionarVehiculo.lblTitle"));
@@ -124,7 +126,7 @@ public class SeleccionarVehiculoController implements Initializable {
 
 	private void siguienteAction() {
 		if (tblVehiculos.getSelectionModel().getSelectedItem() == null) {
-			AlertUtils.mostrarAlerta("Advertencia", "Recuerda seleccionar un vehiculo", AlertType.WARNING);
+			Utils.mostrarAlerta("Advertencia", "Recuerda seleccionar un vehiculo", AlertType.WARNING);
 			return;
 		}
 		MainViewController.getInstance().cambiarVista(Vista.RENT_FIN);

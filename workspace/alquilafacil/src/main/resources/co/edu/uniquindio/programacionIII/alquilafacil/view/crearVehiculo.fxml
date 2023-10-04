@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -63,11 +62,11 @@
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin></Label>
-            <Spinner fx:id="spnModelo" maxWidth="600.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="spnModelo" maxWidth="600.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
-            </Spinner>
+            </TextField>
             <Label fx:id="lblImagen" alignment="CENTER" styleClass="texto" text="Label" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
@@ -90,11 +89,11 @@
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin></Label>
-            <Spinner fx:id="spnKilometraje" maxWidth="600.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextField fx:id="spnKilometraje" layoutX="130.0" layoutY="133.0" maxWidth="600.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
-            </Spinner>
+            </TextField>
             <Label fx:id="lblPrecioDia" alignment="CENTER" styleClass="texto" text="Label" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
@@ -108,11 +107,11 @@
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin></Label>
-            <Spinner fx:id="spnSilas" maxWidth="600.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <TextField fx:id="spnSilas" layoutX="130.0" layoutY="256.0" maxWidth="600.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
-            </Spinner>
+            </TextField>
          </children>
          <VBox.margin>
             <Insets bottom="20.0" top="20.0" />

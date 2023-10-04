@@ -216,3 +216,179 @@ oct 03, 2023 9:39:51 P. M. co.edu.uniquindio.programacionIII.alquilafacil.servi
 INFO: Intentando agregar un cliente con cedula 'asda'...
 oct 03, 2023 9:39:55 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
 INFO: El cliente fue agregado satisfactoriamente
+oct 03, 2023 11:34:22 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarClientes
+INFO: Intentando listar clientes...
+oct 03, 2023 11:34:24 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarClientes
+INFO: Los clientes han sido cargados con exito
+oct 03, 2023 11:34:27 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarVehiculos
+INFO: Intentando listar vehiculos...
+oct 03, 2023 11:34:28 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarVehiculos
+INFO: Los vehiculos han sido listados con exito
+oct 04, 2023 12:21:23 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarVehiculo
+INFO: Agregando vehiculo con placa: 'Placa'...
+oct 04, 2023 12:21:27 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarVehiculo
+INFO: El vehiculo ha sido agregado satisfactoriamente
+oct 04, 2023 12:21:42 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarClientes
+INFO: Intentando listar clientes...
+oct 04, 2023 12:21:43 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarClientes
+INFO: Los clientes han sido cargados con exito
+oct 04, 2023 12:21:45 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarVehiculos
+INFO: Intentando listar vehiculos...
+oct 04, 2023 12:21:46 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarVehiculos
+INFO: Los vehiculos han sido listados con exito
+oct 04, 2023 12:21:55 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 04, 2023 12:21:55 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 04, 2023 12:21:56 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 04, 2023 12:21:58 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 04, 2023 12:21:58 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 04, 2023 12:21:58 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 04, 2023 12:21:58 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Intentando listar alquileres
+oct 04, 2023 12:21:58 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 04, 2023 12:21:58 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Agregando Alquiler a cliente...
+oct 04, 2023 12:21:59 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Agregando Alquiler a vehiculo...
+oct 04, 2023 12:21:59 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Agregando alquiler...
+oct 04, 2023 12:22:04 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: El alquiler Fue agregado satisfactoriamente
+oct 04, 2023 12:22:28 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 04, 2023 12:22:28 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 04, 2023 12:22:29 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 04, 2023 12:22:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 04, 2023 12:22:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 04, 2023 12:22:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 04, 2023 12:22:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Intentando listar alquileres
+oct 04, 2023 12:22:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 04, 2023 12:22:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+WARNING: El vehiculo con placa: 'Placa' no está disponible para ese momento
+oct 04, 2023 12:22:34 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 04, 2023 12:22:34 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 04, 2023 12:22:35 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 04, 2023 12:22:42 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 04, 2023 12:22:42 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 04, 2023 12:22:42 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 04, 2023 12:22:42 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Intentando listar alquileres
+oct 04, 2023 12:22:43 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 04, 2023 12:22:43 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+WARNING: El vehiculo con placa: 'Placa' no está disponible para ese momento
+oct 04, 2023 12:22:49 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 04, 2023 12:22:49 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 04, 2023 12:22:50 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 04, 2023 12:22:52 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 04, 2023 12:22:52 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 04, 2023 12:22:52 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 04, 2023 12:22:52 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Intentando listar alquileres
+oct 04, 2023 12:22:52 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 04, 2023 12:22:52 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+WARNING: El vehiculo con placa: 'Placa' no está disponible para ese momento
+oct 04, 2023 12:22:56 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 04, 2023 12:22:56 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 04, 2023 12:22:57 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 04, 2023 12:22:59 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 04, 2023 12:22:59 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 04, 2023 12:22:59 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 04, 2023 12:22:59 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Intentando listar alquileres
+oct 04, 2023 12:23:00 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 04, 2023 12:23:00 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+WARNING: El vehiculo con placa: 'Placa' no está disponible para ese momento
+oct 04, 2023 12:23:06 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 04, 2023 12:23:06 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 04, 2023 12:23:07 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 04, 2023 12:23:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 04, 2023 12:23:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 04, 2023 12:23:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 04, 2023 12:23:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Intentando listar alquileres
+oct 04, 2023 12:23:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 04, 2023 12:23:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+WARNING: El vehiculo con placa: 'Placa' no está disponible para ese momento
+oct 04, 2023 12:23:17 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 04, 2023 12:23:17 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 04, 2023 12:23:17 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 04, 2023 12:23:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 04, 2023 12:23:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 04, 2023 12:23:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 04, 2023 12:23:19 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Intentando listar alquileres
+oct 04, 2023 12:23:20 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 04, 2023 12:23:20 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+WARNING: El vehiculo con placa: 'Placa' no está disponible para ese momento
+oct 04, 2023 12:23:29 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Intentando agregar alquiler
+oct 04, 2023 12:23:29 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: Intentando buscar el cliente
+oct 04, 2023 12:23:30 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerCliente
+INFO: El cliente ha sido encontrado con exito
+oct 04, 2023 12:23:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService obtenerVehiculo
+INFO: El vehiculo ha sido encontrado con exito
+oct 04, 2023 12:23:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Construyendo alquiler...
+oct 04, 2023 12:23:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Verificando que el vehiculo este disponible...
+oct 04, 2023 12:23:31 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Intentando listar alquileres
+oct 04, 2023 12:23:32 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService listarAlquileres
+INFO: Los alquileres han sido listados con exito
+oct 04, 2023 12:23:32 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Agregando Alquiler a cliente...
+oct 04, 2023 12:23:33 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Agregando Alquiler a vehiculo...
+oct 04, 2023 12:23:35 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: Agregando alquiler...
+oct 04, 2023 12:23:38 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
+INFO: El alquiler Fue agregado satisfactoriamente

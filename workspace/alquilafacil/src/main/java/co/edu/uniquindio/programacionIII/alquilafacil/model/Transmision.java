@@ -10,7 +10,7 @@ public enum Transmision {
 	@Getter
 	private String text;
 
-	public String[] textValues() {
+	public static String[] textValues() {
 		Transmision[] values = values();
 		String[] textValues = new String[values.length];
 
@@ -20,7 +20,7 @@ public enum Transmision {
 		return textValues;
 	}
 
-	public Transmision valueByText(String text) {
+	public static Transmision valueByText(String text) {
 		Transmision[] values = values();
 		for (Transmision transmision : values)
 			if (transmision.getText().equals(text))

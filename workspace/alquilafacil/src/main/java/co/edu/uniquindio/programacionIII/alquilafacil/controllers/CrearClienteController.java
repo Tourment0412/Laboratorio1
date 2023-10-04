@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
-import co.edu.uniquindio.programacionIII.alquilafacil.utils.AlertUtils;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Utils;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,9 +47,9 @@ public class CrearClienteController implements Initializable {
 		try {
 			ModelFactoryController.getInstance().agregarCliente(txtCedula.getText(), txtNombre.getText(),
 					txtNumero.getText(), txtEmail.getText(), txtCiudad.getText(), txtDireccion.getText());
-			AlertUtils.mostrarAlerta("Informacion", "El cliente fue agregado satisfactoriamente");
+			Utils.mostrarAlerta("Informacion", "El cliente fue agregado satisfactoriamente");
 		} catch (ObjetoYaExisteException | PersiscenciaDesconocidaException | CampoInvalidoException e) {
-			AlertUtils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
+			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
 		}
 	}
 

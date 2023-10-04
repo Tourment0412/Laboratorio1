@@ -64,44 +64,93 @@ public class ModelFactoryController {
 		DataService.getInstance().agregarCliente(cliente);
 	}
 
-	public void agregarVehiculo(String placa, String nombre, String marca, Integer modelo, Image image,
-			Transmision transmision, Integer kilometraje, Double precioAlquilerDia, Integer numSillas)
+	public void agregarVehiculo(String placa, String nombre, String marca, String modeloString, Image image,
+			String transmisionString, String kilometrajeString, String precioAlquilerDiaString, String numSillasString)
 			throws ObjetoYaExisteException, PersiscenciaDesconocidaException, ImagenNoObtenidaException,
 			CampoInvalidoException {
 		StringBuilder sb = new StringBuilder();
 		requerirCampoString(sb, placa, "La placa no puede estar vacia");
 		requerirCampoString(sb, nombre, "El nombre no puede estar vacio");
 		requerirCampoString(sb, marca, "La marca no puede estar vacia");
-		if (modelo == null || modelo < 0) {
-			sb.append("El modelo es invalido");
-			sb.append('\n');
-		}
-		if (transmision == null) {
-			sb.append("La transmision es invalida");
-			sb.append('\n');
-		}
-		if (precioAlquilerDia == null || precioAlquilerDia < 0) {
-			sb.append("El precio de alquiler por dia es invalido");
-			sb.append('\n');
-		}
-		if (numSillas == null || numSillas < 0) {
-			sb.append("El numero de sillas es invalido");
-			sb.append('\n');
-		}
+
+		Transmision transmision = obtenerTransmisionThrow(sb, transmisionString, "La transmision no puede estar vacia");
+		Double precioAlquilerDia = obtenerDoubleThrow(sb, precioAlquilerDiaString,
+				"El precio de alquiler por dia es invalido");
+		Integer modelo = obtenerIntThrow(sb, modeloString, "El modelo es invalido");
+		Integer kilometraje = obtenerIntThrow(sb, modeloString, "El kilometraje es invalido");
+		Integer numSillas = obtenerIntThrow(sb, numSillasString, "El numero de sillas es invalido");
 		if (image == null) {
-			sb.append("La imagen es invalida");
+			sb.append("Verifica la imagen del vehiculo");
 			sb.append('\n');
 		}
-		if (kilometraje == null || kilometraje < 0) {
-			sb.append("El kilometraje es invalido");
-			sb.append('\n');
-		}
+
 		lanzarCampoInvalido(sb);
 
 		Vehiculo vehiculo = Vehiculo.builder().placa(placa).nombre(nombre).marca(marca).modelo(modelo).image(image)
 				.transmision(transmision).kilometraje(kilometraje).precioAlquilerDia(precioAlquilerDia)
 				.numSillas(numSillas).build();
 		DataService.getInstance().agregarVehiculo(vehiculo);
+	}
+
+	private Transmision obtenerTransmisionThrow(StringBuilder sb, String transmisionString, String msg)
+			throws CampoInvalidoException {
+		if (transmisionString == null || transmisionString.isBlank()) {
+
+			sb.append("La transmision es invalida");
+			sb.append('\n');
+			return null;
+		}
+		Transmision transmision = Transmision.valueByText(transmisionString);
+
+		if (transmision == null) {
+			sb.append("La transmision es invalida");
+			sb.append('\n');
+		}
+		return transmision;
+	}
+
+	private Double obtenerDoubleThrow(StringBuilder sb, String precioAlquilerDiaString, String msg) {
+		if (precioAlquilerDiaString == null || precioAlquilerDiaString.isBlank()) {
+			sb.append(msg);
+			sb.append('\n');
+			return null;
+		}
+		Double precioAlquilerDia = null;
+		try {
+			precioAlquilerDia = Double.parseDouble(precioAlquilerDiaString);
+		} catch (NumberFormatException e) {
+			sb.append(msg);
+			sb.append('\n');
+			return null;
+		}
+		if (precioAlquilerDia < 0) {
+			sb.append(msg);
+			sb.append('\n');
+		}
+
+		return precioAlquilerDia;
+	}
+
+	private Integer obtenerIntThrow(StringBuilder sb, String numString, String msg) {
+		if (numString == null || numString.isBlank()) {
+			sb.append(msg);
+			sb.append('\n');
+			return null;
+		}
+		Integer num = null;
+		try {
+			num = Integer.parseInt(numString);
+		} catch (NumberFormatException e) {
+			sb.append(msg);
+			sb.append('\n');
+			return null;
+		}
+		if (num < 0) {
+			sb.append(msg);
+			sb.append('\n');
+		}
+
+		return num;
 	}
 
 	public List<Alquiler> listarAlquileres() throws PersiscenciaDesconocidaException {
