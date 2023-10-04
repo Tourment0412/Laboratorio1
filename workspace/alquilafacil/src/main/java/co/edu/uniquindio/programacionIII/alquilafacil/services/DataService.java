@@ -4,7 +4,6 @@ package co.edu.uniquindio.programacionIII.alquilafacil.services;
 import java.io.IOException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -418,5 +417,9 @@ public class DataService {
 				"Ha pasado un error inesperado con la persistencia", e);
 		LOGGER.severe(exception.getMessage());
 		return exception;
+	}
+
+	public void load() {
+		UtilsJPA.getEntityManager().close();
 	}
 }

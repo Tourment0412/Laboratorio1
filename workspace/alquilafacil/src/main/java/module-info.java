@@ -4,6 +4,7 @@ open module co.uniquindio.programacionIII.alquilafacil {
 	requires javafx.controls;
 	requires lombok;
 	requires java.sql;
+	requires org.hibernate.orm.core;
 
 	requires transitive javafx.graphics;
 	requires transitive java.persistence;
