@@ -19,10 +19,10 @@ public class App extends Application {
 		stage.setTitle("Alquila Facil");
 		stage.getIcons().add(new Image("/co/edu/uniquindio/programacionIII/alquilafacil/sources/logo.png"));
 		stage.show();
-		new Thread(() -> DataService.getInstance().load()).start();
 	}
 
 	public static void main(String[] args) {
+		new Thread(() -> DataService.getInstance().load()).start();
 		launch();
 	}
 }
