@@ -1,12 +1,17 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
 import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class MostrarFuncionalidadesController {
+public class MostrarFuncionalidadesController implements Initializable{
 
     @FXML
     private Button btnListarAlquilados;
@@ -47,5 +52,16 @@ public class MostrarFuncionalidadesController {
     private void listarAlquilados() {
     	MainViewController.getInstance().cambiarVista(Vista.FUNCTEXT2);
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Propiedades.getInstance().addListener(bundle->{
+			btnListarEcoCos.setText(bundle.getString("MostarFuncionalidades.btnListarEcoCos"));
+			btnListarAlquilados.setText(bundle.getString("MostarFuncionalidades.btnListarAlquilados"));
+			btnTotalGanado.setText(bundle.getString("MostarFuncionalidades.btnTotalGanado"));
+			btnMarcaMasAlq.setText(bundle.getString("MostarFuncionalidades.btnMarcaMasAlq"));
+		});
+		
+	}
 
 }
