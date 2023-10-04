@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1082.0" prefWidth="733.0" stylesheets="@../styles/factura.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacionIII.alquilafacil.controllers.FacturaController">
+   <children>
+      <ImageView fitHeight="66.0" fitWidth="317.0" layoutX="15.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sources/logo-menu-dark.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="262.0" layoutY="13.0" orientation="VERTICAL" prefHeight="66.0" prefWidth="29.0" />
+      <Label fx:id="titleLbl" layoutX="289.0" layoutY="25.0" prefHeight="43.0" prefWidth="213.0" text="Factura de Alquiler">
+         <styleClass>
+            <String fx:value="title" />
+            <String fx:value="bold" />
+         </styleClass>
+      </Label>
+      <HBox layoutX="500.0" layoutY="16.0" spacing="10.0">
+         <children>
+            <Label text="N°: ">
+               <styleClass>
+                  <String fx:value="bold" />
+                  <String fx:value="title" />
+               </styleClass>
+            </Label>
+            <Label fx:id="alquilerIdLbl" styleClass="title" text="Doremifasol" />
+         </children>
+      </HBox>
+      <Label fx:id="rentDayLbl" layoutX="500.0" layoutY="53.0" styleClass="title" text="03/10/2023" />
+      <Separator layoutX="15.0" layoutY="93.0" prefHeight="8.0" prefWidth="700.0" />
+      <HBox alignment="CENTER" layoutX="15.0" layoutY="102.0" prefHeight="198.0" prefWidth="700.0" spacing="30.0" styleClass="tabla-id">
+         <children>
+            <Label fx:id="billedToLbl" alignment="TOP_CENTER" styleClass="bold" text="Factura a:" />
+            <VBox alignment="CENTER">
+               <children>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label fx:id="clientNameLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Nombre:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="clientNameValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="516.0" styleClass="texto" text="Jhon Jairo Velásquez Vásquez " wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="clientIdLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Cedula:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="clientIdValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="516.0" styleClass="texto" text="1234567890" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="32.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="clientNumberLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Telefono:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="clientNumberValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="516.0" styleClass="texto" text="3691234567" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="55.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="clientEmailLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Email:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="clientEmailValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="516.0" styleClass="texto" text="uvapurpletesla@gmail.com" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="77.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="clientCityLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Ciudad:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="clientCityValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="516.0" styleClass="texto" text="Armenia" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="100.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="clientAdressLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Dirección:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="clientAdressValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="516.0" styleClass="texto" text="Calle 13 # 36-90, me falta el aire" wrapText="true" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Separator layoutX="15.0" layoutY="300.0" prefHeight="0.0" prefWidth="700.0" />
+      <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="330.0" prefHeight="100.0" prefWidth="700.0" spacing="20.0" styleClass="tabla-id">
+         <children>
+            <Label fx:id="vehicleInformationLbl" styleClass="bold" text="Información del Vehículo: " />
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label fx:id="vehiclePlateLbl" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Placa:">
+                           <styleClass>
+                              <String fx:value="bold" />
+                              
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="vehiclePlateValueLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="100.0" styleClass="texto" text="ABCDE10000" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <Label fx:id="vehicleNameLbl" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Nombre:">
+                           <styleClass>
+                              <String fx:value="bold" />
+                              
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="vehicleNameValueLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="100.0" styleClass="texto" text="Camaro" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="32.0">
+                     <children>
+                        <Label fx:id="vehicleBrandLbl" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Marca:">
+                           <styleClass>
+                              <String fx:value="bold" />
+                              
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="vehicleBrandValueLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="100.0" styleClass="texto" text="Chevrolet" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="55.0">
+                     <children>
+                        <Label fx:id="vehicleModelLbl" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" text="Modelo:">
+                           <styleClass>
+                              <String fx:value="bold" />
+                              
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="vehicleModelValueLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="100.0" styleClass="texto" text="2021" wrapText="true" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label fx:id="vehicleMilageLbl" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="Kilometraje:">
+                           <styleClass>
+                              <String fx:value="bold" />
+                              
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="vehicleMilageValueLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="130.0" styleClass="texto" text="100000" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <Label fx:id="vehicleSeatsLbl" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="Numero de Sillas:">
+                           <styleClass>
+                              <String fx:value="bold" />
+                              
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="vehicleSeatsValueLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="130.0" styleClass="texto" text="5" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="32.0">
+                     <children>
+                        <Label fx:id="vehicleTransmissionLbl" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="Transmision:">
+                           <styleClass>
+                              <String fx:value="bold" />
+                              
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="vehicleTransmissionValueLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="130.0" styleClass="texto" text="Manual" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="55.0">
+                     <children>
+                        <Label fx:id="vehicleCreationLbl" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0" text="Fecha de Creacion:">
+                           <styleClass>
+                              <String fx:value="bold" />
+                              
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="vehicleCreationValueLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="130.0" styleClass="texto" text="03/10/2023" wrapText="true" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Separator layoutX="15.0" layoutY="456.0" prefHeight="0.0" prefWidth="700.0" />
+      <Separator layoutX="15.0" layoutY="820.0" prefHeight="0.0" prefWidth="700.0" />
+      <HBox alignment="CENTER" layoutX="15.0" layoutY="475.0" prefWidth="700.0">
+         <children>
+            <ImageView fx:id="vehicleImg" fitHeight="300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../sources/Chevrolet-Onix.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="15.0" layoutY="783.0" prefHeight="30.0" prefWidth="700.0" spacing="3.0">
+         <children>
+            <Label styleClass="title" text="*" />
+            <Label fx:id="referenceImgLbl" layoutX="10.0" layoutY="10.0" styleClass="title" text="imagen de referencia" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="836.0" prefWidth="700.0" spacing="30.0" styleClass="tabla-id">
+         <children>
+            <Label fx:id="rentInformationLbl" alignment="TOP_CENTER" styleClass="bold" text="Información del Alquiler:" />
+            <VBox alignment="CENTER">
+               <children>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label fx:id="rentStartLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="170.0" text="Fecha de Alquiler:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="rentStartValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="300.0" styleClass="texto" text="04/10/2023" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="rentEndLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="170.0" text="Fecha de Devolución:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="rentEndValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="300.0" styleClass="texto" text="24/10/2023" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="32.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="rentDaysLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="170.0" text="Cantidad de Días:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="rentDaysValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="300.0" styleClass="texto" text="20" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="55.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="rentPriceDayLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="170.0" text="Valor por Día:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label text="\$" />
+                        <Label fx:id="rentPriceDayValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="300.0" styleClass="texto" text="1000000" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="77.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="rentPriceLbl" alignment="TOP_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="170.0" text="Precio total:" wrapText="true">
+                           <styleClass>
+                              
+                              <String fx:value="bold" />
+                           </styleClass>
+                        </Label>
+                        <Label text="\$" />
+                        <Label fx:id="rentPriceValueLbl" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="300.0" styleClass="texto" text="20000000" wrapText="true" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Separator layoutX="15.0" layoutY="960.0" prefHeight="0.0" prefWidth="700.0" />
+      <ImageView fitHeight="66.0" fitWidth="317.0" layoutX="107.0" layoutY="990.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sources/logo-menu-dark.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="90.0" fitWidth="130.0" layoutX="14.0" layoutY="978.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sources/qr.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

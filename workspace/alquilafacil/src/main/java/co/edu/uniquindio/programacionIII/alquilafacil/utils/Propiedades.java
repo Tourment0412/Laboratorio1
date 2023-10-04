@@ -36,4 +36,8 @@ public class Propiedades {
 			instance = new Propiedades();
 		return instance;
 	}
+
+	public void setProperties(Consumer<ResourceBundle> listener) {
+		listener.accept(bundleProperty.getValue());
+	}
 }
