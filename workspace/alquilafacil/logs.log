@@ -194,3 +194,25 @@ oct 02, 2023 11:53:09 A. M. co.edu.uniquindio.programacionIII.alquilafacil.serv
 INFO: Agregando alquiler...
 oct 02, 2023 11:53:13 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.CommunicationService agregarAlquiler
 INFO: El alquiler Fue agregado satisfactoriamente
+oct 03, 2023 9:22:15 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1092851416'...
+oct 03, 2023 9:25:35 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1092851416'...
+oct 03, 2023 9:25:46 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
+INFO: El cliente fue agregado satisfactoriamente
+oct 03, 2023 9:29:12 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1092851416'...
+oct 03, 2023 9:29:13 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService lanzarDefaultCreacionObjetoException
+WARNING: El cliente con identificacion "1092851416" ya se encuentra registrado
+oct 03, 2023 9:29:27 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1092851417'...
+oct 03, 2023 9:29:28 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
+INFO: El cliente fue agregado satisfactoriamente
+oct 03, 2023 9:33:37 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
+INFO: Intentando agregar un cliente con cedula '1092851417'...
+oct 03, 2023 9:33:40 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService lanzarDefaultCreacionObjetoException
+WARNING: El cliente con identificacion "1092851417" ya se encuentra registrado
+oct 03, 2023 9:39:51 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
+INFO: Intentando agregar un cliente con cedula 'asda'...
+oct 03, 2023 9:39:55 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarCliente
+INFO: El cliente fue agregado satisfactoriamente
