@@ -116,7 +116,7 @@ public class ModelFactoryController {
 		return DataService.getInstance().listarClientes();
 	}
 
-	public void agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
+	public Alquiler agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
 			LocalDate fechaRegreso) throws VehiculoNoDisponibleException, ObjetoYaExisteException,
 			PersiscenciaDesconocidaException, ObjetoNoEncontradoException, CampoInvalidoException {
 		StringBuilder sb = new StringBuilder();
@@ -126,7 +126,7 @@ public class ModelFactoryController {
 			sb.append("Ninguna fecha puede ser null");
 			sb.append('\n');
 		}
-		if (fechaAlquiler.isBefore(fechaRegreso)) {
+		if (fechaRegreso.isBefore(fechaAlquiler)) {
 			sb.append("El rango de fechas es inválido");
 			sb.append('\n');
 		}
@@ -135,7 +135,7 @@ public class ModelFactoryController {
 			sb.append('\n');
 		}
 		lanzarCampoInvalido(sb);
-		DataService.getInstance().agregarAlquiler(cedulaCliente, placaVehiculo, fechaAlquiler, fechaRegreso);
+		return DataService.getInstance().agregarAlquiler(cedulaCliente, placaVehiculo, fechaAlquiler, fechaRegreso);
 	}
 
 	private void lanzarCampoInvalido(StringBuilder sb) throws CampoInvalidoException {

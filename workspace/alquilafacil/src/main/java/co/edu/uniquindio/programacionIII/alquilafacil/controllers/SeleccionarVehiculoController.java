@@ -3,13 +3,18 @@ package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.AlertUtils;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
 import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -18,71 +23,79 @@ import javafx.scene.control.TextField;
 
 public class SeleccionarVehiculoController implements Initializable {
 
-    @FXML
-    private Button btnSiguiente;
+	private static SeleccionarVehiculoController instance;
 
-    @FXML
-    private Button btnVolver;
+	public static SeleccionarVehiculoController getInstance() {
+		return instance;
+	}
 
-    @FXML
-    private TableColumn<Vehiculo, Integer> colKilometraje;
-
-    @FXML
-    private TableColumn<Vehiculo, String> colMarca;
-
-    @FXML
-    private TableColumn<Vehiculo, Integer> colModelo;
-
-    @FXML
-    private TableColumn<Vehiculo, String> colNombre;
-
-    @FXML
-    private TableColumn<Vehiculo, String> colPlaca;
-
-    @FXML
-    private TableColumn<Vehiculo, Double> colPrecioDia;
-
-    @FXML
-    private TableColumn<Vehiculo, Integer> colSillas;
-
-    @FXML
-    private TableColumn<Vehiculo, String> colTransmision;
-
-    @FXML
-    private Label lblPlaca;
-
-    @FXML
-    private Label lblTitle;
-
-    @FXML
-    private TableView<?> tblVehiculos;
-
-    @FXML
-    private TextField txtPlaca;
-
-    @FXML
-    void siguienteEvent(ActionEvent event) {
-    	siguienteAction();
-    }
-
-    private void siguienteAction() {
-    	MainViewController.getInstance().cambiarVista(Vista.RENT_FIN);
-		
+	public SeleccionarVehiculoController() {
+		instance = this;
 	}
 
 	@FXML
-    void volverEvent(ActionEvent event) {
-		volverAc1tion();
-    }
+	private Button btnSiguiente;
 
-	private void volverAc1tion() {
-		MainViewController.getInstance().cambiarVista(Vista.RENT_INI);
-		
-	}
+	@FXML
+	private Button btnVolver;
+
+	@FXML
+	private TableColumn<Vehiculo, String> colKilometraje;
+
+	@FXML
+	private TableColumn<Vehiculo, String> colMarca;
+
+	@FXML
+	private TableColumn<Vehiculo, String> colModelo;
+
+	@FXML
+	private TableColumn<Vehiculo, String> colNombre;
+
+	@FXML
+	private TableColumn<Vehiculo, String> colPlaca;
+
+	@FXML
+	private TableColumn<Vehiculo, String> colPrecioDia;
+
+	@FXML
+	private TableColumn<Vehiculo, String> colSillas;
+
+	@FXML
+	private TableColumn<Vehiculo, String> colTransmision;
+
+	@FXML
+	private Label lblPlaca;
+
+	@FXML
+	private Label lblTitle;
+
+	@FXML
+	private TableView<Vehiculo> tblVehiculos;
+
+	@FXML
+	private TextField txtPlaca;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Propiedades.getInstance().addListener(bundle->{
+		colKilometraje
+				.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getKilometraje().toString()));
+		colMarca.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getMarca()));
+		colModelo.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getModelo().toString()));
+		colNombre.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getNombre()));
+		colPlaca.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getPlaca()));
+		colPrecioDia.setCellValueFactory(
+				cell -> new ReadOnlyStringWrapper(cell.getValue().getPrecioAlquilerDia().toString()));
+		colSillas.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getNumSillas().toString()));
+		colTransmision
+				.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getTransmision().getText()));
+
+		try {
+			tblVehiculos.setItems(
+					FXCollections.observableArrayList(ModelFactoryController.getInstance().listarVehiculos()));
+		} catch (PersiscenciaDesconocidaException e) {
+			AlertUtils.mostrarAlerta("Advertencia", e.getMessage());
+		}
+		Propiedades.getInstance().addListener(bundle -> {
 			lblTitle.setText(bundle.getString("SeleccionarVehiculo.lblTitle"));
 			lblPlaca.setText(bundle.getString("SeleccionarVehiculo.lblPlaca"));
 			colPlaca.setText(bundle.getString("SeleccionarVehiculo.colPlaca"));
@@ -97,8 +110,32 @@ public class SeleccionarVehiculoController implements Initializable {
 			btnVolver.setText(bundle.getString("SeleccionarVehiculo.btnVolver"));
 			tblVehiculos.setPlaceholder(new Label(bundle.getString("TablaSinContenido")));
 		});
-		
 	}
-    
+
+	@FXML
+	void siguienteEvent(ActionEvent event) {
+		siguienteAction();
+	}
+
+	@FXML
+	void volverEvent(ActionEvent event) {
+		volverAction();
+	}
+
+	private void siguienteAction() {
+		if (tblVehiculos.getSelectionModel().getSelectedItem() == null) {
+			AlertUtils.mostrarAlerta("Advertencia", "Recuerda seleccionar un vehiculo", AlertType.WARNING);
+			return;
+		}
+		MainViewController.getInstance().cambiarVista(Vista.RENT_FIN);
+	}
+
+	private void volverAction() {
+		MainViewController.getInstance().cambiarVista(Vista.RENT_INI);
+	}
+
+	public Vehiculo getVehiculo() {
+		return tblVehiculos.getSelectionModel().getSelectedItem();
+	}
 
 }

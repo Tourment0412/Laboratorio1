@@ -256,7 +256,7 @@ public class DataService {
 		return alquileres;
 	}
 
-	public void agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
+	public Alquiler agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
 			LocalDate fechaRegreso) throws VehiculoNoDisponibleException, ObjetoYaExisteException,
 			PersiscenciaDesconocidaException, ObjetoNoEncontradoException {
 		try {
@@ -282,6 +282,7 @@ public class DataService {
 			agregarAlquilerThrow(alquiler, em);
 			em.close();
 			LOGGER.info("El alquiler Fue agregado satisfactoriamente");
+			return alquiler;
 		} catch (ObjetoYaExisteException | VehiculoNoDisponibleException | ObjetoNoEncontradoException e) {
 			LOGGER.warning(e.getMessage());
 			throw e;

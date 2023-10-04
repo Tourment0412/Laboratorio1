@@ -41,14 +41,14 @@
             <Label fx:id="lblNombreV" styleClass="texto" text="Label" GridPane.rowIndex="3" />
             <Label fx:id="lblNombreVehiculo" styleClass="texto" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label fx:id="lblModelo" styleClass="texto" text="Label" GridPane.rowIndex="4" />
-            <Label fx:id="lblModeloVehuculo" styleClass="texto" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="lblModeloVehiculo" styleClass="texto" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="lblFechaIni" styleClass="texto" text="Label" GridPane.rowIndex="6" />
-            <DatePicker maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <DatePicker fx:id="fechaInicial" maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin></DatePicker>
             <Label fx:id="lblFechaFin" styleClass="texto" text="Label" GridPane.rowIndex="7" />
-            <DatePicker maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <DatePicker fx:id="fechaFinal" maxWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin></DatePicker>

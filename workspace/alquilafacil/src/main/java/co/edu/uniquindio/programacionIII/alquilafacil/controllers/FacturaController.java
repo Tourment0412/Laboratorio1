@@ -190,7 +190,7 @@ public class FacturaController implements Initializable {
 		});
 	}
 
-	public void setRentInfo(Alquiler alquiler) {
+	public void loadRentInfo(Alquiler alquiler) {
 		// cliente
 		clientNameValueLbl.setText(alquiler.getCliente().getNombre());
 		clientIdValueLbl.setText(alquiler.getCliente().getCedula());

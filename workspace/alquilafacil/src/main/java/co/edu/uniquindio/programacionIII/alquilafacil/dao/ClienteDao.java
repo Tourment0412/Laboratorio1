@@ -38,7 +38,7 @@ public class ClienteDao {
 	}
 
 	public List<Cliente> getClientes() {
-		return em.createQuery("SELECT * FROM clientes", Cliente.class).getResultList();
+		return em.createQuery("SELECT c FROM Cliente c", Cliente.class).getResultList();
 	}
 
 	public void actualizarCliente(Cliente cliente) {
