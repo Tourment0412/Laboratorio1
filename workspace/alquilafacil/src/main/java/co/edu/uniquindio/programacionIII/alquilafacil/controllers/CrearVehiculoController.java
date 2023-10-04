@@ -1,7 +1,12 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -9,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 
-public class CrearVehiculoController {
+public class CrearVehiculoController implements Initializable {
 
     @FXML
     private Button btnCrearVehiculo;
@@ -57,13 +62,13 @@ public class CrearVehiculoController {
     private Label lblTransmision;
 
     @FXML
-    private Spinner<?> spnKilometraje;
+    private Spinner<Integer> spnKilometraje;
 
     @FXML
-    private Spinner<?> spnModelo;
+    private Spinner<Integer> spnModelo;
 
     @FXML
-    private Spinner<?> spnSilas;
+    private Spinner<Integer> spnSilas;
 
     @FXML
     private TextField tctPrecioDia;
@@ -86,5 +91,13 @@ public class CrearVehiculoController {
     void seleccionarImagenEvent(ActionEvent event) {
 
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		Propiedades.getInstance().addListener(bundle->{
+			
+		});
+		
+	}
 
 }
