@@ -23,7 +23,7 @@ public class CrearVehiculoController implements Initializable {
     private Button btnImagen;
 
     @FXML
-    private ComboBox<?> cmbTransmision;
+    private ComboBox<String> cmbTransmision;
 
     @FXML
     private DatePicker dateFecha;
@@ -95,7 +95,18 @@ public class CrearVehiculoController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Propiedades.getInstance().addListener(bundle->{
-			
+			lblTitle.setText(bundle.getString("RegistroVehiculo.lblTitle"));
+			lblPlaca.setText(bundle.getString("RegistroVehiculo.lblPlaca"));
+			lblNombre.setText(bundle.getString("RegistroVehiculo.lblNombre"));
+			lblMarca.setText(bundle.getString("RegistroVehiculo.lblMarca"));
+			lblModelo.setText(bundle.getString("RegistroVehiculo.lblModelo"));
+			lblImagen.setText(bundle.getString("RegistroVehiculo.lblImagen"));
+			lblTransmision.setText(bundle.getString("RegistroVehiculo.lblTransmision"));
+			lblKilometraje.setText(bundle.getString("RegistroVehiculo.lblKilometraje"));
+			lblPrecioDia.setText(bundle.getString("RegistroVehiculo.lblPrecioDia"));
+			lblSillas.setText(bundle.getString("RegistroVehiculo.lblSillas"));
+			btnCrearVehiculo.setText(bundle.getString("RegistroVehiculo.btnCrearVehiculo"));
+			btnImagen.setText(bundle.getString("RegistroVehiculo.btnImagen"));
 		});
 		
 	}
