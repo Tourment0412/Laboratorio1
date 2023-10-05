@@ -120,7 +120,7 @@ public class CrearVehiculoController implements Initializable {
 
 	private void crearVehiculoAction() {
 		try {
-			ModelFactoryController.getInstance().agregarVehiculo(lblPlaca.getText(), txtNombre.getText(),
+			ModelFactoryController.getInstance().agregarVehiculo(txtPlaca.getText(), txtNombre.getText(),
 					txtMarca.getText(), spnModelo.getText(), imagen, cmbTransmision.getValue(),
 					spnKilometraje.getText(), txtPrecioDia.getText(), spnSilas.getText());
 			Utils.mostrarAlerta("Informacion", "El vehiculo ha sido agregado con éxito");
