@@ -2,12 +2,15 @@
 
 Software para una empresa de alquiler de vehículos donde se gestiona la información de sus clientes, vehículos y alquileres. Se pueden realizar consultas de los clientes, vehículos y alquileres registrados, así como también se pueden realizar alquileres.
 
-# Ejecucion
+## Ejecucion
 
 Para su ejecución debe usar Maven y su plugin de JavaFX:
 ```mvn clean javafx:run```
 
-# Tecnologías y Dependencias
+
+# AlquilaFacil v0
+
+## Tecnologías y Dependencias
 - Hibernate Core 5.6.14
 - Java 17
 - javax.persistence API 2.2
@@ -19,10 +22,10 @@ Para su ejecución debe usar Maven y su plugin de JavaFX:
 - Prokect Lombok
 - TestFX Core 4.0.17
 
-# Base de Datos
+## Base de Datos
 AlquilaFácil se conecta a una base de datos en MySQL por medio de javax.persistence y obtiene y envía datos desde allí.
 
-# Ejecución
+## Ejecución
 Para su ejecución debe usar Maven y su plugin de JavaFX:
 
 ```mvn clean javafx:run```
