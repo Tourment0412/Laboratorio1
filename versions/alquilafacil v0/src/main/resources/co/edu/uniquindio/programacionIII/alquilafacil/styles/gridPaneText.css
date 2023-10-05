@@ -1,0 +1,4 @@
+.grid-pane .label{
+	-fx-max-width: 500;
+	-fx-alignment: center;
+}

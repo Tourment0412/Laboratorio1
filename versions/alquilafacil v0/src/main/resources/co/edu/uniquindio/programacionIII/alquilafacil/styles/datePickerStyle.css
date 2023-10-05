@@ -1,0 +1,44 @@
+.date-picker .arrow-button, .date-picker  .button {
+	-fx-background-color: gray;
+	-fx-background-radius: 0.0;
+}
+.date-picker .arrow-button:hover, .date-picker  .button:hover {
+	-fx-background-color: #303030;
+}
+.date-picker .arrow-button .arrow {
+	-fx-background-color: #000000;
+}
+.date-picker .cell {
+	-fx-background-color: white;
+}
+.date-picker .cell:hover {
+	-fx-background-color: #303030;
+	-fx-text-fill: white;
+}
+.date-picker .cell:focused {
+	-fx-background-color: gray;
+}
+.date-picker .selected {
+	-fx-background-color: #303030;
+	-fx-text-fill: white;
+}
+.date-picker .selected:focused {
+	-fx-background-color: gray;
+	-fx-text-fill: white;
+}
+.date-picker-popup  {
+	-fx-border-color: transparent;
+}
+.date-picker-popup .month-year-pane {
+	-fx-background-color: white;
+}
+.date-picker-popup .month-year-pane .label {
+	-fx-text-fill:#000000;
+}
+.date-picker-popup .week-number-cell {
+	-fx-text-fill: white;
+}
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+	-fx-background-color: #000000;
+}

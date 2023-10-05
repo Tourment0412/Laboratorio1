@@ -1,0 +1,70 @@
+.mainpane {
+	-fx-background-color: black;
+}
+
+.label {
+	-fx-text-fill: black;
+	-fx-background-color: white;
+	-fx-border-color: #303030;
+	-fx-border-width: 0 0 0.2em 0;
+	-fx-font-weight: bold;
+}
+
+.table-view {
+	-fx-background-color: transparent;
+	-fx-border-color: #303030;
+	-fx-border-width: 0.2em 0;
+}
+
+.table-row-cell:selected .cell {
+	-fx-background-color: white;
+	-fx-text-fill:#303030;
+}
+
+.columna-tabla {
+	-fx-border-color: white;
+	-fx-background-color: black;
+}
+
+.columna-tabla .arrow {
+	-fx-background-color: white;
+
+}
+
+.table-view .cell {
+	-fx-text-fill: #303030;
+}
+
+.table-view:focused {
+	-fx-border-width: 3.0;
+}
+
+.table-view>.filler {
+	-fx-background-color: transparent;
+}
+
+#btn-tabla {
+	-fx-background-color: #303030;
+}
+
+#btn-tabla:hover {
+	-fx-background-color: #303030;
+}
+
+#btn-tabla:pressed {
+	-fx-background-color: #404040;
+}
+
+.cell {
+	-fx-background-color: white;
+}
+
+.table-row-cell:odd .cell {
+	-fx-background-color: white;
+}
+
+.table-row-cell:selected .cell {
+	-fx-background-color: #303030;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+}

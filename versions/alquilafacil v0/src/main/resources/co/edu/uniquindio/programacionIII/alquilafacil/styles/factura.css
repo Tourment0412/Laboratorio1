@@ -1,0 +1,21 @@
+#root {
+	-fx-background-color: white;
+}
+
+.separator .line {
+	-fx-border-color: black;
+	-fx-border-width: 0.5;
+}
+.title {
+	-fx-font-size: 20.0;
+}
+.bold {
+	-fx-font-weight: bold;
+}
+.tabla-id .label {
+	-fx-font-size: 15.0;
+}
+.grid-pane .label {
+	-fx-max-width: 5000.0;
+	-fx-alignment: center;
+}
