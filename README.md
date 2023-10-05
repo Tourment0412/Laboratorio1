@@ -5,6 +5,7 @@ Software para una empresa de alquiler de vehículos donde se gestiona la informa
 # Ejecucion
 
 Para su ejecución debe usar Maven y su plugin de JavaFX:
+
 ```mvn clean javafx:run```
 
 # Tecnologías y Dependencias
@@ -21,8 +22,3 @@ Para su ejecución debe usar Maven y su plugin de JavaFX:
 
 # Base de Datos
 AlquilaFácil se conecta a una base de datos en MySQL por medio de javax.persistence y obtiene y envía datos desde allí.
-
-# Ejecución
-Para su ejecución debe usar Maven y su plugin de JavaFX:
-
-```mvn clean javafx:run```
