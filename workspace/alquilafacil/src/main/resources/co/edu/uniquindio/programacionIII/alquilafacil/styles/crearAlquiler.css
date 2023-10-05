@@ -1,0 +1,14 @@
+.tab-header-area .tab-header-background {
+  -fx-background-color: transparent;
+}
+
+.tab {
+	-fx-border-width: 0.0;
+	-fx-font-size: 0.1;
+}
+
+
+.tab-pane {
+	-fx-tab-min-height: 0.0;	
+	-fx-tab-max-height: 0.0;	
+}

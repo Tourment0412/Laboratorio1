@@ -155,7 +155,7 @@ public class MenuController implements Initializable, Consumer<ResourceBundle> {
 	}
 
 	private void rentVehicleAction() {
-		MainViewController.getInstance().cambiarVista(Vista.RENT_INI);
+		MainViewController.getInstance().cambiarVista(Vista.ADD_RENT);
 	}
 
 	private void changeLanguageSpanishAction() {

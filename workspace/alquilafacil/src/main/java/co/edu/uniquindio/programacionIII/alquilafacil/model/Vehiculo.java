@@ -126,4 +126,7 @@ public class Vehiculo implements Serializable {
 		listaAlquileres.add(alquiler);
 	}
 
+	public boolean placaEmpiezaPor(String filtro) {
+		return placa.startsWith(filtro);
+	}
 }

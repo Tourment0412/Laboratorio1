@@ -75,4 +75,8 @@ public class Cliente implements Serializable {
 		listaAlquileres.add(alquiler);
 	}
 
+	public boolean cedulaEmpiezaPor(String filtro) {
+		return cedula.startsWith(filtro);
+	}
+
 }

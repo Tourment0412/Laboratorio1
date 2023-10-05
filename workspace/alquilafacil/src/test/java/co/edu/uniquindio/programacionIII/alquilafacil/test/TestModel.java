@@ -15,6 +15,7 @@ import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDispo
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
+import co.edu.uniquindio.programacionIII.alquilafacil.services.CreacionAlquilerHandler;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.DataService;
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -48,8 +49,10 @@ public class TestModel extends Application {
 	@Test
 	public void crearAlquiler() throws ObjetoYaExisteException, PersiscenciaDesconocidaException,
 			VehiculoNoDisponibleException, NullPointerException, ObjetoNoEncontradoException, CampoInvalidoException {
-		ModelFactoryController.getInstance().agregarAlquiler("1059386396", "JFX020", LocalDate.now().plusDays(20),
-				LocalDate.now().plusMonths(2));
+		CreacionAlquilerHandler.getInstance().selectVehiculo("JFX020");
+		CreacionAlquilerHandler.getInstance().selectCliente("1059386396");
+		CreacionAlquilerHandler.getInstance().selectDates(LocalDate.now().plusDays(20), LocalDate.now().plusMonths(2));
+		ModelFactoryController.getInstance().agregarAlquiler();
 	}
 
 	@Test

@@ -4,18 +4,21 @@ package co.edu.uniquindio.programacionIII.alquilafacil.services;
 import java.io.IOException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.dao.AlquilerDao;
 import co.edu.uniquindio.programacionIII.alquilafacil.dao.ClienteDao;
 import co.edu.uniquindio.programacionIII.alquilafacil.dao.VehiculoDao;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
@@ -92,12 +95,14 @@ public class DataService {
 	}
 
 	public List<Vehiculo> listarVehiculosRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal)
-			throws PersiscenciaDesconocidaException {
+			throws PersiscenciaDesconocidaException, ListaVaciaException {
 		try {
 
 			LOGGER.info("Listando vehiculos en rango de fechas");
 			List<Vehiculo> vehiculosRangoFechas = listarVehiculosRangoFechasThrow(fechaInicial, fechaFinal);
 			LOGGER.info("Se ha podido obtener la lista de vehículos");
+			if (vehiculosRangoFechas.isEmpty())
+				throw new ListaVaciaException("No hay vehiculos en ese rango de fechas, elige otro rango");
 			return vehiculosRangoFechas;
 		} catch (PersiscenciaDesconocidaException e) {
 			throw e;
@@ -106,13 +111,15 @@ public class DataService {
 	}
 
 	private List<Vehiculo> listarVehiculosRangoFechasThrow(LocalDate fechaInicial, LocalDate fechaFinal)
-			throws PersiscenciaDesconocidaException {
+			throws PersiscenciaDesconocidaException, ListaVaciaException {
 
 		LOGGER.info("Intentando listar vehículos entre: " + fechaFinal + " y " + fechaFinal);
 		EntityManager em = UtilsJPA.getEntityManager();
 		List<Alquiler> alquileres = listarAlquileres(em);
-		List<Vehiculo> result = listarVehiculos(em).stream().filter(v -> v.fueCreadoAntesDe(fechaFinal)
-				&& vehiculoEstaDisplonibleRangoFechas(alquileres, v, fechaInicial, fechaFinal)).toList();
+		ArrayList<Vehiculo> result = listarVehiculos(em).stream()
+				.filter(v -> v.fueCreadoAntesDe(fechaFinal)
+						&& vehiculoEstaDisplonibleRangoFechas(alquileres, v, fechaInicial, fechaFinal))
+				.collect(Collectors.toCollection(ArrayList::new));
 		em.close();
 		result.sort((o1, o2) -> o1.getPrecioAlquilerDia().compareTo(o2.getPrecioAlquilerDia()));
 		return result;
@@ -208,16 +215,21 @@ public class DataService {
 		return clientes;
 	}
 
-	public List<Vehiculo> listarVehiculos() throws PersiscenciaDesconocidaException {
+	public List<Vehiculo> listarVehiculos() throws PersiscenciaDesconocidaException, ListaVaciaException {
 		return listarVehiculos(null);
 	}
 
-	private List<Vehiculo> listarVehiculos(EntityManager em) throws PersiscenciaDesconocidaException {
+	private List<Vehiculo> listarVehiculos(EntityManager em)
+			throws PersiscenciaDesconocidaException, ListaVaciaException {
 		try {
 			LOGGER.info("Intentando listar vehiculos...");
 			List<Vehiculo> vehiculos = listarVehiculosThrow(em);
 			LOGGER.info("Los vehiculos han sido listados con exito");
+			if (vehiculos.isEmpty())
+				throw new ListaVaciaException("No se encontraron vehículos");
 			return vehiculos;
+		} catch (ListaVaciaException e) {
+			throw e;
 		} catch (Exception e) {
 			throw obtenerException(e);
 		}

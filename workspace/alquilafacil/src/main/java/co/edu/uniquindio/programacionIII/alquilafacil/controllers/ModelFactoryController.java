@@ -5,6 +5,7 @@ import java.util.List;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ImagenNoObtenidaException;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
@@ -13,6 +14,7 @@ import co.edu.uniquindio.programacionIII.alquilafacil.model.Alquiler;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
+import co.edu.uniquindio.programacionIII.alquilafacil.services.CreacionAlquilerHandler;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.DataService;
 import javafx.scene.image.Image;
 
@@ -35,7 +37,7 @@ public class ModelFactoryController {
 	}
 
 	public List<Vehiculo> listarVehiculosRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal)
-			throws PersiscenciaDesconocidaException {
+			throws PersiscenciaDesconocidaException, ListaVaciaException {
 		return DataService.getInstance().listarVehiculosRangoFechas(fechaInicial, fechaFinal);
 	}
 
@@ -157,7 +159,7 @@ public class ModelFactoryController {
 		return DataService.getInstance().listarAlquileres();
 	}
 
-	public List<Vehiculo> listarVehiculos() throws PersiscenciaDesconocidaException {
+	public List<Vehiculo> listarVehiculos() throws PersiscenciaDesconocidaException, ListaVaciaException {
 		return DataService.getInstance().listarVehiculos();
 	}
 
@@ -165,26 +167,13 @@ public class ModelFactoryController {
 		return DataService.getInstance().listarClientes();
 	}
 
-	public Alquiler agregarAlquiler(String cedulaCliente, String placaVehiculo, LocalDate fechaAlquiler,
-			LocalDate fechaRegreso) throws VehiculoNoDisponibleException, ObjetoYaExisteException,
+	public Alquiler agregarAlquiler() throws VehiculoNoDisponibleException, ObjetoYaExisteException,
 			PersiscenciaDesconocidaException, ObjetoNoEncontradoException, CampoInvalidoException {
-		StringBuilder sb = new StringBuilder();
-		requerirCampoString(sb, cedulaCliente, "La cedula no puede estar vacia");
-		requerirCampoString(sb, placaVehiculo, "La placa no puede estar vacia");
-		if (fechaRegreso == null || fechaAlquiler == null) {
-			sb.append("Ninguna fecha puede ser null");
-			sb.append('\n');
-		}
-		if (fechaRegreso.isBefore(fechaAlquiler)) {
-			sb.append("El rango de fechas es inválido");
-			sb.append('\n');
-		}
-		if (fechaAlquiler.isEqual(fechaRegreso)) {
-			sb.append("Las fechas no pueden ser las mismas");
-			sb.append('\n');
-		}
-		lanzarCampoInvalido(sb);
-		return DataService.getInstance().agregarAlquiler(cedulaCliente, placaVehiculo, fechaAlquiler, fechaRegreso);
+		CreacionAlquilerHandler creacionInstance = CreacionAlquilerHandler.getInstance();
+		creacionInstance.validarCampos();
+
+		return DataService.getInstance().agregarAlquiler(creacionInstance.getCedula(), creacionInstance.getPlaca(),
+				creacionInstance.getFechaAlquiler(), creacionInstance.getFechaRegreso());
 	}
 
 	private void lanzarCampoInvalido(StringBuilder sb) throws CampoInvalidoException {
