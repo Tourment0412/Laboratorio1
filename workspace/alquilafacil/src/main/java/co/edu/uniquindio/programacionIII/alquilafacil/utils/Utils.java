@@ -3,6 +3,7 @@ package co.edu.uniquindio.programacionIII.alquilafacil.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.security.SecureRandom;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ArchivoNoEncontradoException;
 import javafx.scene.control.Alert;
@@ -47,6 +48,20 @@ public class Utils {
 		alert.setHeaderText(title);
 		alert.setTitle(title);
 		alert.show();
+	}
+
+	public String crearCodigoRandomAquiler() {
+		SecureRandom secureRandom = new SecureRandom();
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < 4; i++) {
+			final int num = secureRandom.nextInt('Z' - 'A' + 1);
+			builder.append(String.valueOf((char) ('A' + num - 10)));
+		}
+		for (int i = 0; i < 4; i++) {
+			final int num = secureRandom.nextInt(10);
+			builder.append(num);
+		}
+		return builder.toString();
 	}
 
 }

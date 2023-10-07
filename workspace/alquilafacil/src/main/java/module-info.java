@@ -8,7 +8,6 @@ open module co.uniquindio.programacionIII.alquilafacil {
 	requires org.apache.pdfbox;
 
 	requires transitive javafx.graphics;
-	requires transitive java.persistence;
 
 	exports co.edu.uniquindio.programacionIII.alquilafacil.aplication;
 	exports co.edu.uniquindio.programacionIII.alquilafacil.services;

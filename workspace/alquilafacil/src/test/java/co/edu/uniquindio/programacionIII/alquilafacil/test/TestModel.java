@@ -34,7 +34,7 @@ public class TestModel extends Application {
 	@Test
 	public void obtenerCliente()
 			throws NullPointerException, ObjetoNoEncontradoException, PersiscenciaDesconocidaException {
-		DataService.getInstance().obtenerCliente("golahoasda");
+		ModelFactoryController.getInstance().obtenerCliente("golahoasda");
 	}
 
 	@Test

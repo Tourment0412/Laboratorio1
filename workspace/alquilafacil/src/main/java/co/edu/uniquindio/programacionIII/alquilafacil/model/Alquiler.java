@@ -3,42 +3,32 @@ package co.edu.uniquindio.programacionIII.alquilafacil.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import java.util.Comparator;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.Setter;
 
-@Entity
-@Table(name = "alquileres")
 @NoArgsConstructor
-public class Alquiler implements Serializable {
+public class Alquiler implements Serializable, Comparator<Alquiler> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	@EqualsAndHashCode.Include
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Getter
-	private Long id;
+	@Setter
+	private String id;
 
 	@Getter
-	@ManyToOne
 	private Cliente cliente;
 
 	@Getter
-	@ManyToOne
 	private Vehiculo vehiculo;
 
 	@Getter
@@ -84,5 +74,10 @@ public class Alquiler implements Serializable {
 
 	public boolean estaEnRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
 		return !fechaFinal.isBefore(this.fechaAlquiler) && !this.fechaRegreso.isBefore(fechaInicial);
+	}
+
+	@Override
+	public int compare(Alquiler o1, Alquiler o2) {
+		return o1.getId().compareTo(o2.getId());
 	}
 }

@@ -2,7 +2,6 @@ package co.edu.uniquindio.programacionIII.alquilafacil.aplication;
 
 import java.io.IOException;
 
-import co.edu.uniquindio.programacionIII.alquilafacil.services.DataService;
 import co.edu.uniquindio.programacionIII.alquilafacil.viewcontrollers.MainViewController;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -22,7 +21,6 @@ public class App extends Application {
 	}
 
 	public static void main(String[] args) {
-		new Thread(() -> DataService.getInstance().load()).start();
 		launch();
 	}
 }

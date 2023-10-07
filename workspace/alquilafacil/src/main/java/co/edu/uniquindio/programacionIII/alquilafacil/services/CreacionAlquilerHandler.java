@@ -5,14 +5,20 @@ import java.time.LocalDate;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
+import lombok.Getter;
 import lombok.ToString;
 
+@Getter
 @ToString
 public class CreacionAlquilerHandler {
+
 	private LocalDate fechaAlquiler;
+
 	private LocalDate fechaRegreso;
-	private String cedula;
-	private String placa;
+
+	private Cliente cliente;
+
+	private Vehiculo vehiculo;
 
 	private CreacionAlquilerHandler() {
 	}
@@ -21,28 +27,14 @@ public class CreacionAlquilerHandler {
 		StringBuilder sb = new StringBuilder("Recuerda seleccionar el vehículo ");
 		if (vehiculo == null)
 			lanzarExceptionCampoInvalido(sb);
-		this.placa = vehiculo.getPlaca();
-	}
-
-	public void selectVehiculo(String placa) throws CampoInvalidoException {
-		StringBuilder sb = new StringBuilder("Recuerda seleccionar el vehículo ");
-		if (placa == null || placa.isBlank())
-			lanzarExceptionCampoInvalido(sb);
-		this.placa = placa;
+		this.vehiculo = vehiculo;
 	}
 
 	public void selectCliente(Cliente cliente) throws CampoInvalidoException {
 		StringBuilder sb = new StringBuilder("Recuerda seleccionar el cliente ");
 		if (cliente == null)
 			lanzarExceptionCampoInvalido(sb);
-		this.cedula = cliente.getCedula();
-	}
-
-	public void selectCliente(String cedula) throws CampoInvalidoException {
-		StringBuilder sb = new StringBuilder("Recuerda seleccionar el cliente ");
-		if (cedula == null || cedula.isBlank())
-			lanzarExceptionCampoInvalido(sb);
-		this.cedula = cedula;
+		this.cliente = cliente;
 	}
 
 	public void selectDates(LocalDate fechaAlquiler, LocalDate fechaRegreso) throws CampoInvalidoException {
@@ -67,12 +59,12 @@ public class CreacionAlquilerHandler {
 
 	public void validarCampos() throws CampoInvalidoException {
 		StringBuilder sb = new StringBuilder();
-		if (cedula == null) {
-			sb.append("La cédula del cliente es inválida");
+		if (cliente == null) {
+			sb.append("El cliente es inválido");
 			sb.append('\n');
 		}
-		if (placa == null) {
-			sb.append("La placa del vehículo es inválida");
+		if (vehiculo == null) {
+			sb.append("El vehículo es inválido");
 			sb.append('\n');
 		}
 		if (fechaRegreso == null || fechaAlquiler == null) {
@@ -80,22 +72,6 @@ public class CreacionAlquilerHandler {
 			sb.append('\n');
 		}
 		lanzarExceptionCampoInvalido(sb);
-	}
-
-	public String getCedula() {
-		return cedula;
-	}
-
-	public String getPlaca() {
-		return placa;
-	}
-
-	public LocalDate getFechaRegreso() {
-		return fechaRegreso;
-	}
-
-	public LocalDate getFechaAlquiler() {
-		return fechaAlquiler;
 	}
 
 	private void lanzarExceptionCampoInvalido(StringBuilder sb) throws CampoInvalidoException {

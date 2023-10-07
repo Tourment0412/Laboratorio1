@@ -1,5 +1,6 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -16,7 +17,6 @@ import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.CreacionAlquilerHandler;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.DataService;
-import javafx.scene.image.Image;
 
 public class ModelFactoryController {
 
@@ -66,7 +66,7 @@ public class ModelFactoryController {
 		DataService.getInstance().agregarCliente(cliente);
 	}
 
-	public void agregarVehiculo(String placa, String nombre, String marca, String modeloString, Image image,
+	public void agregarVehiculo(String placa, String nombre, String marca, String modeloString, String rutaImg,
 			String transmisionString, String kilometrajeString, String precioAlquilerDiaString, String numSillasString)
 			throws ObjetoYaExisteException, PersiscenciaDesconocidaException, ImagenNoObtenidaException,
 			CampoInvalidoException {
@@ -74,6 +74,7 @@ public class ModelFactoryController {
 		requerirCampoString(sb, placa, "La placa no puede estar vacia");
 		requerirCampoString(sb, nombre, "El nombre no puede estar vacio");
 		requerirCampoString(sb, marca, "La marca no puede estar vacia");
+		requerirCampoString(sb, rutaImg, "Verifica la imagen del vehiculo");
 
 		Transmision transmision = obtenerTransmisionThrow(sb, transmisionString, "La transmision no puede estar vacia");
 		Double precioAlquilerDia = obtenerDoubleThrow(sb, precioAlquilerDiaString,
@@ -81,14 +82,10 @@ public class ModelFactoryController {
 		Integer modelo = obtenerIntThrow(sb, modeloString, "El modelo es invalido");
 		Integer kilometraje = obtenerIntThrow(sb, modeloString, "El kilometraje es invalido");
 		Integer numSillas = obtenerIntThrow(sb, numSillasString, "El numero de sillas es invalido");
-		if (image == null) {
-			sb.append("Verifica la imagen del vehiculo");
-			sb.append('\n');
-		}
 
 		lanzarCampoInvalido(sb);
 
-		Vehiculo vehiculo = Vehiculo.builder().placa(placa).nombre(nombre).marca(marca).modelo(modelo).image(image)
+		Vehiculo vehiculo = Vehiculo.builder().placa(placa).nombre(nombre).marca(marca).modelo(modelo).rutaImg(rutaImg)
 				.transmision(transmision).kilometraje(kilometraje).precioAlquilerDia(precioAlquilerDia)
 				.numSillas(numSillas).build();
 		DataService.getInstance().agregarVehiculo(vehiculo);
@@ -120,7 +117,7 @@ public class ModelFactoryController {
 		Double precioAlquilerDia = null;
 		try {
 			precioAlquilerDia = Double.parseDouble(precioAlquilerDiaString);
-		} catch (NumberFormatException e) {
+		} catch (Exception e) {
 			sb.append(msg);
 			sb.append('\n');
 			return null;
@@ -142,7 +139,7 @@ public class ModelFactoryController {
 		Integer num = null;
 		try {
 			num = Integer.parseInt(numString);
-		} catch (NumberFormatException e) {
+		} catch (Exception e) {
 			sb.append(msg);
 			sb.append('\n');
 			return null;
@@ -171,9 +168,10 @@ public class ModelFactoryController {
 			PersiscenciaDesconocidaException, ObjetoNoEncontradoException, CampoInvalidoException {
 		CreacionAlquilerHandler creacionInstance = CreacionAlquilerHandler.getInstance();
 		creacionInstance.validarCampos();
-
-		return DataService.getInstance().agregarAlquiler(creacionInstance.getCedula(), creacionInstance.getPlaca(),
-				creacionInstance.getFechaAlquiler(), creacionInstance.getFechaRegreso());
+		Alquiler alquiler = Alquiler.builder().cliente(creacionInstance.getCliente())
+				.vehiculo(creacionInstance.getVehiculo()).fechaAlquiler(creacionInstance.getFechaAlquiler())
+				.fechaRegreso(creacionInstance.getFechaRegreso()).build();
+		return DataService.getInstance().agregarAlquiler(alquiler);
 	}
 
 	private void lanzarCampoInvalido(StringBuilder sb) throws CampoInvalidoException {
