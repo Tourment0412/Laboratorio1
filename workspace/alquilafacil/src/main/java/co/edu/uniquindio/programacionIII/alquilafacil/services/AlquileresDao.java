@@ -6,34 +6,26 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class AlquileresDao {
-	
-	private static  AlquileresDao instance;
-	
-	
-	@Getter
-	private static final String RUTA= "src/main/resources/META-INF/alquileres.dat";
-	
-	
-	
-	
-	
-	
-	
 
-	public static AlquileresDao getInstance () {
-		if(instance==null)
-			instance= new AlquileresDao();
+	private static AlquileresDao instance;
+
+	@Getter
+	private static final String RUTA = "src/main/resources/META-INF/alquileres.dat";
+
+	public static AlquileresDao getInstance() {
+		if (instance == null)
+			instance = new AlquileresDao();
 		return instance;
 	}
-	
 
-	/** Guarda el objeto (pensado en alquileres) deseado en un archivo indicado por medio de serializacion
+	/**
+	 * Guarda el objeto (pensado en alquileres) deseado en un archivo indicado por
+	 * medio de serializacion
 	 * 
 	 * @param objeto
 	 */
@@ -45,11 +37,17 @@ public class AlquileresDao {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+	/**
+	 * Este metodo se encarga de cargar un objeto de la serializacion y darle la
+	 * "forma" deseada
+	 * 
+	 * @return
+	 */
+
 	public Object loadData() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(getRUTA()))) {
-			Object objeto=ois.readObject();
+			Object objeto = ois.readObject();
 			ois.close();
 			return objeto;
 		} catch (ClassNotFoundException | IOException e) {
@@ -57,6 +55,5 @@ public class AlquileresDao {
 		}
 		return null;
 	}
-	
 
 }
