@@ -1,11 +1,15 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.services;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Formatter;
-import java.util.List;
 import java.util.Scanner;
-import java.io.File;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 
 public class ClientesDao {
 
@@ -24,21 +28,23 @@ public class ClientesDao {
 	 * @param lista
 	 * @throws IOException
 	 */
-	public void escribirArchivoFormatter(List<String> lista) throws IOException {
-		Formatter ft = new Formatter(RUTA);
-		for (String s : lista) {
-			ft.format(s + "%n");
-		}
+	public void escribirArchivoFormatter(Cliente cliente) throws IOException {
+		FileWriter fw = new FileWriter(RUTA, true);
+		Formatter ft = new Formatter(fw);
+		ft.format(cliente.getCedula() + "=" + cliente.getNombre() + "=" + cliente.getNumeroTel() + "="
+				+ cliente.getEmail() + "=" + cliente.getCiudad() + "=" + cliente.getDireccion() + "%n");
+		fw.close();
 		ft.close();
 	}
-	
+
 	/**
 	 * Metodo para leer el archivo de vehiculo
+	 * 
 	 * @return
 	 * @throws IOException
 	 */
 
-	public ArrayList<String> leerArchivoScanner() throws IOException {
+	public ArrayList<Cliente> leerArchivoScanner() throws IOException {
 
 		ArrayList<String> lista = new ArrayList<>();
 		Scanner sc = new Scanner(new File(RUTA));
@@ -49,7 +55,14 @@ public class ClientesDao {
 
 		sc.close();
 
-		return lista;
+		Stream<Cliente> map = lista.stream().map(t -> {
+			String[] param = t.split("=");
+			Cliente nc = Cliente.builder().cedula(param[0]).nombre(param[1]).numeroTel(param[3]).email(param[4])
+					.ciudad(param[5]).direccion(param[6]).build();
+			return nc;
+		});
+		// tambien se puede con .toList (pero a veces falla)
+		return map.collect(Collectors.toCollection(ArrayList::new));
 	}
 
 }

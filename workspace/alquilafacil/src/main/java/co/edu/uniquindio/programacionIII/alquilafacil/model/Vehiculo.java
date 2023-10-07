@@ -56,8 +56,15 @@ public class Vehiculo implements Serializable {
 	@Setter
 	private Integer modelo;
 
+	@Setter
+	@Getter
+	private String rutaImg;
+
 	@Lob
+	@Setter
+	@Getter
 	private byte[] imageBytes;
+
 	@NonNull
 	@Getter
 	@Setter
@@ -77,6 +84,7 @@ public class Vehiculo implements Serializable {
 	private Integer numSillas;
 
 	@Getter
+	@Setter
 	private LocalDate fechaCreacion;
 
 	@Getter
@@ -86,12 +94,14 @@ public class Vehiculo implements Serializable {
 	@Builder
 	public Vehiculo(@NonNull String placa, @NonNull String nombre, @NonNull String marca, @NonNull Integer modelo,
 			Image image, @NonNull Transmision transmision, @NonNull Integer kilometraje,
-			@NonNull Double precioAlquilerDia, @NonNull Integer numSillas) throws ImagenNoObtenidaException {
+			@NonNull Double precioAlquilerDia, @NonNull Integer numSillas, @NonNull String rutaImg)
+			throws ImagenNoObtenidaException {
 		this.placa = placa;
 		this.nombre = nombre;
 		this.marca = marca;
 		this.modelo = modelo;
 		setImage(image);
+		this.rutaImg = rutaImg;
 		this.transmision = transmision;
 		this.kilometraje = kilometraje;
 		this.precioAlquilerDia = precioAlquilerDia;
