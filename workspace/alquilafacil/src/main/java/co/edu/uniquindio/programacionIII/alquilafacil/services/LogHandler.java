@@ -35,5 +35,10 @@ public class LogHandler {
 	public void logWarning(String msg) {
 		LOGGER.warning(msg);		
 	}
+	
+	
+	public void logSevere(String msg) {
+		LOGGER.severe(msg);
+	}
 
 }

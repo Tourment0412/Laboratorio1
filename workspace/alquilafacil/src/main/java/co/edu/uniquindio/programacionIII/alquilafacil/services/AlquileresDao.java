@@ -5,7 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
+import co.edu.uniquindio.programacionIII.alquilafacil.model.Alquiler;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -34,7 +37,7 @@ public class AlquileresDao {
 			oos.writeObject(objeto);
 			oos.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			LogHandler.getInstance().logSevere(e.getMessage());
 		}
 	}
 
@@ -45,15 +48,20 @@ public class AlquileresDao {
 	 * @return
 	 */
 
-	public Object loadData() {
+	@SuppressWarnings("unchecked")
+	public List<Alquiler> loadData() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(getRUTA()))) {
 			Object objeto = ois.readObject();
 			ois.close();
-			return objeto;
+			return (List<Alquiler>) objeto;
 		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
+			
+			ArrayList<Alquiler> objeto = new ArrayList<Alquiler>();
+			saveData(objeto);
+			return objeto;
+			
 		}
-		return null;
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.services;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import co.edu.uniquindio.programacionIII.alquilafacil.model.AlquilaFacil;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Alquiler;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
+import lombok.NonNull;
 
 public class DataService {
 
@@ -34,27 +36,25 @@ public class DataService {
 	}
 
 	private void leerListaAlquileres() {
-		// TODO
+		alquilaFacil.setListaAlquileres(AlquileresDao.getInstance().loadData());
 	}
 
 	private void leerListaClientes() {
-		// TODO
+		try {
+			alquilaFacil.setListaClientes(ClientesDao.getInstance().leerArchivoScanner());
+		} catch (IOException e) {
+
+			LogHandler.getInstance().logSevere("La ruta no ha sido encontrada");
+		}
 	}
 
 	private void leerListaVehiculos() {
-		// TODO
-	}
+		try {
+			alquilaFacil.setListaVehiculos(VehiculosDao.getInstance().leerArchivoScanner());
+		} catch (IOException e) {
 
-	private void guardarListaClientes(List<Cliente> listaClientes) {
-		// TODO
-	}
-
-	private void guardarListaVehiculos(List<Vehiculo> listaVehiculos) {
-		// TODO
-	}
-
-	private void guardarListaAlquileres(List<Alquiler> listaAlquileres) {
-		// TODO
+			LogHandler.getInstance().logSevere("La ruta no ha sido encontrada");
+		}
 	}
 
 	public String getMarcaMasAlquilada() {
@@ -82,14 +82,22 @@ public class DataService {
 	public Cliente agregarCliente(Cliente cliente) throws ObjetoYaExisteException {
 		leerListaClientes();
 		alquilaFacil.agregarCliente(cliente);
-		guardarListaClientes(alquilaFacil.getListaClientes());
+		try {
+			ClientesDao.getInstance().escribirArchivoFormatter(cliente);
+		} catch (IOException e) {
+			LogHandler.getInstance().logSevere("La ruta no ha sido encontrada");
+		}
 		return cliente;
 	}
 
 	public Vehiculo agregarVehiculo(Vehiculo vehiculo) throws ObjetoYaExisteException {
 		leerListaVehiculos();
 		alquilaFacil.agregarVehiculo(vehiculo);
-		guardarListaVehiculos(alquilaFacil.getListaVehiculos());
+		try {
+			VehiculosDao.getInstance().escribirArchivoFormatter(vehiculo);
+		} catch (IOException e) {
+			LogHandler.getInstance().logSevere("La ruta no ha sido encontrada");
+		}
 		return vehiculo;
 	}
 
@@ -97,7 +105,7 @@ public class DataService {
 		leerListaAlquileres();
 		leerListaVehiculos();
 		alquilaFacil.agregarAlquiler(alquiler);
-		guardarListaAlquileres(alquilaFacil.getListaAlquileres());
+		AlquileresDao.getInstance().saveData(alquiler);
 		return alquiler;
 	}
 

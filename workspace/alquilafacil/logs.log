@@ -398,3 +398,11 @@ oct 07, 2023 7:50:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.servi
 INFO: Intentando listar vehículos entre: 2023-10-19 y 2023-10-19
 oct 07, 2023 7:50:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
 INFO: Se ha podido obtener la lista de vehículos
+oct. 07, 2023 8:39:26 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando agregar un cliente con cedula '1090'...
+oct. 07, 2023 8:39:26 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando buscar un cliente con cedula: 1090
+oct. 07, 2023 8:39:26 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El cliente no fue encontrado
+oct. 07, 2023 8:39:26 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El cliente fue agregado satisfactoriamente
