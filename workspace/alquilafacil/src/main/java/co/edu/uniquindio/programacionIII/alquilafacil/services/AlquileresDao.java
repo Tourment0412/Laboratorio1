@@ -15,7 +15,7 @@ public class AlquileresDao {
 	private static AlquileresDao instance;
 
 	@Getter
-	private static final String RUTA = "src/main/resources/META-INF/alquileres.dat";
+	private static final String RUTA = "src/main/resources/data/alquileres.dat";
 
 	public static AlquileresDao getInstance() {
 		if (instance == null)
