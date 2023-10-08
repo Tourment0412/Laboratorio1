@@ -1,15 +1,12 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 
-
 import java.time.LocalDate;
 import java.util.List;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoException;
-import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ImagenNoObtenidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
-import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Alquiler;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
@@ -28,29 +25,29 @@ public class ModelFactoryController {
 		return instance;
 	}
 
-	public Double getTotalGanadoAlquileres() throws PersiscenciaDesconocidaException {
+	public Double getTotalGanadoAlquileres() {
 		return DataService.getInstance().getTotalGanadoAlquileres();
 	}
 
-	public String getMarcaMasAlquilada() throws PersiscenciaDesconocidaException {
+	public String getMarcaMasAlquilada() {
 		return DataService.getInstance().getMarcaMasAlquilada();
 	}
 
 	public List<Vehiculo> listarVehiculosRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal)
-			throws PersiscenciaDesconocidaException, ListaVaciaException {
+			throws ListaVaciaException {
 		return DataService.getInstance().listarVehiculosRangoFechas(fechaInicial, fechaFinal);
 	}
 
-	public List<Vehiculo> listarVehiculosAlquilados() throws PersiscenciaDesconocidaException {
+	public List<Vehiculo> listarVehiculosAlquilados() {
 		return DataService.getInstance().listarVehiculosAlquilados();
 	}
 
-	public boolean estaDisponible(Vehiculo vehiculo) throws PersiscenciaDesconocidaException {
+	public boolean estaDisponible(Vehiculo vehiculo) {
 		return DataService.getInstance().estaDisponible(vehiculo);
 	}
 
 	public void agregarCliente(String cedula, String nombre, String numeroTel, String email, String ciudad,
-			String direccion) throws ObjetoYaExisteException, PersiscenciaDesconocidaException, CampoInvalidoException {
+			String direccion) throws ObjetoYaExisteException, CampoInvalidoException {
 		StringBuilder sb = new StringBuilder();
 		requerirCampoString(sb, cedula, "La cedula no puede estar vacia");
 		requerirCampoString(sb, nombre, "El nombre no puede estar vacio");
@@ -68,8 +65,7 @@ public class ModelFactoryController {
 
 	public void agregarVehiculo(String placa, String nombre, String marca, String modeloString, String rutaImg,
 			String transmisionString, String kilometrajeString, String precioAlquilerDiaString, String numSillasString)
-			throws ObjetoYaExisteException, PersiscenciaDesconocidaException, ImagenNoObtenidaException,
-			CampoInvalidoException {
+			throws CampoInvalidoException, ObjetoYaExisteException {
 		StringBuilder sb = new StringBuilder();
 		requerirCampoString(sb, placa, "La placa no puede estar vacia");
 		requerirCampoString(sb, nombre, "El nombre no puede estar vacio");
@@ -152,20 +148,20 @@ public class ModelFactoryController {
 		return num;
 	}
 
-	public List<Alquiler> listarAlquileres() throws PersiscenciaDesconocidaException {
+	public List<Alquiler> listarAlquileres() {
 		return DataService.getInstance().listarAlquileres();
 	}
 
-	public List<Vehiculo> listarVehiculos() throws PersiscenciaDesconocidaException, ListaVaciaException {
+	public List<Vehiculo> listarVehiculos() throws ListaVaciaException {
 		return DataService.getInstance().listarVehiculos();
 	}
 
-	public List<Cliente> listarClientes() throws PersiscenciaDesconocidaException {
+	public List<Cliente> listarClientes() {
 		return DataService.getInstance().listarClientes();
 	}
 
 	public Alquiler agregarAlquiler() throws VehiculoNoDisponibleException, ObjetoYaExisteException,
-			PersiscenciaDesconocidaException, ObjetoNoEncontradoException, CampoInvalidoException {
+			ObjetoNoEncontradoException, CampoInvalidoException {
 		CreacionAlquilerHandler creacionInstance = CreacionAlquilerHandler.getInstance();
 		creacionInstance.validarCampos();
 		Alquiler alquiler = Alquiler.builder().cliente(creacionInstance.getCliente())
@@ -181,11 +177,41 @@ public class ModelFactoryController {
 		}
 	}
 
-	private void requerirCampoString(StringBuilder sb, String cadena, String msg) throws CampoInvalidoException {
+	private void requerirCampoString(StringBuilder sb, String cadena, String msg) {
 		if (cadena == null || cadena.isBlank()) {
 			sb.append(msg);
 			sb.append("\n");
 		}
+	}
+
+	public Vehiculo obtenerVehiculo(String placa) throws CampoInvalidoException {
+		StringBuilder sb = new StringBuilder();
+		requerirCampoString(sb, placa, "El vehiculo no fue encontrado");
+		lanzarCampoInvalido(sb);
+		return DataService.getInstance().buscarVehiculo(placa);
+	}
+
+	public void actualizarCliente(String cedula, String nombre, String numeroTel, String email, String ciudad,
+			String direccion) throws CampoInvalidoException, ObjetoNoEncontradoException {
+		Cliente cliente = obtenerCliente(cedula);
+		if (nombre != null)
+			cliente.setNombre(nombre);
+		if (numeroTel != null)
+			cliente.setNumeroTel(numeroTel);
+		if (email != null)
+			cliente.setEmail(email);
+		if (ciudad != null)
+			cliente.setCiudad(ciudad);
+		if (direccion != null)
+			cliente.setDireccion(direccion);
+		DataService.getInstance().actualizarCliente(cliente);
+	}
+
+	public Cliente obtenerCliente(String cedula) throws CampoInvalidoException, ObjetoNoEncontradoException {
+		StringBuilder sb = new StringBuilder();
+		requerirCampoString(sb, cedula, "La cedula es invalida");
+		lanzarCampoInvalido(sb);
+		return DataService.getInstance().obtenerClienteThrow(cedula);
 	}
 
 }

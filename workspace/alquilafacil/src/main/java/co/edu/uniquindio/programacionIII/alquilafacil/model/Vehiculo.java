@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ImagenNoObtenidaException;
 import javafx.scene.image.Image;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -65,7 +64,7 @@ public class Vehiculo implements Serializable {
 	@Builder
 	public Vehiculo(@NonNull String placa, @NonNull String nombre, @NonNull String marca, @NonNull Integer modelo,
 			@NonNull Transmision transmision, @NonNull Integer kilometraje, @NonNull Double precioAlquilerDia,
-			@NonNull Integer numSillas, @NonNull String rutaImg) throws ImagenNoObtenidaException {
+			@NonNull Integer numSillas, @NonNull String rutaImg) {
 		this.placa = placa;
 		this.nombre = nombre;
 		this.marca = marca;

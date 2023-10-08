@@ -1,5 +1,6 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler;
@@ -17,10 +19,15 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-@Getter@Setter
+@Getter
+@Setter
 @AllArgsConstructor
-public class AlquilaFacil {
+public class AlquilaFacil implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@NonNull
 	private List<Vehiculo> listaVehiculos;
 	@NonNull
@@ -54,7 +61,7 @@ public class AlquilaFacil {
 
 	private List<Vehiculo> listarVehiculosRangoFechasThrow(LocalDate fechaInicial, LocalDate fechaFinal)
 			throws ListaVaciaException {
-		LogHandler.getInstance().logInfo("Intentando listar vehículos entre: " + fechaFinal + " y " + fechaFinal);
+		LogHandler.getInstance().logInfo("Intentando listar vehículos entre: " + fechaInicial + " y " + fechaFinal);
 		ArrayList<Vehiculo> result = listaVehiculos.stream().filter(
 				v -> v.fueCreadoAntesDe(fechaFinal) && vehiculoEstaDisplonibleRangoFechas(v, fechaInicial, fechaFinal))
 				.collect(Collectors.toCollection(ArrayList::new));
@@ -141,7 +148,7 @@ public class AlquilaFacil {
 		return buscarAlquiler(id) != null;
 	}
 
-	private Cliente buscarCliente(String cedula) {
+	public Cliente buscarCliente(String cedula) {
 		LogHandler.getInstance().logInfo("Intentando buscar un cliente con cedula: " + cedula);
 		for (Cliente cliente : listaClientes)
 			if (cliente.getCedula().equals(cedula)) {
@@ -152,7 +159,7 @@ public class AlquilaFacil {
 		return null;
 	}
 
-	private Vehiculo buscarVehiculo(String placa) {
+	public Vehiculo buscarVehiculo(String placa) {
 		LogHandler.getInstance().logInfo("Intentando buscar un vehiculo con placa: " + placa);
 		for (Vehiculo vehiculo : listaVehiculos)
 			if (vehiculo.getPlaca().equals(placa)) {
@@ -220,5 +227,17 @@ public class AlquilaFacil {
 		}
 		LogHandler.getInstance().logInfo("El vehiculo si esta disponible");
 		return true;
+	}
+
+	public void actualizarCliente(Cliente cliente) throws ObjetoNoEncontradoException {
+		LogHandler.getInstance().logInfo("Actualizando el cliente");
+		for (int i = 0; i < listaClientes.size(); i++) {
+			if (listaClientes.get(i).equals(cliente)) {
+				LogHandler.getInstance().logInfo("El cliente fue encontrado");
+				listaClientes.set(i, cliente);
+				return;
+			}
+		}
+		throw new ObjetoNoEncontradoException("El cliente no fue encontrado");
 	}
 }
