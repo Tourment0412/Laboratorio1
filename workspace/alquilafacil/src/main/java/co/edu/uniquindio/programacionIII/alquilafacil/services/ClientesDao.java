@@ -13,7 +13,7 @@ import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 
 public class ClientesDao {
 
-	private final static String RUTA = "src/main/resources/META-INF/clientes.txt";
+	private final static String RUTA = "src/main/resources/data/clientes.txt";
 	private static ClientesDao instance;
 
 	public static ClientesDao getInstance() {
