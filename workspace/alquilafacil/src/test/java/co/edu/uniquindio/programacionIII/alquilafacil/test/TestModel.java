@@ -5,26 +5,15 @@ import java.time.LocalDate;
 import org.junit.Test;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.controllers.ModelFactoryController;
-import co.edu.uniquindio.programacionIII.alquilafacil.dao.ClienteDao;
-import co.edu.uniquindio.programacionIII.alquilafacil.dao.VehiculoDao;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
-import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
-import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
-import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
-import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.CreacionAlquilerHandler;
-import co.edu.uniquindio.programacionIII.alquilafacil.services.DataService;
-import javafx.application.Application;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 
-public class TestModel extends Application {
+public class TestModel {
 	@Test
-	public void crearCliente()
-			throws ObjetoYaExisteException, PersiscenciaDesconocidaException, CampoInvalidoException {
+	public void crearCliente() throws ObjetoYaExisteException, CampoInvalidoException {
 
 		ModelFactoryController.getInstance().agregarCliente("1059386396", "Santiago", "396286039743",
 				"santaigo@gmail.com", "Armenia", "Calle 13");
@@ -32,52 +21,34 @@ public class TestModel extends Application {
 	}
 
 	@Test
-	public void obtenerCliente()
-			throws NullPointerException, ObjetoNoEncontradoException, PersiscenciaDesconocidaException {
+	public void obtenerCliente() throws CampoInvalidoException, ObjetoNoEncontradoException {
 		ModelFactoryController.getInstance().obtenerCliente("golahoasda");
 	}
 
 	@Test
 	public void actualizarCliente() throws Exception {
-		ClienteDao clienteManager = ClienteDao.getManager();
-		Cliente cliente = clienteManager.obtenerCliente("1059386396");
-		cliente.setDireccion("W el sobreviviente con Raquel");
-		clienteManager.actualizarCliente(cliente);
-		clienteManager.close();
+		ModelFactoryController.getInstance().actualizarCliente("1059386396", "Pepe", null, null, null, null);
 	}
 
 	@Test
-	public void crearAlquiler() throws ObjetoYaExisteException, PersiscenciaDesconocidaException,
-			VehiculoNoDisponibleException, NullPointerException, ObjetoNoEncontradoException, CampoInvalidoException {
-		CreacionAlquilerHandler.getInstance().selectVehiculo("JFX020");
-		CreacionAlquilerHandler.getInstance().selectCliente("1059386396");
+	public void crearAlquiler() throws CampoInvalidoException, ObjetoNoEncontradoException,
+			VehiculoNoDisponibleException, ObjetoYaExisteException {
+		ModelFactoryController modelFactory = ModelFactoryController.getInstance();
+		CreacionAlquilerHandler.getInstance().selectVehiculo(modelFactory.obtenerVehiculo("JFX020"));
+		CreacionAlquilerHandler.getInstance().selectCliente(modelFactory.obtenerCliente("1059386396"));
 		CreacionAlquilerHandler.getInstance().selectDates(LocalDate.now().plusDays(20), LocalDate.now().plusMonths(2));
 		ModelFactoryController.getInstance().agregarAlquiler();
 	}
 
 	@Test
 	public void crearVehiculo() throws Exception {
-		launch(new String[0]);
+		ModelFactoryController.getInstance().agregarVehiculo("JFX020", "Chevrolet", "Onix", "2023", "hola.png",
+				"Manual", "10000", "500000", "5");
 	}
 
 	@Test
 	public void listarClientes() throws Exception {
-		ClienteDao clienteManager = ClienteDao.getManager();
-		System.out.println(clienteManager.getClientes());
-		clienteManager.close();
-	}
-
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		VehiculoDao clienteManager = VehiculoDao.getManager();
-		Vehiculo vehiculo = Vehiculo.builder()
-				.image(new Image(
-						getClass().getResource("/co/edu/uniquindio/programacionIII/alquilafacil/sources/defaultimg.png")
-								.toExternalForm()))
-				.kilometraje(100).marca("Chevrolet").nombre("Onix").numSillas(5).placa("JFX020").modelo(2023)
-				.precioAlquilerDia(500000d).transmision(Transmision.MANUAL).build();
-		clienteManager.actualizarVehiculo(vehiculo);
-		clienteManager.close();
+		ModelFactoryController.getInstance().listarClientes();
 	}
 
 }

@@ -8,7 +8,6 @@ import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoEx
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
-import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
@@ -21,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -29,7 +29,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 
 public class CrearAlquilerController implements Initializable {
 
@@ -227,30 +226,43 @@ public class CrearAlquilerController implements Initializable {
 	private void filtrarVehiculoAction() {
 		try {
 			actualizarTablaVehiculos(txtPlaca.getText());
-		} catch (PersiscenciaDesconocidaException | ListaVaciaException e) {
-			e.printStackTrace();
+		} catch (ListaVaciaException e) {
+			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
+			vaciarTablaVehiculos();
 		}
 	}
 
 	private void filtrarClienteAction() {
 		try {
 			actualizarTablaCliente(txtCedula.getText());
-		} catch (PersiscenciaDesconocidaException | ListaVaciaException e) {
-			e.printStackTrace();
+		} catch (ListaVaciaException e) {
+			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
+			vaciarTablaClientes();
 		}
+	}
+
+	private void vaciarTablaVehiculos() {
+		tblVehiculos.setItems(FXCollections.observableArrayList());
+		tblVehiculos.refresh();
+	}
+
+	private void vaciarTablaClientes() {
+		tblClientes.setItems(FXCollections.observableArrayList());
+		tblClientes.refresh();
 	}
 
 	private void finalizarAction() {
 		try {
 			CreacionAlquilerHandler.getInstance().selectCliente(tblClientes.getSelectionModel().getSelectedItem());
 			ModelFactoryController.getInstance().agregarAlquiler();
-			Platform.runLater(() -> Utils.mostrarAlerta("Información", "El alquiler ha sido creado con exito"));
-			clearData();
-			goToFechas();
-		} catch (VehiculoNoDisponibleException | ObjetoYaExisteException | PersiscenciaDesconocidaException
-				| ObjetoNoEncontradoException | CampoInvalidoException e) {
+		} catch (VehiculoNoDisponibleException | ObjetoYaExisteException | ObjetoNoEncontradoException
+				| CampoInvalidoException e) {
 			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
 		}
+		Platform.runLater(() -> Utils.mostrarAlerta("Información", "El alquiler ha sido creado con exito"));
+		clearData();
+		goToFechas();
+
 	}
 
 	private void clearData() {
@@ -268,12 +280,13 @@ public class CrearAlquilerController implements Initializable {
 			gotoVehiculo();
 			Platform.runLater(
 					() -> Utils.mostrarAlerta("Información", "El rango se fechas ha sido seleccionado con exito"));
-		} catch (CampoInvalidoException | PersiscenciaDesconocidaException | ListaVaciaException e) {
+		} catch (CampoInvalidoException | ListaVaciaException e) {
 			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
 		}
+
 	}
 
-	private void actualizarTablaVehiculos() throws PersiscenciaDesconocidaException, ListaVaciaException {
+	private void actualizarTablaVehiculos() throws ListaVaciaException {
 		CreacionAlquilerHandler handler = CreacionAlquilerHandler.getInstance();
 
 		tblVehiculos.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance()
@@ -281,7 +294,7 @@ public class CrearAlquilerController implements Initializable {
 		tblVehiculos.refresh();
 	}
 
-	private void actualizarTablaVehiculos(String filtro) throws PersiscenciaDesconocidaException, ListaVaciaException {
+	private void actualizarTablaVehiculos(String filtro) throws ListaVaciaException {
 		CreacionAlquilerHandler handler = CreacionAlquilerHandler.getInstance();
 
 		tblVehiculos.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance()
@@ -290,20 +303,15 @@ public class CrearAlquilerController implements Initializable {
 		tblVehiculos.refresh();
 	}
 
-	private void actualizarTablaCliente(String filtro) throws PersiscenciaDesconocidaException, ListaVaciaException {
+	private void actualizarTablaCliente(String filtro) throws ListaVaciaException {
 		tblClientes.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance().listarClientes()
 				.stream().filter(cliente -> cliente.cedulaEmpiezaPor(filtro)).toList()));
 		tblClientes.refresh();
 	}
 
 	private void actualizarTablaClientes() {
-		try {
-			tblClientes
-					.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance().listarClientes()));
-			tblClientes.refresh();
-		} catch (PersiscenciaDesconocidaException e) {
-			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
-		}
+		tblClientes.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance().listarClientes()));
+		tblClientes.refresh();
 	}
 
 	private void siguienteVehiculoAction() {

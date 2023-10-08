@@ -392,3 +392,9 @@ oct 04, 2023 12:23:35 A. M. co.edu.uniquindio.programacionIII.alquilafacil.serv
 INFO: Agregando alquiler...
 oct 04, 2023 12:23:38 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.DataService agregarAlquiler
 INFO: El alquiler Fue agregado satisfactoriamente
+oct 07, 2023 7:50:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 07, 2023 7:50:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-19 y 2023-10-19
+oct 07, 2023 7:50:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos

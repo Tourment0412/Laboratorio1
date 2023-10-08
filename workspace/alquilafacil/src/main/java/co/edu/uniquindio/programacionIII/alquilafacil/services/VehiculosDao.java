@@ -10,7 +10,6 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ImagenNoObtenidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
 
@@ -60,17 +59,12 @@ public class VehiculosDao {
 		sc.close();
 		Stream<Vehiculo> map = lista.stream().map(t -> {
 			String[] param = t.split("=");
-			try {
-				Vehiculo nv = Vehiculo.builder().placa(param[0]).nombre(param[1]).marca(param[2])
-						.modelo(Integer.parseInt(param[3])).rutaImg(param[4])
-						.transmision(Transmision.valueByText(param[5])).kilometraje(Integer.parseInt(param[6]))
-						.precioAlquilerDia(Double.parseDouble(param[7])).numSillas(Integer.parseInt(param[8])).build();
-				nv.setFechaCreacion(LocalDate.parse(param[9]));
-				return nv;
-			} catch (ImagenNoObtenidaException e) {
-				return null;
-			}
-
+			Vehiculo nv = Vehiculo.builder().placa(param[0]).nombre(param[1]).marca(param[2])
+					.modelo(Integer.parseInt(param[3])).rutaImg(param[4]).transmision(Transmision.valueByText(param[5]))
+					.kilometraje(Integer.parseInt(param[6])).precioAlquilerDia(Double.parseDouble(param[7]))
+					.numSillas(Integer.parseInt(param[8])).build();
+			nv.setFechaCreacion(LocalDate.parse(param[9]));
+			return nv;
 		});
 
 		return map.collect(Collectors.toCollection(ArrayList::new));

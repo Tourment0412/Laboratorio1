@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.AlquilaFacil;
@@ -32,8 +33,8 @@ public class DataService {
 		return alquilaFacil.getTotalGanadoAlquileres();
 	}
 
-	private void leerListaAlquileres() {// TODO
-		alquilaFacil.setListaAlquileres(null);
+	private void leerListaAlquileres() {
+		// TODO
 	}
 
 	private void leerListaClientes() {
@@ -113,5 +114,27 @@ public class DataService {
 	public List<Cliente> listarClientes() {
 		leerListaClientes();
 		return alquilaFacil.getListaClientes();
+	}
+
+	public Vehiculo buscarVehiculo(String placa) {
+		leerListaVehiculos();
+		return alquilaFacil.buscarVehiculo(placa);
+	}
+
+	public Cliente buscarCliente(String cedula) {
+		leerListaClientes();
+		return alquilaFacil.buscarCliente(cedula);
+	}
+
+	public Cliente obtenerClienteThrow(String cedula) throws ObjetoNoEncontradoException {
+		Cliente cliente = buscarCliente(cedula);
+		if (cliente == null)
+			throw new ObjetoNoEncontradoException("El cliente no fue encontrado");
+		return cliente;
+	}
+
+	public void actualizarCliente(Cliente cliente) throws ObjetoNoEncontradoException {
+		leerListaClientes();
+		alquilaFacil.actualizarCliente(cliente);
 	}
 }

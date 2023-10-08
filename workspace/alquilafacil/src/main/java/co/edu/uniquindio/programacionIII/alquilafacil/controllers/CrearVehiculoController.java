@@ -5,9 +5,7 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ArchivoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoException;
-import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ImagenNoObtenidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
-import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.PersiscenciaDesconocidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Utils;
@@ -120,14 +118,15 @@ public class CrearVehiculoController implements Initializable {
 
 	private void crearVehiculoAction() {
 		try {
+			// TODO cambiar img
 			ModelFactoryController.getInstance().agregarVehiculo(txtPlaca.getText(), txtNombre.getText(),
-					txtMarca.getText(), spnModelo.getText(), imagen, cmbTransmision.getValue(),
+					txtMarca.getText(), spnModelo.getText(), imagen.toString(), cmbTransmision.getValue(),
 					spnKilometraje.getText(), txtPrecioDia.getText(), spnSilas.getText());
 			Utils.mostrarAlerta("Informacion", "El vehiculo ha sido agregado con éxito");
-		} catch (ObjetoYaExisteException | PersiscenciaDesconocidaException | ImagenNoObtenidaException
-				| CampoInvalidoException e) {
+		} catch (CampoInvalidoException | ObjetoYaExisteException e) {
 			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
 		}
+
 	}
 
 	@FXML
