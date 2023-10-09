@@ -484,3 +484,7 @@ oct 09, 2023 3:57:58 P. M. co.edu.uniquindio.programacionIII.alquilafacil.servi
 INFO: Intentando listar vehículos entre: 2023-10-02 y 2023-10-09
 oct 09, 2023 3:57:58 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
 INFO: Se ha podido obtener la lista de vehículos
+oct. 09, 2023 5:43:58 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Obteniendo marca mas alquilada...
+oct. 09, 2023 5:44:16 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Obteniendo marca mas alquilada...
