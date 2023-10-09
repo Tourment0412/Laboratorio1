@@ -226,7 +226,7 @@ public class CrearAlquilerController implements Initializable {
 	private void filtrarVehiculoAction() {
 		try {
 			actualizarTablaVehiculos(txtPlaca.getText());
-		} catch (ListaVaciaException e) {
+		} catch (ListaVaciaException | CampoInvalidoException e) {
 			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
 			vaciarTablaVehiculos();
 		}
@@ -286,7 +286,7 @@ public class CrearAlquilerController implements Initializable {
 
 	}
 
-	private void actualizarTablaVehiculos() throws ListaVaciaException {
+	private void actualizarTablaVehiculos() throws ListaVaciaException, CampoInvalidoException {
 		CreacionAlquilerHandler handler = CreacionAlquilerHandler.getInstance();
 
 		tblVehiculos.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance()
@@ -294,7 +294,7 @@ public class CrearAlquilerController implements Initializable {
 		tblVehiculos.refresh();
 	}
 
-	private void actualizarTablaVehiculos(String filtro) throws ListaVaciaException {
+	private void actualizarTablaVehiculos(String filtro) throws ListaVaciaException, CampoInvalidoException {
 		CreacionAlquilerHandler handler = CreacionAlquilerHandler.getInstance();
 
 		tblVehiculos.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance()

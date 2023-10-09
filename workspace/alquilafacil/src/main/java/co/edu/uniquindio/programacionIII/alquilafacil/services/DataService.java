@@ -12,7 +12,6 @@ import co.edu.uniquindio.programacionIII.alquilafacil.model.AlquilaFacil;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Alquiler;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
-import lombok.NonNull;
 
 public class DataService {
 
@@ -51,8 +50,8 @@ public class DataService {
 	private void leerListaVehiculos() {
 		try {
 			alquilaFacil.setListaVehiculos(VehiculosDao.getInstance().leerArchivoScanner());
+			System.out.println(alquilaFacil.getListaVehiculos());
 		} catch (IOException e) {
-
 			LogHandler.getInstance().logSevere("La ruta no ha sido encontrada");
 		}
 	}
@@ -144,5 +143,10 @@ public class DataService {
 	public void actualizarCliente(Cliente cliente) throws ObjetoNoEncontradoException {
 		leerListaClientes();
 		alquilaFacil.actualizarCliente(cliente);
+	}
+
+	public Double getGanadoAlquileres(LocalDate fechaInicial, LocalDate fechaFinal) {
+		leerListaAlquileres();
+		return alquilaFacil.getGanadoAlquileres(fechaInicial, fechaFinal);
 	}
 }

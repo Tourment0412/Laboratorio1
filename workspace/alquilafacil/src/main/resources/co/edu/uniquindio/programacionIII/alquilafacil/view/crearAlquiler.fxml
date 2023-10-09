@@ -158,7 +158,7 @@
       </Tab>
   </tabs>
    <stylesheets>
-      <URL value="@../styles/crearAlquiler.css" />
+      <URL value="@../styles/tabPane.css" />
       <URL value="@../styles/buttonStyle.css" />
       <URL value="@../styles/textTitleStyle.css" />
       <URL value="@../styles/txtFieldStyle.css" />

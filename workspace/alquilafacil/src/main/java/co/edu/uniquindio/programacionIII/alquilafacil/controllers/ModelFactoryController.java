@@ -34,7 +34,16 @@ public class ModelFactoryController {
 	}
 
 	public List<Vehiculo> listarVehiculosRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal)
-			throws ListaVaciaException {
+			throws ListaVaciaException, CampoInvalidoException {
+		StringBuilder sb = new StringBuilder();
+		if (fechaInicial == null || fechaFinal == null) {
+			sb.append("Recuerda seleccionar ambas fechas");
+			sb.append('\n');
+		} else if (fechaFinal.isBefore(fechaInicial)) {
+			sb.append("El rango de fechas es inválido");
+			sb.append('\n');
+		}
+		lanzarExceptionCampoInvalido(sb);
 		return DataService.getInstance().listarVehiculosRangoFechas(fechaInicial, fechaFinal);
 	}
 
@@ -56,7 +65,7 @@ public class ModelFactoryController {
 		requerirCampoString(sb, ciudad, "La ciudad no puede estar vacia");
 		requerirCampoString(sb, direccion, "La direccion no puede estar vacia");
 
-		lanzarCampoInvalido(sb);
+		lanzarExceptionCampoInvalido(sb);
 
 		Cliente cliente = Cliente.builder().cedula(cedula).nombre(nombre).numeroTel(numeroTel).email(email)
 				.ciudad(ciudad).direccion(direccion).build();
@@ -79,7 +88,7 @@ public class ModelFactoryController {
 		Integer kilometraje = obtenerIntThrow(sb, modeloString, "El kilometraje es invalido");
 		Integer numSillas = obtenerIntThrow(sb, numSillasString, "El numero de sillas es invalido");
 
-		lanzarCampoInvalido(sb);
+		lanzarExceptionCampoInvalido(sb);
 
 		Vehiculo vehiculo = Vehiculo.builder().placa(placa).nombre(nombre).marca(marca).modelo(modelo).rutaImg(rutaImg)
 				.transmision(transmision).kilometraje(kilometraje).precioAlquilerDia(precioAlquilerDia)
@@ -170,7 +179,7 @@ public class ModelFactoryController {
 		return DataService.getInstance().agregarAlquiler(alquiler);
 	}
 
-	private void lanzarCampoInvalido(StringBuilder sb) throws CampoInvalidoException {
+	private void lanzarExceptionCampoInvalido(StringBuilder sb) throws CampoInvalidoException {
 		if (!sb.isEmpty()) {
 			sb.deleteCharAt(sb.length() - 1);
 			throw new CampoInvalidoException(sb.toString());
@@ -187,7 +196,7 @@ public class ModelFactoryController {
 	public Vehiculo obtenerVehiculo(String placa) throws CampoInvalidoException {
 		StringBuilder sb = new StringBuilder();
 		requerirCampoString(sb, placa, "El vehiculo no fue encontrado");
-		lanzarCampoInvalido(sb);
+		lanzarExceptionCampoInvalido(sb);
 		return DataService.getInstance().buscarVehiculo(placa);
 	}
 
@@ -210,8 +219,21 @@ public class ModelFactoryController {
 	public Cliente obtenerCliente(String cedula) throws CampoInvalidoException, ObjetoNoEncontradoException {
 		StringBuilder sb = new StringBuilder();
 		requerirCampoString(sb, cedula, "La cedula es invalida");
-		lanzarCampoInvalido(sb);
+		lanzarExceptionCampoInvalido(sb);
 		return DataService.getInstance().obtenerClienteThrow(cedula);
+	}
+
+	public Double getGanadoAlquileres(LocalDate fechaInicial, LocalDate fechaFinal) throws CampoInvalidoException {
+		StringBuilder sb = new StringBuilder();
+		if (fechaInicial == null || fechaFinal == null) {
+			sb.append("Recuerda seleccionar ambas fechas");
+			sb.append('\n');
+		} else if (fechaFinal.isBefore(fechaInicial)) {
+			sb.append("El rango de fechas es inválido");
+			sb.append('\n');
+		}
+		lanzarExceptionCampoInvalido(sb);
+		return DataService.getInstance().getGanadoAlquileres(fechaInicial, fechaFinal);
 	}
 
 }

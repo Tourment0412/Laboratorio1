@@ -406,3 +406,57 @@ oct. 07, 2023 8:39:26 P. M. co.edu.uniquindio.programacionIII.alquilafacil.serv
 INFO: El cliente no fue encontrado
 oct. 07, 2023 8:39:26 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
 INFO: El cliente fue agregado satisfactoriamente
+oct 09, 2023 3:17:37 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 09, 2023 3:17:37 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-09 y 2023-10-26
+oct 09, 2023 3:17:37 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 09, 2023 3:17:56 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 09, 2023 3:17:56 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-07 y 2023-10-26
+oct 09, 2023 3:17:56 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 09, 2023 3:27:15 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 09, 2023 3:27:15 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-09 y 2023-10-13
+oct 09, 2023 3:27:15 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 09, 2023 3:27:33 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 09, 2023 3:27:33 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-10 y 2023-10-19
+oct 09, 2023 3:27:33 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 09, 2023 3:28:22 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 09, 2023 3:28:22 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-18 y 2023-10-19
+oct 09, 2023 3:28:22 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 09, 2023 3:31:26 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 09, 2023 3:31:26 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-10 y 2023-10-19
+oct 09, 2023 3:31:26 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 09, 2023 3:31:37 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 09, 2023 3:31:37 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-10 y 2023-10-19
+oct 09, 2023 3:31:37 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 09, 2023 3:31:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 09, 2023 3:31:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-10 y 2023-10-19
+oct 09, 2023 3:31:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 09, 2023 3:31:49 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 09, 2023 3:31:49 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-10 y 2023-10-19
+oct 09, 2023 3:31:49 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos

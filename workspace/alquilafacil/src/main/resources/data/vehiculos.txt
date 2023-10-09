@@ -1,0 +1,6 @@
+JFX020=Onix=Chevrolet=2023=imagen.png=Manual=10000=500000=5=2023-10-09
+JFX021=Onix=Chevrolet=2023=imagen.png=Manual=10000=500000=5=2023-10-09
+JFX022=Onix=Chevrolet=2023=imagen.png=Manual=10000=500000=5=2023-10-09
+JFX023=Onix=Chevrolet=2023=imagen.png=Manual=10000=500000=5=2023-10-09
+JFX024=Onix=Chevrolet=2023=imagen.png=Manual=10000=500000=5=2023-10-09
+JFX025=Onix=Chevrolet=2023=imagen.png=Manual=10000=500000=5=2023-10-09

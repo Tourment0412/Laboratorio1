@@ -188,6 +188,16 @@ public class AlquilaFacil implements Serializable {
 		return total;
 	}
 
+	public Double getGanadoAlquileres(LocalDate fechaInicial, LocalDate fechaFinal) {
+		LogHandler.getInstance()
+				.logInfo("Obteniendo total ganado por alquileres entre " + fechaInicial + " y " + fechaFinal);
+		Double total = listaAlquileres.stream().filter(alquiler -> alquiler.estaEnRangoFechas(fechaInicial, fechaFinal))
+				.map(alquiler -> alquiler.obtenerCostoTotal()).mapToDouble(d -> d).sum();
+		LogHandler.getInstance().logInfo("El total ganado por alquileres fue obtenido satisfactoriamente");
+		return total;
+
+	}
+
 	public String getMarcaMasAlquilada() {
 		LogHandler.getInstance().logInfo("Obteniendo marca mas alquilada...");
 		List<String> list = listaAlquileres.stream().map(alquiler -> alquiler.getVehiculo().getMarca()).toList();

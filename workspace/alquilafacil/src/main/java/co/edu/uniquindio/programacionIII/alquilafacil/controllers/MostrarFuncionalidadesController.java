@@ -11,57 +11,57 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class MostrarFuncionalidadesController implements Initializable{
+public class MostrarFuncionalidadesController implements Initializable {
 
-    @FXML
-    private Button btnListarAlquilados;
+	@FXML
+	private Button btnListarAlquilados;
 
-    @FXML
-    private Button btnListarEcoCos;
+	@FXML
+	private Button btnListarEcoCos;
 
-    @FXML
-    private Button btnMarcaMasAlq;
+	@FXML
+	private Button btnMarcaMasAlq;
 
-    @FXML
-    private Button btnTotalGanado;
+	@FXML
+	private Button btnTotalGanado;
 
-    @FXML
-    void listarAlquiladosEvent(ActionEvent event) {
-    	listarAlquilados();
-    }
+	@FXML
+	void listarAlquiladosEvent(ActionEvent event) {
+		listarAlquilados();
+	}
 
-    @FXML
-    void listarEcoCosEvent(ActionEvent event) {
-    	listarEcoCosAction();
-    }
+	@FXML
+	void listarEcoCosEvent(ActionEvent event) {
+		listarEcoCosAction();
+	}
 
-    @FXML
-    void marcaMasAlqEvent(ActionEvent event) {
+	@FXML
+	void marcaMasAlqEvent(ActionEvent event) {
 
-    }
+	}
 
-    @FXML
-    void totalGanadoEvent(ActionEvent event) {
+	@FXML
+	void totalGanadoEvent(ActionEvent event) {
 
-    }
-    
-    private void listarEcoCosAction() {
-    	MainViewController.getInstance().cambiarVista(Vista.FUNCTEXT1);
-    }
-    
-    private void listarAlquilados() {
-    	MainViewController.getInstance().cambiarVista(Vista.FUNCTEXT2);
-    }
+	}
+
+	private void listarEcoCosAction() {
+		MainViewController.getInstance().cambiarVista(Vista.FUNCTEXT1);
+	}
+
+	private void listarAlquilados() {
+		MainViewController.getInstance().cambiarVista(Vista.FUNCTEXT2);
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Propiedades.getInstance().addListener(bundle->{
+		Propiedades.getInstance().addListener(bundle -> {
 			btnListarEcoCos.setText(bundle.getString("MostarFuncionalidades.btnListarEcoCos"));
 			btnListarAlquilados.setText(bundle.getString("MostarFuncionalidades.btnListarAlquilados"));
 			btnTotalGanado.setText(bundle.getString("MostarFuncionalidades.btnTotalGanado"));
 			btnMarcaMasAlq.setText(bundle.getString("MostarFuncionalidades.btnMarcaMasAlq"));
 		});
-		
+
 	}
 
 }

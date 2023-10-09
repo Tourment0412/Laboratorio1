@@ -33,9 +33,9 @@ public class VehiculosDao {
 		FileWriter fw = new FileWriter(RUTA, true);
 		Formatter ft = new Formatter(fw);
 		ft.format(vehiculo.getPlaca() + "=" + vehiculo.getNombre() + "=" + vehiculo.getMarca() + "="
-				+ vehiculo.getModelo() + "=" + vehiculo.getRutaImg() + "=" + vehiculo.getTransmision() + "="
+				+ vehiculo.getModelo() + "=" + vehiculo.getRutaImg() + "=" + vehiculo.getTransmision().getText() + "="
 				+ vehiculo.getKilometraje() + "=" + vehiculo.getPrecioAlquilerDia() + "=" + vehiculo.getNumSillas()
-				+ "="+vehiculo.getFechaCreacion().toString()+"%n");
+				+ "=" + vehiculo.getFechaCreacion().toString() + "%n");
 		fw.close();
 		ft.close();
 	}
