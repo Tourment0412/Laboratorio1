@@ -35,7 +35,7 @@ public class VehiculosDao {
 		ft.format(vehiculo.getPlaca() + "=" + vehiculo.getNombre() + "=" + vehiculo.getMarca() + "="
 				+ vehiculo.getModelo() + "=" + vehiculo.getRutaImg() + "=" + vehiculo.getTransmision() + "="
 				+ vehiculo.getKilometraje() + "=" + vehiculo.getPrecioAlquilerDia() + "=" + vehiculo.getNumSillas()
-				+ vehiculo.getFechaCreacion().toString());
+				+ "="+vehiculo.getFechaCreacion().toString()+"%n");
 		fw.close();
 		ft.close();
 	}
