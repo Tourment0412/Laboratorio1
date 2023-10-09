@@ -50,7 +50,6 @@ public class DataService {
 	private void leerListaVehiculos() {
 		try {
 			alquilaFacil.setListaVehiculos(VehiculosDao.getInstance().leerArchivoScanner());
-			System.out.println(alquilaFacil.getListaVehiculos());
 		} catch (IOException e) {
 			LogHandler.getInstance().logSevere("La ruta no ha sido encontrada");
 		}
@@ -65,7 +64,7 @@ public class DataService {
 			throws ListaVaciaException {
 		leerListaAlquileres();
 		leerListaVehiculos();
-		return alquilaFacil.listarVehiculosRangoFechas(fechaInicial, fechaFinal);
+		return alquilaFacil.listarVehiculosDisponiblesRangoFechas(fechaInicial, fechaFinal);
 	}
 
 	public List<Vehiculo> listarVehiculosAlquilados() {

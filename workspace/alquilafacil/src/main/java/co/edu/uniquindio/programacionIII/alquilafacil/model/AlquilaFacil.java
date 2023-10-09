@@ -49,7 +49,7 @@ public class AlquilaFacil implements Serializable {
 		return true;
 	}
 
-	public List<Vehiculo> listarVehiculosRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal)
+	public List<Vehiculo> listarVehiculosDisponiblesRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal)
 			throws ListaVaciaException {
 		LogHandler.getInstance().logInfo("Listando vehiculos en rango de fechas");
 		List<Vehiculo> vehiculosRangoFechas = listarVehiculosRangoFechasThrow(fechaInicial, fechaFinal);
