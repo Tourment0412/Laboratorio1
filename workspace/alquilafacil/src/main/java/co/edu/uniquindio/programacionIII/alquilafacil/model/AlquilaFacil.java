@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ElementoNoEncontradoException;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
@@ -71,7 +71,7 @@ public class AlquilaFacil implements Serializable {
 	}
 
 	public List<Vehiculo> listarVehiculosAlquiladosFecha(LocalDate fecha) throws ListaVaciaException {
-		LogHandler.getInstance().logInfo("Listando vehiculos en la fecha dada");
+		LogHandler.getInstance().logInfo("Intenando listar vehiculos en la fecha" + fecha);
 		List<Vehiculo> vehiculosFecha = listarVehiculosAlquiladosFechaThrow(fecha);
 		LogHandler.getInstance().logInfo("Se ha podido obtener los vechiculos alquilados en fecha dada");
 		if (vehiculosFecha.isEmpty())
@@ -79,9 +79,9 @@ public class AlquilaFacil implements Serializable {
 		return vehiculosFecha;
 	}
 
-	private List<Vehiculo> listarVehiculosAlquiladosFechaThrow(LocalDate fecha) throws ListaVaciaException  {
-		LogHandler.getInstance().logInfo("Intenando listar vehiculos en "+fecha);
-		ArrayList<Vehiculo> result= listaVehiculos.stream().filter(v->vehiculoAquiladoFecha(v, fecha)).collect(Collectors.toCollection(ArrayList::new));
+	private List<Vehiculo> listarVehiculosAlquiladosFechaThrow(LocalDate fecha) {
+		ArrayList<Vehiculo> result = listaVehiculos.stream().filter(v -> vehiculoAquiladoFecha(v, fecha))
+				.collect(Collectors.toCollection(ArrayList::new));
 		return result;
 	}
 
@@ -89,7 +89,7 @@ public class AlquilaFacil implements Serializable {
 		for (Alquiler alquiler : listaAlquileres) {
 			if (alquiler.estaEnFecha(fecha) && alquiler.getVehiculo().equals(v))
 				return true;
-			
+
 		}
 		return false;
 	}
