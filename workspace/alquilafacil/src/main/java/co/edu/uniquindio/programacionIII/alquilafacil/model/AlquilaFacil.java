@@ -60,12 +60,11 @@ public class AlquilaFacil implements Serializable {
 		return vehiculosRangoFechas;
 	}
 
-	private List<Vehiculo> listarVehiculosRangoFechasThrow(LocalDate fechaInicial, LocalDate fechaFinal)
-			throws ListaVaciaException {
+	private List<Vehiculo> listarVehiculosRangoFechasThrow(LocalDate fechaInicial, LocalDate fechaFinal) {
 		LogHandler.getInstance().logInfo("Intentando listar vehículos entre: " + fechaInicial + " y " + fechaFinal);
-		ArrayList<Vehiculo> result = listaVehiculos.stream().filter(
-				v -> v.fueCreadoAntesDe(fechaFinal) && vehiculoEstaDisplonibleRangoFechas(v, fechaInicial, fechaFinal))
-				.collect(Collectors.toCollection(ArrayList::new));
+		ArrayList<Vehiculo> result = listaAlquileres.stream()
+				.filter(alquiler -> alquiler.noEstaEnRangoFechas(fechaInicial, fechaFinal))
+				.map(alquiler -> alquiler.getVehiculo()).collect(Collectors.toCollection(ArrayList::new));
 		result.sort((o1, o2) -> o1.getPrecioAlquilerDia().compareTo(o2.getPrecioAlquilerDia()));
 		return result;
 	}
@@ -79,9 +78,9 @@ public class AlquilaFacil implements Serializable {
 		return vehiculosFecha;
 	}
 
-	private List<Vehiculo> listarVehiculosAlquiladosFechaThrow(LocalDate fecha) throws ListaVaciaException {
-		ArrayList<Vehiculo> result = listaVehiculos.stream().filter(v -> vehiculoAquiladoFecha(v, fecha))
-				.collect(Collectors.toCollection(ArrayList::new));
+	private List<Vehiculo> listarVehiculosAlquiladosFechaThrow(LocalDate fecha) {
+		List<Vehiculo> result = listaAlquileres.stream().filter(alquiler -> alquiler.estaEnFecha(fecha))
+				.map(alquiler -> alquiler.getVehiculo()).collect(Collectors.toCollection(ArrayList::new));
 		return result;
 	}
 

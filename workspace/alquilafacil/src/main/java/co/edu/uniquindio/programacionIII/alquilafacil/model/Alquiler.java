@@ -85,11 +85,16 @@ public class Alquiler implements Serializable, Comparator<Alquiler> {
 	}
 
 	public boolean estaEnRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
-		return !fechaFinal.isBefore(this.fechaAlquiler) && !this.fechaRegreso.isBefore(fechaInicial);
+		return !noEstaEnRangoFechas(fechaInicial, fechaFinal);
 	}
-	
+
+	public boolean noEstaEnRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
+		return fechaFinal.isBefore(this.fechaAlquiler) || this.fechaRegreso.isBefore(fechaInicial);
+	}
+
 	public boolean estaEnFecha(LocalDate fecha) {
-		return (fechaAlquiler.isBefore(fecha)||fechaAlquiler.equals(fecha))&&(fechaRegreso.isAfter(fecha)||fechaRegreso.isEqual(fecha));
+		return (fechaAlquiler.isBefore(fecha) || fechaAlquiler.equals(fecha))
+				&& (fechaRegreso.isAfter(fecha) || fechaRegreso.isEqual(fecha));
 	}
 
 	@Override
