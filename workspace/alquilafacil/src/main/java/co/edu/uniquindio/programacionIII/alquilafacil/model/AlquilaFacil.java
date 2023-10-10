@@ -62,11 +62,25 @@ public class AlquilaFacil implements Serializable {
 
 	private List<Vehiculo> listarVehiculosRangoFechasThrow(LocalDate fechaInicial, LocalDate fechaFinal) {
 		LogHandler.getInstance().logInfo("Intentando listar vehículos entre: " + fechaInicial + " y " + fechaFinal);
-		ArrayList<Vehiculo> result = listaAlquileres.stream()
-				.filter(alquiler -> alquiler.noEstaEnRangoFechas(fechaInicial, fechaFinal))
-				.map(alquiler -> alquiler.getVehiculo()).collect(Collectors.toCollection(ArrayList::new));
+		ArrayList<Vehiculo> result = listaVehiculos.stream()
+				.filter(vehiculo -> noFueAlquilado(vehiculo, fechaInicial, fechaFinal)
+						&& (vehiculo.getFechaCreacion().isAfter(fechaInicial)
+								|| vehiculo.getFechaCreacion().isEqual(fechaInicial))
+						&& (vehiculo.getFechaCreacion().isBefore(fechaFinal)
+								|| vehiculo.getFechaCreacion().isEqual(fechaFinal)))
+				.collect(Collectors.toCollection(ArrayList::new));
 		result.sort((o1, o2) -> o1.getPrecioAlquilerDia().compareTo(o2.getPrecioAlquilerDia()));
 		return result;
+	}
+
+	private boolean noFueAlquilado(Vehiculo vehiculo, LocalDate fechaInicial, LocalDate fechaFinal) {
+		for (Alquiler alquiler : listaAlquileres) {
+			if (alquiler.tieneVehiculo(vehiculo)) {
+				System.out.println(vehiculo);
+				return alquiler.noEstaEnRangoFechas(fechaInicial, fechaFinal);
+			}
+		}
+		return true;
 	}
 
 	public List<Vehiculo> listarVehiculosAlquiladosFecha(LocalDate fecha) throws ListaVaciaException {

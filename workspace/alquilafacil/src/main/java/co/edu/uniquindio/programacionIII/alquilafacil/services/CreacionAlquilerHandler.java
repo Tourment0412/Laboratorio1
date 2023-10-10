@@ -6,10 +6,8 @@ import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoEx
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Cliente;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
-@ToString
 public class CreacionAlquilerHandler {
 
 	private LocalDate fechaAlquiler;
@@ -86,7 +84,6 @@ public class CreacionAlquilerHandler {
 	public static CreacionAlquilerHandler getInstance() {
 		if (instance == null)
 			instance = new CreacionAlquilerHandler();
-		System.out.println(instance);
 		return instance;
 	}
 

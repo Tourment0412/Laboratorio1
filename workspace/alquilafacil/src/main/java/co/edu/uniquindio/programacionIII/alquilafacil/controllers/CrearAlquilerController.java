@@ -255,14 +255,13 @@ public class CrearAlquilerController implements Initializable {
 		try {
 			CreacionAlquilerHandler.getInstance().selectCliente(tblClientes.getSelectionModel().getSelectedItem());
 			ModelFactoryController.getInstance().agregarAlquiler();
+			Platform.runLater(() -> Utils.mostrarAlerta("Información", "El alquiler ha sido creado con exito"));
+			clearData();
+			goToFechas();
 		} catch (VehiculoNoDisponibleException | ObjetoYaExisteException | ObjetoNoEncontradoException
 				| CampoInvalidoException e) {
 			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
 		}
-		Platform.runLater(() -> Utils.mostrarAlerta("Información", "El alquiler ha sido creado con exito"));
-		clearData();
-		goToFechas();
-
 	}
 
 	private void clearData() {
