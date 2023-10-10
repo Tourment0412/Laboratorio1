@@ -490,3 +490,73 @@ oct. 09, 2023 5:44:16 P. M. co.edu.uniquindio.programacionIII.alquilafacil.serv
 INFO: Obteniendo marca mas alquilada...
 oct 09, 2023 10:08:33 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
 INFO: Obteniendo marca mas alquilada...
+oct 10, 2023 11:58:17 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 10, 2023 11:58:17 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-11 y 2023-10-13
+oct 10, 2023 11:58:17 A. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 10, 2023 12:02:15 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 10, 2023 12:02:15 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-11 y 2023-10-13
+oct 10, 2023 12:02:15 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 10, 2023 12:02:28 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando agregar alquiler
+oct 10, 2023 12:02:28 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando buscar un alquiler con ID: G@:=0901
+oct 10, 2023 12:02:28 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El alquiler no fue encontrado
+oct 10, 2023 12:02:28 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El alquiler ha sido agregado satisfactoriamente
+oct 10, 2023 12:07:48 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 10, 2023 12:07:48 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-11 y 2023-10-13
+oct 10, 2023 12:07:48 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 10, 2023 12:07:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando agregar alquiler
+oct 10, 2023 12:07:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando buscar un alquiler con ID: 7ECF3825
+oct 10, 2023 12:07:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El alquiler no fue encontrado
+oct 10, 2023 12:07:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El alquiler ha sido agregado satisfactoriamente
+oct 10, 2023 12:08:15 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehiculos en la fecha2023-10-12
+oct 10, 2023 12:08:15 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener los vechiculos alquilados en fecha dada
+oct 10, 2023 12:13:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 10, 2023 12:13:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-11 y 2023-10-13
+oct 10, 2023 12:13:44 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 10, 2023 12:13:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando agregar alquiler
+oct 10, 2023 12:13:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando buscar un alquiler con ID: >?AH6151
+oct 10, 2023 12:13:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El alquiler no fue encontrado
+oct 10, 2023 12:13:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El alquiler ha sido agregado satisfactoriamente
+oct 10, 2023 12:14:25 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Listando vehiculos en rango de fechas
+oct 10, 2023 12:14:25 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehículos entre: 2023-10-11 y 2023-10-13
+oct 10, 2023 12:14:25 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener la lista de vehículos
+oct 10, 2023 12:14:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando agregar alquiler
+oct 10, 2023 12:14:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando buscar un alquiler con ID: JOP:6973
+oct 10, 2023 12:14:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El alquiler no fue encontrado
+oct 10, 2023 12:14:57 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: El alquiler ha sido agregado satisfactoriamente
+oct 10, 2023 12:15:18 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Intentando listar vehiculos en la fecha2023-10-12
+oct 10, 2023 12:15:18 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Se ha podido obtener los vechiculos alquilados en fecha dada
