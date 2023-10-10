@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.CampoInvalidoException;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ElementoNoEncontradoException;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ImagenNoObtenidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
@@ -14,6 +16,7 @@ import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.CreacionAlquilerHandler;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.DataService;
+import javafx.scene.image.Image;
 
 public class ModelFactoryController {
 
@@ -29,7 +32,7 @@ public class ModelFactoryController {
 		return DataService.getInstance().getTotalGanadoAlquileres();
 	}
 
-	public String getMarcaMasAlquilada() {
+	public String getMarcaMasAlquilada() throws ElementoNoEncontradoException {
 		return DataService.getInstance().getMarcaMasAlquilada();
 	}
 
@@ -61,8 +64,10 @@ public class ModelFactoryController {
 		return DataService.getInstance().listarVehiculosAlquilados();
 	}
 
-	public boolean estaDisponible(Vehiculo vehiculo) {
-		return DataService.getInstance().estaDisponible(vehiculo);
+	public boolean vehiculoEstaDisponible(String placa) {
+		StringBuilder sb = new StringBuilder();
+		requerirCampoString(sb, placa, "La placa no puede estar vacia");
+		return DataService.getInstance().estaDisponible(placa);
 	}
 
 	public void agregarCliente(String cedula, String nombre, String numeroTel, String email, String ciudad,
@@ -82,14 +87,13 @@ public class ModelFactoryController {
 		DataService.getInstance().agregarCliente(cliente);
 	}
 
-	public void agregarVehiculo(String placa, String nombre, String marca, String modeloString, String rutaImg,
+	public void agregarVehiculo(String placa, String nombre, String marca, String modeloString, Image image,
 			String transmisionString, String kilometrajeString, String precioAlquilerDiaString, String numSillasString)
-			throws CampoInvalidoException, ObjetoYaExisteException {
+			throws CampoInvalidoException, ObjetoYaExisteException, ImagenNoObtenidaException {
 		StringBuilder sb = new StringBuilder();
 		requerirCampoString(sb, placa, "La placa no puede estar vacia");
 		requerirCampoString(sb, nombre, "El nombre no puede estar vacio");
 		requerirCampoString(sb, marca, "La marca no puede estar vacia");
-		requerirCampoString(sb, rutaImg, "Verifica la imagen del vehiculo");
 
 		Transmision transmision = obtenerTransmisionThrow(sb, transmisionString, "La transmision no puede estar vacia");
 		Double precioAlquilerDia = obtenerDoubleThrow(sb, precioAlquilerDiaString,
@@ -98,9 +102,11 @@ public class ModelFactoryController {
 		Integer kilometraje = obtenerIntThrow(sb, modeloString, "El kilometraje es invalido");
 		Integer numSillas = obtenerIntThrow(sb, numSillasString, "El numero de sillas es invalido");
 
+		if (image == null)
+			sb.append("Verifica la imagen del vehiculo\n");
 		lanzarExceptionCampoInvalido(sb);
 
-		Vehiculo vehiculo = Vehiculo.builder().placa(placa).nombre(nombre).marca(marca).modelo(modelo).rutaImg(rutaImg)
+		Vehiculo vehiculo = Vehiculo.builder().placa(placa).nombre(nombre).marca(marca).modelo(modelo).image(image)
 				.transmision(transmision).kilometraje(kilometraje).precioAlquilerDia(precioAlquilerDia)
 				.numSillas(numSillas).build();
 		DataService.getInstance().agregarVehiculo(vehiculo);

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ElementoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
@@ -55,7 +56,7 @@ public class DataService {
 		}
 	}
 
-	public String getMarcaMasAlquilada() {
+	public String getMarcaMasAlquilada() throws ElementoNoEncontradoException {
 		leerListaAlquileres();
 		return alquilaFacil.getMarcaMasAlquilada();
 	}
@@ -78,9 +79,9 @@ public class DataService {
 		return alquilaFacil.listarVehiculosAlquilados();
 	}
 
-	public boolean estaDisponible(Vehiculo vehiculo) {
+	public boolean estaDisponible(String placa) {
 		leerListaAlquileres();
-		return alquilaFacil.estaDisponible(vehiculo);
+		return alquilaFacil.estaDisponible(placa);
 	}
 
 	public Cliente agregarCliente(Cliente cliente) throws ObjetoYaExisteException {

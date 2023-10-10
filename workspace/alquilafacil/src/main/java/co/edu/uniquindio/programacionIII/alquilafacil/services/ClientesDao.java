@@ -57,8 +57,8 @@ public class ClientesDao {
 
 		Stream<Cliente> map = lista.stream().map(t -> {
 			String[] param = t.split("=");
-			Cliente nc = Cliente.builder().cedula(param[0]).nombre(param[1]).numeroTel(param[3]).email(param[4])
-					.ciudad(param[5]).direccion(param[6]).build();
+			Cliente nc = Cliente.builder().cedula(param[0]).nombre(param[1]).numeroTel(param[2]).email(param[3])
+					.ciudad(param[4]).direccion(param[5]).build();
 			return nc;
 		});
 		// tambien se puede con .toList (pero a veces falla)

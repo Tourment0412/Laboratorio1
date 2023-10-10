@@ -1,9 +1,16 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.model;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.imageio.ImageIO;
+
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ImagenNoObtenidaException;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -13,6 +20,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 @NoArgsConstructor
+@Getter
 public class Vehiculo implements Serializable {
 	/**
 	 * 
@@ -21,64 +29,67 @@ public class Vehiculo implements Serializable {
 
 	@EqualsAndHashCode.Include
 	@NonNull
-	@Getter
 	private String placa;
 	@NonNull
-	@Getter
 	@Setter
 	private String nombre;
 	@NonNull
-	@Getter
 	@Setter
 	private String marca;
 	@NonNull
-	@Getter
 	@Setter
 	private Integer modelo;
 
-	@Setter
-	@Getter
-	private String rutaImg;
-
 	@NonNull
-	@Getter
 	@Setter
 	private Transmision transmision;
 	@NonNull
-	@Getter
 	@Setter
 	private Integer kilometraje;
-	@Getter
 	@Setter
 	@NonNull
 	private Double precioAlquilerDia;
 	@NonNull
-	@Getter
 	@Setter
 	private Integer numSillas;
 
-	@Getter
 	@Setter
 	private LocalDate fechaCreacion;
 
+	@Setter
+	private byte[] imageBytes;
+
 	@Builder
-	public Vehiculo(@NonNull String placa, @NonNull String nombre, @NonNull String marca, @NonNull Integer modelo,
-			@NonNull Transmision transmision, @NonNull Integer kilometraje, @NonNull Double precioAlquilerDia,
-			@NonNull Integer numSillas, @NonNull String rutaImg) {
+	public Vehiculo(@NonNull String placa, @NonNull String nombre, @NonNull String marca, Image image,
+			@NonNull Integer modelo, @NonNull Transmision transmision, @NonNull Integer kilometraje,
+			@NonNull Double precioAlquilerDia, @NonNull Integer numSillas) throws ImagenNoObtenidaException {
 		this.placa = placa;
 		this.nombre = nombre;
 		this.marca = marca;
 		this.modelo = modelo;
-		this.rutaImg = rutaImg;
+
 		this.transmision = transmision;
 		this.kilometraje = kilometraje;
 		this.precioAlquilerDia = precioAlquilerDia;
 		this.numSillas = numSillas;
 		this.fechaCreacion = LocalDate.now();
+		if (image != null)
+			setImage(image);
 	}
 
 	public Image getImage() {
-		return new Image(rutaImg);
+		ByteArrayInputStream bais = new ByteArrayInputStream(imageBytes);
+		return new Image(bais);
+	}
+
+	public void setImage(Image image) throws ImagenNoObtenidaException {
+		try {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", baos);
+			imageBytes = baos.toByteArray();
+		} catch (IOException e) {
+			throw new ImagenNoObtenidaException("La imagen no pudo ser obtenida", e);
+		}
 	}
 
 	public boolean fueCreadoAntesDe(LocalDate fecha) {

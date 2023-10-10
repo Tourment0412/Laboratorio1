@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ListaVaciaException;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ElementoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
@@ -222,16 +223,28 @@ public class AlquilaFacil implements Serializable {
 
 	}
 
-	public String getMarcaMasAlquilada() {
-		LogHandler.getInstance().logInfo("Obteniendo marca mas alquilada...");
+	public String getMarcaMasAlquilada() throws ElementoNoEncontradoException {
+		try {
+			LogHandler.getInstance().logInfo("Obteniendo marca mas alquilada...");
+			String marca = getMarcaMasAlquiladaAux();
+			LogHandler.getInstance().logInfo("La marca mas alquilada ha sido obtenida con exito");
+			return marca;
+		} catch (ElementoNoEncontradoException e) {
+			LogHandler.getInstance().logWarning(e.getMessage());
+			throw e;
+		}
+	}
+
+	private String getMarcaMasAlquiladaAux() throws ElementoNoEncontradoException {
+
 		List<String> list = listaAlquileres.stream().map(alquiler -> alquiler.getVehiculo().getMarca()).toList();
 		if (list.size() == 0)
-			return null;
+			throw new ElementoNoEncontradoException("La marca mas alquilada no fue encontrada");
 		Map<String, Integer> mapeo = new HashMap<>();
 		for (String string : list) {
 			mapeo.put(string, mapeo.getOrDefault(mapeo, 0) + 1);
 		}
-		String marcaMax = "";
+		String marcaMax = null;
 		int max = 0;
 		for (Map.Entry<String, Integer> entry : mapeo.entrySet()) {
 			if (entry.getValue() > max) {
@@ -239,7 +252,8 @@ public class AlquilaFacil implements Serializable {
 				max = entry.getValue();
 			}
 		}
-		LogHandler.getInstance().logInfo("La marca mas alquilada ha sido obtenida con exito");
+		if (marcaMax == null)
+			throw new ElementoNoEncontradoException("La marca mas alquilada no fue encontrada");
 		return marcaMax;
 	}
 
@@ -251,8 +265,9 @@ public class AlquilaFacil implements Serializable {
 		return vehiculosAlquilados;
 	}
 
-	public boolean estaDisponible(Vehiculo vehiculo) {
+	public boolean estaDisponible(String placa) {
 		LogHandler.getInstance().logInfo("Determinando si el vehículo está disponible");
+		Vehiculo vehiculo = buscarVehiculo(placa);
 		for (Alquiler alquiler : listaAlquileres) {
 			if (alquiler.tieneVehiculoAlquiladoAhora(vehiculo)) {
 				LogHandler.getInstance().logInfo("El vehiculo no esta disponible");

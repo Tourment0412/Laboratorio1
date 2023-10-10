@@ -10,8 +10,11 @@ import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoNoEncontr
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ObjetoYaExisteException;
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.VehiculoNoDisponibleException;
 import co.edu.uniquindio.programacionIII.alquilafacil.services.CreacionAlquilerHandler;
+import javafx.application.Application;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
-public class TestModel {
+public class TestModel extends Application {
 	@Test
 	public void crearCliente() throws ObjetoYaExisteException, CampoInvalidoException {
 
@@ -42,13 +45,21 @@ public class TestModel {
 
 	@Test
 	public void crearVehiculo() throws Exception {
-		ModelFactoryController.getInstance().agregarVehiculo("JFX020", "Chevrolet", "Onix", "2023", "hola.png",
-				"Manual", "10000", "500000", "5");
+		launch(new String[0]);
 	}
 
 	@Test
 	public void listarClientes() throws Exception {
 		ModelFactoryController.getInstance().listarClientes();
+	}
+
+	@Override
+	public void start(Stage arg0) throws Exception {
+		ModelFactoryController.getInstance().agregarVehiculo("JFX020", "Chevrolet", "Onix", "2023",
+				new Image(
+						getClass().getResource("/co/edu/uniquindio/programacionIII/alquilafacil/sources/defaultimg.png")
+								.toExternalForm()),
+				"Manual", "10000", "500000", "5");
 	}
 
 }

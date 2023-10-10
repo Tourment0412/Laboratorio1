@@ -3,7 +3,7 @@ package co.edu.uniquindio.programacionIII.alquilafacil.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.programacionIII.alquilafacil.services.DataService;
+import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ElementoNoEncontradoException;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Propiedades;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Utils;
 import co.edu.uniquindio.programacionIII.alquilafacil.utils.Vista;
@@ -27,7 +27,7 @@ public class MostrarFuncionalidadesController implements Initializable {
 
 	@FXML
 	private Button btnTotalGanado;
-	
+
 	private String alertTitle;
 	private String alertText;
 
@@ -43,8 +43,17 @@ public class MostrarFuncionalidadesController implements Initializable {
 
 	@FXML
 	void marcaMasAlqEvent(ActionEvent event) {
-		String cad= DataService.getInstance().getMarcaMasAlquilada();
-		Utils.mostrarAlerta(alertTitle, alertText+" "+cad, AlertType.INFORMATION);
+		marcaMasAlqAction();
+
+	}
+
+	private void marcaMasAlqAction() {
+		try {
+			String cad = ModelFactoryController.getInstance().getMarcaMasAlquilada();
+			Utils.mostrarAlerta(alertTitle, alertText + " " + cad, AlertType.INFORMATION);
+		} catch (ElementoNoEncontradoException e) {
+			Utils.mostrarAlerta("Advertencia", e.getMessage());
+		}
 	}
 
 	@FXML
@@ -72,8 +81,8 @@ public class MostrarFuncionalidadesController implements Initializable {
 			btnListarAlquilados.setText(bundle.getString("MostarFuncionalidades.btnListarAlquilados"));
 			btnTotalGanado.setText(bundle.getString("MostarFuncionalidades.btnTotalGanado"));
 			btnMarcaMasAlq.setText(bundle.getString("MostarFuncionalidades.btnMarcaMasAlq"));
-			alertTitle=bundle.getString("MarcaMasAquilada");
-			alertText=bundle.getString("MarcaMasAquiladaText");
+			alertTitle = bundle.getString("MarcaMasAquilada");
+			alertText = bundle.getString("MarcaMasAquiladaText");
 		});
 
 	}
