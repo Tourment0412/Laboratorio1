@@ -89,16 +89,20 @@ public class Alquiler implements Serializable, Comparator<Alquiler> {
 	}
 
 	public boolean noEstaEnRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
-		return fechaFinal.isBefore(this.fechaAlquiler) || this.fechaRegreso.isBefore(fechaInicial);
+		return fechaFinal.isBefore(fechaAlquiler) || fechaRegreso.isBefore(fechaInicial);
 	}
 
 	public boolean estaEnFecha(LocalDate fecha) {
-		return (fechaAlquiler.isBefore(fecha) || fechaAlquiler.equals(fecha))
+		return (fechaAlquiler.isBefore(fecha) || fechaAlquiler.isEqual(fecha))
 				&& (fechaRegreso.isAfter(fecha) || fechaRegreso.isEqual(fecha));
 	}
 
 	@Override
 	public int compare(Alquiler o1, Alquiler o2) {
 		return o1.getId().compareTo(o2.getId());
+	}
+
+	public boolean tieneVehiculo(Vehiculo vehiculo) {
+		return this.vehiculo.equals(vehiculo);
 	}
 }

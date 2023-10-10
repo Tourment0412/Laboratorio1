@@ -18,17 +18,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @Getter
+@EqualsAndHashCode
+@ToString
 public class Vehiculo implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@EqualsAndHashCode.Include
 	@NonNull
+	@EqualsAndHashCode.Include
 	private String placa;
 	@NonNull
 	@Setter
@@ -56,6 +59,7 @@ public class Vehiculo implements Serializable {
 	@Setter
 	private LocalDate fechaCreacion;
 
+	@ToString.Exclude
 	@Setter
 	private byte[] imageBytes;
 
