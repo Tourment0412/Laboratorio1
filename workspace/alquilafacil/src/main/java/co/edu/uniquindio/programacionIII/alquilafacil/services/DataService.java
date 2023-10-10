@@ -66,6 +66,12 @@ public class DataService {
 		leerListaVehiculos();
 		return alquilaFacil.listarVehiculosDisponiblesRangoFechas(fechaInicial, fechaFinal);
 	}
+	
+	public List<Vehiculo> listarVehiculosFecha(LocalDate fecha) throws ListaVaciaException{
+		leerListaAlquileres();
+		leerListaVehiculos();
+		return alquilaFacil.listarVehiculosAlquiladosFecha(fecha);
+	}
 
 	public List<Vehiculo> listarVehiculosAlquilados() {
 		leerListaAlquileres();

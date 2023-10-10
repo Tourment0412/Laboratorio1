@@ -64,6 +64,18 @@ public class Alquiler implements Serializable, Comparator<Alquiler> {
 		return tieneVehiculoAlquiladoAhora() && getVehiculo().equals(vehiculo);
 	}
 
+	public boolean tieneVehiculoAlquiladoAhora(LocalDate fecha) {
+
+		if ((fecha.isAfter(fechaAlquiler) && fecha.isBefore(fechaRegistro)) || fecha.isEqual(fechaAlquiler)
+				|| fecha.isEqual(fechaRegreso))
+			return true;
+		return false;
+	}
+
+	public boolean tieneVehiculoAlquiladoAhora(Vehiculo vehiculo, LocalDate fecha) {
+		return tieneVehiculoAlquiladoAhora(fecha) && getVehiculo().equals(vehiculo);
+	}
+
 	public long contarDiasAlquiler() {
 		return fechaAlquiler.until(fechaRegreso, ChronoUnit.DAYS);
 	}
@@ -74,6 +86,10 @@ public class Alquiler implements Serializable, Comparator<Alquiler> {
 
 	public boolean estaEnRangoFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
 		return !fechaFinal.isBefore(this.fechaAlquiler) && !this.fechaRegreso.isBefore(fechaInicial);
+	}
+	
+	public boolean estaEnFecha(LocalDate fecha) {
+		return (fechaAlquiler.isBefore(fecha)||fechaAlquiler.equals(fecha))&&(fechaRegreso.isAfter(fecha)||fechaRegreso.isEqual(fecha));
 	}
 
 	@Override
