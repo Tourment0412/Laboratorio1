@@ -110,7 +110,7 @@ public class DataService {
 		leerListaAlquileres();
 		leerListaVehiculos();
 		alquilaFacil.agregarAlquiler(alquiler);
-		AlquileresDao.getInstance().saveData(alquiler);
+		AlquileresDao.getInstance().saveData(alquilaFacil.getListaAlquileres());
 		return alquiler;
 	}
 

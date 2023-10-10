@@ -32,7 +32,7 @@ public class AlquileresDao {
 	 * 
 	 * @param objeto
 	 */
-	public void saveData(Object objeto) {
+	public void saveData(List<Alquiler> objeto) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(getRUTA()))) {
 			oos.writeObject(objeto);
 			oos.close();
