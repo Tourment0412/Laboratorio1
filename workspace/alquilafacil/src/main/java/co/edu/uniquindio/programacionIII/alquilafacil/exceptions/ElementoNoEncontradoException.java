@@ -18,5 +18,6 @@ public class ElementoNoEncontradoException extends Exception {
 	 * @param msg
 	 */
 	public ElementoNoEncontradoException(String msg) {
+		super(msg);
 	}
 }
