@@ -71,7 +71,7 @@ public class AlquilaFacil implements Serializable {
 	}
 
 	public List<Vehiculo> listarVehiculosAlquiladosFecha(LocalDate fecha) throws ListaVaciaException {
-		LogHandler.getInstance().logInfo("Intenando listar vehiculos en la fecha" + fecha);
+		LogHandler.getInstance().logInfo("Intentando listar vehiculos en la fecha" + fecha);
 		List<Vehiculo> vehiculosFecha = listarVehiculosAlquiladosFechaThrow(fecha);
 		LogHandler.getInstance().logInfo("Se ha podido obtener los vechiculos alquilados en fecha dada");
 		if (vehiculosFecha.isEmpty())
@@ -79,7 +79,7 @@ public class AlquilaFacil implements Serializable {
 		return vehiculosFecha;
 	}
 
-	private List<Vehiculo> listarVehiculosAlquiladosFechaThrow(LocalDate fecha) {
+	private List<Vehiculo> listarVehiculosAlquiladosFechaThrow(LocalDate fecha) throws ListaVaciaException {
 		ArrayList<Vehiculo> result = listaVehiculos.stream().filter(v -> vehiculoAquiladoFecha(v, fecha))
 				.collect(Collectors.toCollection(ArrayList::new));
 		return result;
