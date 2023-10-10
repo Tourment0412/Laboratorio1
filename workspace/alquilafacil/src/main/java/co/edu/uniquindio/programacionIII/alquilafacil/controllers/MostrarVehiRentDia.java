@@ -22,51 +22,68 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.Tab;
 
 public class MostrarVehiRentDia implements Initializable {
 
-    @FXML
-    private Button btnFiltrar;
-    
-    @FXML
-    private Button btnVolver;
+	@FXML
+	private Button btnFiltrar;
 
-    @FXML
-    private TableColumn<Vehiculo, String> colMarca;
+	@FXML
+	private Button btnVolver;
 
-    @FXML
-    private TableColumn<Vehiculo, String> colModelo;
+	@FXML
+	private TableColumn<Vehiculo, String> colMarca;
 
-    @FXML
-    private TableColumn<Vehiculo, String> colNombre;
+	@FXML
+	private TableColumn<Vehiculo, String> colModelo;
 
-    @FXML
-    private TableColumn<Vehiculo, String> colPlaca;
+	@FXML
+	private TableColumn<Vehiculo, String> colNombre;
 
-    @FXML
-    private DatePicker dtpFecha;
+	@FXML
+	private TableColumn<Vehiculo, String> colPlaca;
 
-    @FXML
-    private Label lblFecha;
+	@FXML
+	private DatePicker dtpFecha;
 
-    @FXML
-    private Label lblTitle;
+	@FXML
+	private Label lblFecha;
 
-    @FXML
-    private TableView<Vehiculo> tblVehiculos;
-    
-    
-    @Override
+	@FXML
+	private Label lblTitle;
+
+	@FXML
+	private TableView<Vehiculo> tblVehiculos;
+
+	@FXML
+	private TabPane root;
+
+	@FXML
+	private Tab tabFecha;
+
+	@FXML
+	private Tab tabTabla;
+
+	@FXML
+	private Label lblTitle2;
+
+	@FXML
+	private Button btnVolverTabla;
+
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-    	DecimalFormat format = new DecimalFormat("#");
+
+		DecimalFormat format = new DecimalFormat("#");
 		colMarca.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getMarca()));
 		colModelo.setCellValueFactory(cell -> new ReadOnlyStringWrapper(format.format(cell.getValue().getModelo())));
 		colNombre.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getNombre()));
 		colPlaca.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getPlaca()));
-		
-		Propiedades.getInstance().addListener(bundle->{
+
+		Propiedades.getInstance().addListener(bundle -> {
 			lblTitle.setText(bundle.getString("MostrarVehiRentDia.lblTitle"));
+			lblTitle2.setText(bundle.getString("MostrarVehiRentDia.lblTitle"));
 			lblFecha.setText(bundle.getString("MostrarVehiRentDia.lblFecha"));
 			btnFiltrar.setText(bundle.getString("MostrarVehiRentDia.btnFiltrar"));
 			colPlaca.setText(bundle.getString("MostrarVehiRentDia.colPlaca"));
@@ -74,34 +91,46 @@ public class MostrarVehiRentDia implements Initializable {
 			colMarca.setText(bundle.getString("MostrarVehiRentDia.colMarca"));
 			colModelo.setText(bundle.getString("MostrarVehiRentDia.colModelo"));
 			btnVolver.setText(bundle.getString("MostrarVehiRentDia.btnVolver"));
-			tblVehiculos.setPlaceholder(new Label(bundle.getString("TablaSinContenido")) );
+			btnVolverTabla.setText(bundle.getString("MostrarVehiRentDia.btnVolver"));
+			tblVehiculos.setPlaceholder(new Label(bundle.getString("TablaSinContenido")));
 		});
-		
+
 	}
 
-    @FXML
-    void filtrarEvent(ActionEvent event) {
-    	
-    	try {
-			tblVehiculos.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance().
-					listarVehiculosFecha(dtpFecha.getValue())));
-					;
+	@FXML
+	void filtrarEvent(ActionEvent event) {
+
+		try {
+			tblVehiculos.setItems(FXCollections.observableArrayList(
+					ModelFactoryController.getInstance().listarVehiculosFecha(dtpFecha.getValue())));
 			tblVehiculos.refresh();
-			
+			gotoTabla();
 		} catch (ListaVaciaException | CampoInvalidoException e) {
 			Utils.mostrarAlerta("Advertencia", e.getMessage(), AlertType.WARNING);
 		}
 
-    }
-    
-    @FXML
-    void volverEvent(ActionEvent event) {
-    	volverAction();
-    }
+	}
 
-    private void volverAction() {
-    	MainViewController.getInstance().cambiarVista(Vista.FUNCTEXT);
-    }
+	private void gotoTabla() {
+		root.getSelectionModel().select(tabTabla);
+	}
 
-	
+	@FXML
+	void volverEvent(ActionEvent event) {
+		volverAction();
+	}
+
+	private void volverAction() {
+		MainViewController.getInstance().cambiarVista(Vista.FUNCTEXT);
+	}
+
+	@FXML
+	public void volverTablaEvent(ActionEvent event) {
+		gotoFecha();
+	}
+
+	private void gotoFecha() {
+		root.getSelectionModel().select(tabFecha);
+	}
+
 }
