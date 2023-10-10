@@ -46,6 +46,16 @@ public class ModelFactoryController {
 		lanzarExceptionCampoInvalido(sb);
 		return DataService.getInstance().listarVehiculosRangoFechas(fechaInicial, fechaFinal);
 	}
+	
+	public List<Vehiculo> listarVehiculosFecha(LocalDate fecha) throws ListaVaciaException, CampoInvalidoException{
+		StringBuilder sb= new StringBuilder();
+		if(fecha==null) {
+			sb.append("No se ha seleccionado una fecha");
+			sb.append("\n");
+		}
+		lanzarExceptionCampoInvalido(sb);
+		return DataService.getInstance().listarVehiculosFecha(fecha);
+	}
 
 	public List<Vehiculo> listarVehiculosAlquilados() {
 		return DataService.getInstance().listarVehiculosAlquilados();
