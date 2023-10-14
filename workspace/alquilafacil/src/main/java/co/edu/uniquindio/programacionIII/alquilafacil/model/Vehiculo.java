@@ -22,7 +22,7 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @Getter
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 public class Vehiculo implements Serializable {
 	/**
@@ -65,20 +65,22 @@ public class Vehiculo implements Serializable {
 
 	@Builder
 	public Vehiculo(@NonNull String placa, @NonNull String nombre, @NonNull String marca, Image image,
-			@NonNull Integer modelo, @NonNull Transmision transmision, @NonNull Integer kilometraje,
-			@NonNull Double precioAlquilerDia, @NonNull Integer numSillas) throws ImagenNoObtenidaException {
+			byte[] imageBytes, @NonNull Integer modelo, @NonNull Transmision transmision, @NonNull Integer kilometraje,
+			@NonNull Double precioAlquilerDia, @NonNull Integer numSillas, LocalDate fechaCreacion)
+			throws ImagenNoObtenidaException {
 		this.placa = placa;
 		this.nombre = nombre;
 		this.marca = marca;
 		this.modelo = modelo;
-
 		this.transmision = transmision;
 		this.kilometraje = kilometraje;
 		this.precioAlquilerDia = precioAlquilerDia;
 		this.numSillas = numSillas;
-		this.fechaCreacion = LocalDate.now();
+		this.fechaCreacion = fechaCreacion == null ? LocalDate.now() : fechaCreacion;
 		if (image != null)
 			setImage(image);
+		else if (imageBytes != null)
+			this.imageBytes = imageBytes;
 	}
 
 	public Image getImage() {

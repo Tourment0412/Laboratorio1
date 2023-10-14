@@ -1,6 +1,7 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.model;
 
 import java.io.Serializable;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
@@ -11,8 +12,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import lombok.ToString;
 
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
+@ToString
 public class Alquiler implements Serializable, Comparator<Alquiler> {
 
 	/**

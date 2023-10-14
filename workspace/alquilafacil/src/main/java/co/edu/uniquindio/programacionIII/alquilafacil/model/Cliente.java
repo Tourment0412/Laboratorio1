@@ -3,6 +3,7 @@ package co.edu.uniquindio.programacionIII.alquilafacil.model;
 import java.io.Serializable;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -11,6 +12,7 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cliente implements Serializable {
 
 	/**
@@ -19,6 +21,7 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Getter
 	@NonNull
+	@EqualsAndHashCode.Include
 	private String cedula;
 	@Getter
 	@Setter
