@@ -43,7 +43,6 @@ public class DataService {
 		try {
 			alquilaFacil.setListaClientes(ClientesDao.getInstance().leerArchivoScanner());
 		} catch (IOException e) {
-
 			LogHandler.getInstance().logSevere("La ruta no ha sido encontrada");
 		}
 	}

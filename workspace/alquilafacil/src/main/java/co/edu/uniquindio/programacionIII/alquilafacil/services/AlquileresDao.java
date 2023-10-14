@@ -30,11 +30,11 @@ public class AlquileresDao {
 	 * Guarda el objeto (pensado en alquileres) deseado en un archivo indicado por
 	 * medio de serializacion
 	 * 
-	 * @param objeto
+	 * @param listaAlquileres
 	 */
-	public void saveData(List<Alquiler> objeto) {
+	public void saveData(List<Alquiler> listaAlquileres) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(getRUTA()))) {
-			oos.writeObject(objeto);
+			oos.writeObject(listaAlquileres);
 			oos.close();
 		} catch (IOException e) {
 			LogHandler.getInstance().logSevere(e.getMessage());
@@ -47,21 +47,18 @@ public class AlquileresDao {
 	 * 
 	 * @return
 	 */
-
 	@SuppressWarnings("unchecked")
 	public List<Alquiler> loadData() {
+		List<Alquiler> listaAlquileres;
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(getRUTA()))) {
-			Object objeto = ois.readObject();
+			listaAlquileres = (List<Alquiler>) ois.readObject();
 			ois.close();
-			return (List<Alquiler>) objeto;
 		} catch (ClassNotFoundException | IOException e) {
-			
-			ArrayList<Alquiler> objeto = new ArrayList<Alquiler>();
-			saveData(objeto);
-			return objeto;
-			
+			listaAlquileres = new ArrayList<Alquiler>();
+			saveData(listaAlquileres);
 		}
-		
+		return listaAlquileres;
+
 	}
 
 }

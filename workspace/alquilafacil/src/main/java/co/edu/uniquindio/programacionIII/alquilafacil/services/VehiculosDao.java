@@ -1,18 +1,22 @@
 package co.edu.uniquindio.programacionIII.alquilafacil.services;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Formatter;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 import co.edu.uniquindio.programacionIII.alquilafacil.exceptions.ImagenNoObtenidaException;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Transmision;
 import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo;
+import co.edu.uniquindio.programacionIII.alquilafacil.model.Vehiculo.VehiculoBuilder;
 
 public class VehiculosDao {
 	private static VehiculosDao instance;
@@ -25,27 +29,30 @@ public class VehiculosDao {
 	}
 
 	public String codificarVehiculo(Vehiculo vehiculo) {
-		return vehiculo.getPlaca() + "= codif =" + vehiculo.getNombre() + "= codif =" + vehiculo.getMarca()
-				+ "= codif =" + vehiculo.getModelo() + "= codif ="
-				+ Base64.getEncoder().encodeToString(vehiculo.getImageBytes()) + "= codif ="
-				+ vehiculo.getTransmision().getText() + "= codif =" + vehiculo.getKilometraje() + "= codif ="
-				+ vehiculo.getPrecioAlquilerDia() + "= codif =" + vehiculo.getNumSillas() + "= codif ="
-				+ vehiculo.getFechaCreacion().toString();
+		return MessageFormat.format(
+				"{0}= codif ={1}= codif ={2}= codif ={3}= codif ={4}= codif ={5}= codif ={6}= codif ={7}= codif ={8}= codif ={9}",
+				vehiculo.getPlaca(), vehiculo.getNombre(), vehiculo.getMarca(), vehiculo.getModelo(),
+				Base64.getEncoder().encodeToString(vehiculo.getImageBytes()), vehiculo.getTransmision().getText(),
+				vehiculo.getKilometraje(), vehiculo.getPrecioAlquilerDia(), vehiculo.getNumSillas(),
+				vehiculo.getFechaCreacion().toString());
 	}
 
 	public Vehiculo decodificarVehiculo(String encoding) {
-		String[] arr = encoding.split("= codif =");
-		Vehiculo vehiculo = null;
+		StringTokenizer tokenizer = new StringTokenizer("= codif =");
+
 		try {
-			vehiculo = Vehiculo.builder().placa(arr[0]).nombre(arr[1]).marca(arr[2]).modelo(Integer.parseInt(arr[3]))
-					.transmision(Transmision.valueByText(arr[5])).kilometraje(Integer.parseInt(arr[6]))
-					.precioAlquilerDia(Double.parseDouble(arr[7])).numSillas(Integer.parseInt(arr[8])).build();
+			VehiculoBuilder builder = Vehiculo.builder().placa(tokenizer.nextToken()).nombre(tokenizer.nextToken())
+					.marca(tokenizer.nextToken()).modelo(Integer.parseInt(tokenizer.nextToken()))
+					.imageBytes(Base64.getDecoder().decode(tokenizer.nextToken()))
+					.transmision(Transmision.valueByText(tokenizer.nextToken()))
+					.kilometraje(Integer.parseInt(tokenizer.nextToken()))
+					.precioAlquilerDia(Double.parseDouble(tokenizer.nextToken()))
+					.numSillas(Integer.parseInt(tokenizer.nextToken()))
+					.fechaCreacion(LocalDate.parse(tokenizer.nextToken()));
+			return builder.build();
 		} catch (NumberFormatException | ImagenNoObtenidaException e) {
 			return null;
 		}
-		vehiculo.setImageBytes(Base64.getDecoder().decode(arr[4]));
-		vehiculo.setFechaCreacion(LocalDate.parse(arr[9]));
-		return vehiculo;
 	}
 
 	/**
@@ -69,15 +76,11 @@ public class VehiculosDao {
 	 * @throws IOException
 	 */
 	public ArrayList<Vehiculo> leerArchivoScanner() throws IOException {
-
-		ArrayList<String> lista = new ArrayList<>();
-		Scanner sc = new Scanner(new File(RUTA));
-
-		while (sc.hasNextLine())
-			lista.add(sc.nextLine());
-		sc.close();
-
-		return lista.stream().map(t -> decodificarVehiculo(t)).collect(Collectors.toCollection(ArrayList::new));
+		BufferedReader reader = new BufferedReader(new FileReader(new File(RUTA)));
+		ArrayList<Vehiculo> lista = reader.lines().map(cadena -> decodificarVehiculo(cadena))
+				.collect(Collectors.toCollection(ArrayList::new));
+		reader.close();
+		return lista;
 	}
 
 }
