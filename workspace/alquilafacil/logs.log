@@ -576,3 +576,7 @@ oct 10, 2023 12:47:55 P. M. co.edu.uniquindio.programacionIII.alquilafacil.serv
 INFO: Intentando listar vehiculos en la fecha2023-10-12
 oct 10, 2023 12:47:55 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
 INFO: Se ha podido obtener los vechiculos alquilados en fecha dada
+oct 10, 2023 8:51:41 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: Obteniendo marca mas alquilada...
+oct 10, 2023 8:51:41 P. M. co.edu.uniquindio.programacionIII.alquilafacil.services.LogHandler logInfo
+INFO: La marca mas alquilada ha sido obtenida con exito
