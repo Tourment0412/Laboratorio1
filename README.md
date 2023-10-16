@@ -23,6 +23,3 @@ Para su ejecución debe usar Maven y su plugin de JavaFX:
 - PDFBox 3
 - Prokect Lombok
 - TestFX Core 4.0.17
-
-# Base de Datos
-AlquilaFácil se conecta a una base de datos en MySQL por medio de javax.persistence y obtiene y envía datos desde allí.
